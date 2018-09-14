@@ -9,7 +9,6 @@ import ac.itcr.perez_moya.datos1.gui.LoggingWindow;
 
 public class Main {
     public static void main(String[] args) {
-    LoggingWindow loggingWindow = new LoggingWindow();
-    loggingWindow.setVisible(true);
+        
     }
 }
