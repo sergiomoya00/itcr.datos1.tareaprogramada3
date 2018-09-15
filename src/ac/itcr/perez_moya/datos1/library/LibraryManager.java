@@ -23,16 +23,21 @@ import java.util.Set;
 public class LibraryManager {
 
     List<Book> books = new java.util.ArrayList<>();
-    List<Library> libraries = new SimpleLinkeList<>();
-    List<UserData> users = new SimpleLinkeList<>();
-    List<Customer> customers = new SimpleLinkeList<>();
-    List<InventoryEntry> inventory = new SimpleLinkeList<>();
-    List<Order> orders = new SimpleLinkeList<>();
+    List<Library> libraries = new java.util.ArrayList<>();
+    List<UserData> users = new java.util.ArrayList<>();
+    List<Customer> customers = new java.util.ArrayList<>();
+    List<InventoryEntry> inventory = new java.util.ArrayList<>();
+    List<Order> orders = new java.util.ArrayList<>();
 
     private static final LibraryManager instance;
 
     public static LibraryManager getInstance() {
         return instance;
+    }
+    
+    public void removeLibrary(int index) {
+        libraries.remove(index);
+        
     }
 
     static {

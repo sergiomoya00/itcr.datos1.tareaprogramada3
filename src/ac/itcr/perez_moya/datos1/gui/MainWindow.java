@@ -5,6 +5,10 @@
  */
 package ac.itcr.perez_moya.datos1.gui;
 
+import ac.itcr.perez_moya.datos1.library.Library;
+import ac.itcr.perez_moya.datos1.library.LibraryManager;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author samoy
@@ -16,6 +20,18 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
+        refresh();
+
+    }
+
+    private void refresh() {
+        DefaultTableModel model = ((DefaultTableModel) librarystable.getModel());
+        model.setRowCount(0);
+        for (Library library : LibraryManager.getInstance().getLibrarys()) {
+            model.addRow(new Object[]{
+                library.getNameLib(), library.getCountry(), library.getLocation(), library.getPhone()
+            });
+        }
     }
 
     /**
@@ -28,7 +44,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        librarystable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -39,8 +55,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        librarystable.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP));
+        librarystable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -51,10 +67,10 @@ public class MainWindow extends javax.swing.JFrame {
                 "Nombre", "País", "Ubicación", "Teléfono"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        jScrollPane1.setViewportView(librarystable);
+        if (librarystable.getColumnModel().getColumnCount() > 0) {
+            librarystable.getColumnModel().getColumn(2).setResizable(false);
+            librarystable.getColumnModel().getColumn(3).setResizable(false);
         }
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestión de librerías "));
@@ -160,30 +176,39 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
+        LibraryManager.getInstance().removeLibrary(this.librarystable.getSelectedRow());
+        refresh();
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-
-BookManagement bookm = new BookManagement();
-bookm.setVisible(true);
+        BookManagement bookm = new BookManagement();
+        bookm.setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 
-
-LendingWindowAttention leadingmanage = new LendingWindowAttention();
-leadingmanage.setVisible(true);
+        LendingWindowAttention leadingmanage = new LendingWindowAttention();
+        leadingmanage.setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+        CreateLibrary newlibrary = new CreateLibrary();
+        newlibrary.setVisible(true);
+        newlibrary.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowDeactivated(java.awt.event.WindowEvent windowEvent) {
+                refresh();
 
-CreateLibrary newlibrary = new CreateLibrary();
-newlibrary.setVisible(true);
+            }
+
+        });
+
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -201,16 +226,24 @@ newlibrary.setVisible(true);
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainWindow.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainWindow.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainWindow.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainWindow.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -231,6 +264,6 @@ newlibrary.setVisible(true);
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable librarystable;
     // End of variables declaration//GEN-END:variables
 }

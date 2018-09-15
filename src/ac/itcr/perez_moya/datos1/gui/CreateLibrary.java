@@ -6,6 +6,7 @@
 package ac.itcr.perez_moya.datos1.gui;
 
 import ac.itcr.perez_moya.datos1.library.Library;
+import ac.itcr.perez_moya.datos1.library.LibraryManager;
 
 /**
  *
@@ -135,7 +136,9 @@ public class CreateLibrary extends javax.swing.JFrame {
         this.library.setCountry(librarycountry.getText());
         this.library.setLocation(libraryaddress.getText());
         this.library.setPhone(libraryphone.getText());
-        
+        LibraryManager.getInstance().addLibrary(library);
+        this.setVisible(false);
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
