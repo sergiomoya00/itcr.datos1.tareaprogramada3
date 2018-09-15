@@ -5,10 +5,12 @@
  */
 package ac.itcr.perez_moya.datos1.notification;
 
+import java.awt.Component;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
+import javax.swing.JOptionPane;
 
 public class EmailNotification {
 
@@ -49,7 +51,7 @@ public class EmailNotification {
         return session;
     }
 
-    public void sendEmail(String to, String text) {
+    public void sendEmail(String to, String text, Component parent) {
 
         try {
             Session session = getSession();
@@ -57,15 +59,12 @@ public class EmailNotification {
             message.setFrom(new InternetAddress(user));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             message.setSubject("Solicitud recibida");
-            message.setText("This is simple program of sending email using JavaMail API");
+            message.setText("Su solicitud está siendo procesada");
 
-            //send the message  
             Transport.send(message);
 
-            System.out.println("message sent successfully...");
-
         } catch (MessagingException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(parent, e.getMessage());
         }
     }
 
