@@ -12,7 +12,9 @@ import ac.itcr.perez_moya.datos1.library.user.UserData;
 import com.sun.accessibility.internal.resources.accessibility;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -57,6 +59,36 @@ public class LibraryManager {
             }
         });
 
+        instance.libraries.add(new Library() {
+            {
+                setNameLib("Librería Internacional");
+                setPhone("2552-0504");
+                setCountry("Costa Rica");
+                setLocation("San José, Curridabat");
+
+            }
+        });
+
+        instance.libraries.add(new Library() {
+            {
+                setNameLib("Librería Lehman");
+                setPhone("2552-6559");
+                setCountry("Costa Rica");
+                setLocation("Cartago, Occidental");
+
+            }
+        });
+
+        instance.libraries.add(new Library() {
+            {
+                setNameLib("Librería Universal");
+                setPhone("2572-3456");
+                setCountry("Costa Rica");
+                setLocation("San José, San Pedro");
+
+            }
+        });
+
     }
 
     public Collection<Book> getBooks() {
@@ -77,9 +109,19 @@ public class LibraryManager {
                 results.add(book);
             }
         }
-        
+
         return results;
 
     }
+    
+   public Collection<Library> getLibrarys() {
+       return libraries;
+       
+    }
+   
+   public void addLibrary(Library library) {
+       this.libraries.add(library);
+       
+   }
 
 }

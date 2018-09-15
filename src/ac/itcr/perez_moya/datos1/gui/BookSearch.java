@@ -20,16 +20,7 @@ public class BookSearch extends javax.swing.JFrame {
      */
     public BookSearch() {
         initComponents();
-        StringBuilder sb = new StringBuilder();
-        for (Book book : LibraryManager.getInstance().search(new Book() {
-            {
-                setName("mar");
-            }
-        })) {
-            sb.append(book.getName());
-            sb.append("    \n");
-        }
-        this.jTextField1.setText(sb.toString());
+
     }
 
     /**
@@ -79,6 +70,17 @@ public class BookSearch extends javax.swing.JFrame {
         });
 
         jButton2.setText("Ver detalle");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox5ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -151,6 +153,30 @@ public class BookSearch extends javax.swing.JFrame {
         infoc.setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+    }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String name = jTextArea1.getText();
+        
+                StringBuilder sb = new StringBuilder();
+        for (Book book : LibraryManager.getInstance().search(new Book() {
+            {
+                setName(name);
+            }
+        })) {
+            sb.append(book.getName());
+            sb.append("    \n");
+        }
+        this.jTextField1.setText(sb.toString());
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
