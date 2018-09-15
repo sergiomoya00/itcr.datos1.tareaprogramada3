@@ -9,7 +9,8 @@ package ac.itcr.perez_moya.datos1.library;
 public class Book {
     
     private String name, topic, description, issn;
-    private int soldBooks, availableBooks, price;
+    private int soldBooks, availableBooks;
+    private float price;
     private String imagePath;
 
     public Book() {
@@ -74,11 +75,11 @@ public class Book {
         this.availableBooks = availableBooks;
     }
 
-    public int getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

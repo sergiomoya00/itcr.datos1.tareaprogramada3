@@ -5,6 +5,10 @@
  */
 package ac.itcr.perez_moya.datos1.gui;
 
+import ac.itcr.perez_moya.datos1.library.Book;
+import ac.itcr.perez_moya.datos1.library.LibraryManager;
+import java.util.Collection;
+
 /**
  *
  * @author samoy
@@ -16,6 +20,16 @@ public class BookSearch extends javax.swing.JFrame {
      */
     public BookSearch() {
         initComponents();
+        StringBuilder sb = new StringBuilder();
+        for (Book book : LibraryManager.getInstance().search(new Book() {
+            {
+                setName("mar");
+            }
+        })) {
+            sb.append(book.getName());
+            sb.append("    \n");
+        }
+        this.jTextField1.setText(sb.toString());
     }
 
     /**
@@ -132,10 +146,9 @@ public class BookSearch extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-
-ClientInfo infoc = new ClientInfo();
-infoc.setVisible(true);
+        
+        ClientInfo infoc = new ClientInfo();
+        infoc.setVisible(true);
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
