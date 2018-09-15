@@ -10,17 +10,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-
 public class SimpleLinkeList<T> implements List<T> {
-    
-    NodeSimpleLinkedList <T> head;
-    private int size; 
-    
-    
-    
+
+    NodeSimpleLinkedList<T> head;
+    private int size;
+
     @Override
     public int size() {
-       return this.size;
+        return this.size;
     }
 
     @Override
@@ -50,13 +47,37 @@ public class SimpleLinkeList<T> implements List<T> {
 
     @Override
     public boolean add(T e) {
-        this.add(0, e);
+        this.add(size(), e);
         return true;
     }
 
     @Override
     public boolean remove(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        NodeSimpleLinkedList current = this.head;
+
+        if (this.head == null) {
+            return false;
+        }
+        
+        if (this.head.getValue().equals(o)){
+            size--;
+            head = current.getNext();
+            return true;
+        }
+
+        while (current.getNext() != null && !current.getNext().value.equals(o)) {
+            current = current.getNext();
+        }
+
+        if (current.getNext() == null) {
+            return false;
+        }
+
+        current.setNext(current.getNext().getNext());
+
+        size--;
+        return true;
     }
 
     @Override
@@ -66,9 +87,9 @@ public class SimpleLinkeList<T> implements List<T> {
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        for (T e: c){
+        for (T e : c) {
             add(e);
-        
+
         }
         return true;
     }
@@ -92,69 +113,90 @@ public class SimpleLinkeList<T> implements List<T> {
     public void clear() {
         size = 0;
         head = null;
-  
+
     }
 
     @Override
     public T get(int index) {
-        NodeSimpleLinkedList <T> Current = head;
-        while (index-- > 0){
-            Current = Current.getNext();
-
+        NodeSimpleLinkedList<T> current = head;
+        while (index-- > 0) {
+            current = current.getNext();
         }
-        return Current.getValue();
+        return current.getValue();
     }
 
     @Override
     public T set(int index, T element) {
-        NodeSimpleLinkedList <T> Current = head;
-        while (index-- > 0){
-            Current = Current.getNext();
+        NodeSimpleLinkedList<T> current = head;
+        while (index-- > 0) {
+            current = current.getNext();
 
         }
-        T previous = Current.getValue();
-        Current.setValue(element);
+        T previous = current.getValue();
+        current.setValue(element);
         return previous;
     }
 
     @Override
     public void add(int index, T element) {
-        NodeSimpleLinkedList <T> Current = this.head;
-        NodeSimpleLinkedList <T>  newNode = new NodeSimpleLinkedList<T>(null, element);
-        
-        if (isEmpty()){
+        NodeSimpleLinkedList<T> current = this.head;
+        NodeSimpleLinkedList<T> newNode = new NodeSimpleLinkedList<T>(null, element);
+
+        if (isEmpty()) {
             this.head = newNode;
-            
-        }
-        
-        else{
-            if (size == 0){
+
+        } else {
+            if (size == 0) {
                 this.head = newNode;
-                newNode.setNext(Current);
-            } 
-            else{
-                
-                NodeSimpleLinkedList<T> previous = Current;
-                Current = previous.getNext();
-                
-                while (--index >0){
-                    previous = Current;  
-                    Current = previous.getNext();
-                    
+                newNode.setNext(current);
+            } else {
+
+                NodeSimpleLinkedList<T> previous = current;
+                current = previous.getNext();
+
+                while (--index > 0) {
+                    previous = current;
+                    current = previous.getNext();
+
                 }
-                
+
                 previous.setNext(newNode);
-                newNode.setNext(Current);
-                
+                newNode.setNext(current);
+
             }
         }
-        size ++;
-        
+        size++;
+
     }
 
     @Override
     public T remove(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        
+        NodeSimpleLinkedList<T> current = head;
+        
+        if (index == 0){
+            head = current.getNext();
+            size --;
+            return current.value;
+        }
+        
+        while (--index > 0) {
+            current = current.getNext();
+
+        }
+
+        if (current.getNext() == null) {
+            return null;
+        }
+
+        T oldValue = current.getNext().value;
+
+        current.setNext(current.getNext().getNext());
+
+        size--;
+        return oldValue;
+
     }
 
     @Override
@@ -181,5 +223,5 @@ public class SimpleLinkeList<T> implements List<T> {
     public List<T> subList(int fromIndex, int toIndex) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-  
+
 }
