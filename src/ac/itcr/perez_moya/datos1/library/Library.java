@@ -10,14 +10,14 @@ package ac.itcr.perez_moya.datos1.library;
  * @author julatec
  */
 public class Library {
-    private String country, location, nameLib;
-    private int id, horario;
+    private String country, location, nameLib, phone;
+    private int horario;
 
     public Library(String country, String location, String nameLib, int id, int horario) {
         this.country = country;
         this.location = location;
         this.nameLib = nameLib;
-        this.id = id;
+        this.phone = phone;
         this.horario = horario;
     }
 
@@ -48,12 +48,13 @@ public class Library {
         this.nameLib = nameLib;
     }
 
-    public int getId() {
-        return id;
+    public String getPhone() {
+        return phone;
     }
+    
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public int getHorario() {
@@ -63,6 +64,7 @@ public class Library {
     public void setHorario(int horario) {
         this.horario = horario;
     }
+    
     
     
 }
