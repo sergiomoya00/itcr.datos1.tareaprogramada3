@@ -34,10 +34,10 @@ public class LibraryManager {
     public static LibraryManager getInstance() {
         return instance;
     }
-    
+
     public void removeLibrary(int index) {
         libraries.remove(index);
-        
+
     }
 
     static {
@@ -47,20 +47,23 @@ public class LibraryManager {
                 setName("Quijote de la mancha");
                 setIssn("123456789");
                 setPrice(87.5f);
+                setTopic(Topic.Literatura.name());
             }
         });
         instance.books.add(new Book() {
             {
-                setName("Quijote 2 de la mar");
+                setName("Introducción a Matemática Discreta");
                 setIssn("123456789");
                 setPrice(87.5f);
+                setTopic(Topic.Matematicas.name());
             }
         });
         instance.books.add(new Book() {
             {
-                setName("Quijote 1 de la test");
+                setName("Biología noveno año");
                 setIssn("123456789");
                 setPrice(87.5f);
+                setTopic(Topic.CienciasNaturales.name());
             }
         });
 
@@ -70,6 +73,7 @@ public class LibraryManager {
                 setPhone("2552-0504");
                 setCountry("Costa Rica");
                 setLocation("San José, Curridabat");
+                
 
             }
         });
@@ -103,30 +107,38 @@ public class LibraryManager {
     public void addBook(Book newBook) {
 
     }
+    
+    
 
     public Collection<Book> search(Book newBook) {
         List<Book> results = new ArrayList<>();
 
+        boolean byName = newBook.getName() != null && newBook.getName().length() > 0;
+        boolean byType = newBook.getTopic() != null && newBook.getTopic().length() > 0;
+
         for (Book book : books) {
-            if (newBook.getName() != null
-                    && newBook.getName().length() > 0
-                    && book.getName().contains(newBook.getName())) {
-                results.add(book);
+            boolean add = !(byName || byType);
+            if (!add && byName && book.getName().contains(newBook.getName())) {
+                add = true;
             }
+            if(!add && byType && book.getTopic().contains(newBook.getTopic())) {
+                add= true;
+            }
+             if (add) results.add(book);
         }
 
         return results;
 
     }
-    
-   public Collection<Library> getLibrarys() {
-       return libraries;
-       
+
+    public Collection<Library> getLibrarys() {
+        return libraries;
+
     }
-   
-   public void addLibrary(Library library) {
-       this.libraries.add(library);
-       
-   }
+
+    public void addLibrary(Library library) {
+        this.libraries.add(library);
+
+    }
 
 }

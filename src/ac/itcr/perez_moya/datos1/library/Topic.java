@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ac.itcr.perez_moya.datos1.library.book_enums;
+package ac.itcr.perez_moya.datos1.library;
 
 
-public enum EnumBook {
-    Ingeniería,
-    Administración,
+public enum Topic {
+    Ingenieria,
+    Administracion,
     CienciasNaturales,
     Artes,
     Historia,
-    Matemáticas,
-    Ficción,
+    Matematicas,
+    Ficcion,
     Literatura;
 }
 
