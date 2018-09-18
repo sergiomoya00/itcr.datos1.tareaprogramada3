@@ -175,7 +175,7 @@ public class BookManagement extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         LibraryManager.getInstance().removeBook(this.bookmanageTable.getSelectedRow());
-        refreshBookManage();        // TODO add your handling code here:
+        refreshBookManage();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

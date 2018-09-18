@@ -36,15 +36,9 @@ public class NoticeClient extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTextField1.setText("jTextField1");
-
         jLabel1.setText("De:");
 
         jLabel2.setText("Para:");
-
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField2");
 
         jButton1.setText("Enviar");
 

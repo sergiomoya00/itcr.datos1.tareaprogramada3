@@ -24,7 +24,6 @@ public class BookSearch extends javax.swing.JFrame {
      */
     public BookSearch() {
         initComponents();
-        refreshBooks();
 
         this.librariesCombo.addItem("Librerías");
         for (Library library : LibraryManager.getInstance().getLibrarys()) {
@@ -35,9 +34,6 @@ public class BookSearch extends javax.swing.JFrame {
         for (Topic topic : Topic.values()) {
             themeCombo.addItem(topic.name());
         }
-        
-
-
     }
 
     private void refreshBooks() {
@@ -54,14 +50,14 @@ public class BookSearch extends javax.swing.JFrame {
 
         Book newBook = new Book();
         newBook.setTopic(topicName);
-        String name = jTextField2.getText();
+        String name = booksName.getText();
         newBook.setName(name);
 
         DefaultTableModel model = ((DefaultTableModel) bookstable.getModel());
         model.setRowCount(0);
         for (Book book : LibraryManager.getInstance().search(newBook)) {
             model.addRow(new Object[]{
-                book.getIssn(), book.getName(), book.getTopic(), book.getPrice(), book.getSoldBooks()
+                book.getIssn(), book.getName(), book.getTopic(), book.getPrice(), book.getSoldBooks(), book.getAvailableBooks()
             });
         }
     }
@@ -79,14 +75,14 @@ public class BookSearch extends javax.swing.JFrame {
         themeCombo = new javax.swing.JComboBox<>();
         jComboBox4 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField2 = new javax.swing.JTextField();
+        orderBotton = new javax.swing.JButton();
+        detailBotton = new javax.swing.JButton();
+        booksName = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         bookstable = new javax.swing.JTable();
         shoppingCar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        shoppingList = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -107,42 +103,46 @@ public class BookSearch extends javax.swing.JFrame {
 
         jLabel1.setText("Nombre de libro:");
 
-        jButton1.setText("Ordenar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        orderBotton.setText("Ordenar");
+        orderBotton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                orderBottonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Ver detalle");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        detailBotton.setText("Ver detalle");
+        detailBotton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                detailBottonActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        booksName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                booksNameActionPerformed(evt);
             }
         });
 
         bookstable.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         bookstable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ISSN", "Tema", "Precio", "Cantidad Vendida", "Cantidad Disponible"
+                "ISSN", "Nombre", "Tema", "Precio", "Cantidad Vendida", "Cantidad Disponible"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(bookstable);
 
         shoppingCar.setText("Agragar al carrito");
@@ -151,6 +151,16 @@ public class BookSearch extends javax.swing.JFrame {
                 shoppingCarActionPerformed(evt);
             }
         });
+
+        shoppingList.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Comprar"
+            }
+        ));
+        jScrollPane1.setViewportView(shoppingList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,15 +179,15 @@ public class BookSearch extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2))
+                        .addComponent(booksName))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1)
+                        .addGap(18, 18, 18)
                         .addComponent(shoppingCar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(orderBotton, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                            .addComponent(detailBotton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -193,16 +203,16 @@ public class BookSearch extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(booksName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(detailBotton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(shoppingCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addComponent(orderBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(shoppingCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -215,22 +225,21 @@ public class BookSearch extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_librariesComboActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void orderBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderBottonActionPerformed
 
         ClientInfo infoc = new ClientInfo();
         infoc.setVisible(true);
 // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_orderBottonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void detailBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailBottonActionPerformed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_detailBottonActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        
- refreshBooks();
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void booksNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_booksNameActionPerformed
+        refreshBooks();
+    }//GEN-LAST:event_booksNameActionPerformed
 
     private void themeComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themeComboActionPerformed
         refreshBooks();
@@ -238,7 +247,13 @@ public class BookSearch extends javax.swing.JFrame {
     }//GEN-LAST:event_themeComboActionPerformed
 
     private void shoppingCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shoppingCarActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) shoppingList.getModel();
+        model.addRow(new Object[]{
+            this.bookstable.getValueAt(this.bookstable.getSelectedRow(), 1)
+        });
+//shoppingList.append((String) this.bookstable.getValueAt(this.bookstable.getSelectedRow(), this.bookstable.getSelectedColumn()));
+        refreshBooks();
+//LibraryManager.getInstance().addBook(this.bookstable.getSelectedRow());        // TODO add your handling code here:
     }//GEN-LAST:event_shoppingCarActionPerformed
 
     /**
@@ -277,17 +292,17 @@ public class BookSearch extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField booksName;
     private javax.swing.JTable bookstable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton detailBotton;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JComboBox<String> librariesCombo;
+    private javax.swing.JButton orderBotton;
     private javax.swing.JButton shoppingCar;
+    private javax.swing.JTable shoppingList;
     private javax.swing.JComboBox<String> themeCombo;
     // End of variables declaration//GEN-END:variables
 }

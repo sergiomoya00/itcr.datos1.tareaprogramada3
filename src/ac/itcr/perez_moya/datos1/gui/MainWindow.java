@@ -209,11 +209,8 @@ public class MainWindow extends javax.swing.JFrame {
             @Override
             public void windowDeactivated(java.awt.event.WindowEvent windowEvent) {
                 refresh();
-
             }
-
         });
-
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

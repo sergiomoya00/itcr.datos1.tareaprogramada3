@@ -86,19 +86,16 @@ public class ChooseUser extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+        BookSearch search = new BookSearch();
+        search.setVisible(true);
 
-BookSearch search=new BookSearch();
-search.setVisible(true);
-        
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-
-LoggingWindow adminlibrary = new LoggingWindow();
-adminlibrary.setVisible(true);
-
+        LoggingWindow adminlibrary = new LoggingWindow();
+        adminlibrary.setVisible(true);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed

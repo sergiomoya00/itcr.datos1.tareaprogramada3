@@ -48,6 +48,8 @@ public class LibraryManager {
                 setIssn("123456789");
                 setPrice(87.5f);
                 setTopic(Topic.Literatura.name());
+                setAvailableBooks(45);
+                setSoldBooks(27);
             }
         });
         instance.books.add(new Book() {
@@ -56,6 +58,8 @@ public class LibraryManager {
                 setIssn("123456789");
                 setPrice(87.5f);
                 setTopic(Topic.Matematicas.name());
+                setAvailableBooks(56);
+                setSoldBooks(40);
             }
         });
         instance.books.add(new Book() {
@@ -64,6 +68,8 @@ public class LibraryManager {
                 setIssn("123456789");
                 setPrice(87.5f);
                 setTopic(Topic.CienciasNaturales.name());
+                setAvailableBooks(16);
+                setSoldBooks(46);
             }
         });
 
@@ -73,8 +79,6 @@ public class LibraryManager {
                 setPhone("2552-0504");
                 setCountry("Costa Rica");
                 setLocation("San José, Curridabat");
-                
-
             }
         });
 
@@ -105,10 +109,12 @@ public class LibraryManager {
     }
 
     public void addBook(Book newBook) {
-
+        this.books.add(newBook);
     }
-    
-    
+
+    public void removeBook(int index) {
+        books.remove(index);
+    }
 
     public Collection<Book> search(Book newBook) {
         List<Book> results = new ArrayList<>();
@@ -121,10 +127,12 @@ public class LibraryManager {
             if (!add && byName && book.getName().contains(newBook.getName())) {
                 add = true;
             }
-            if(!add && byType && book.getTopic().contains(newBook.getTopic())) {
-                add= true;
+            if (!add && byType && book.getTopic().contains(newBook.getTopic())) {
+                add = true;
             }
-             if (add) results.add(book);
+            if (add) {
+                results.add(book);
+            }
         }
 
         return results;
@@ -138,7 +146,17 @@ public class LibraryManager {
 
     public void addLibrary(Library library) {
         this.libraries.add(library);
-
     }
 
+    public void addCustomer(Customer customer) {
+        this.customers.add(customer);
+    }
+
+    public void removeCustomer(int index) {
+        customers.remove(index);
+    }
+
+    public Collection<Customer> getCustomers() {
+        return customers;
+    }
 }
