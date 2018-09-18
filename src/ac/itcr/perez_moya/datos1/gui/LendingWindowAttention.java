@@ -5,6 +5,11 @@
  */
 package ac.itcr.perez_moya.datos1.gui;
 
+import ac.itcr.perez_moya.datos1.library.Library;
+import ac.itcr.perez_moya.datos1.library.LibraryManager;
+import ac.itcr.perez_moya.datos1.library.user.Customer;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author samoy
@@ -16,6 +21,17 @@ public class LendingWindowAttention extends javax.swing.JFrame {
      */
     public LendingWindowAttention() {
         initComponents();
+        refreshCustomers();
+    }
+
+    private void refreshCustomers() {
+        DefaultTableModel model = ((DefaultTableModel) clientstable.getModel());
+        model.setRowCount(0);
+        for (Customer customer : LibraryManager.getInstance().getCustomers()) {
+            model.addRow(new Object[]{
+                customer.getNameCustomer(), customer.getEmail(), customer.getId(), customer.getAddress(), customer.getPhoneCustomer()
+            });
+        }
     }
 
     /**
@@ -38,7 +54,7 @@ public class LendingWindowAttention extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        clientstable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -68,7 +84,7 @@ public class LendingWindowAttention extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        clientstable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -83,7 +99,7 @@ public class LendingWindowAttention extends javax.swing.JFrame {
                 "Clientes"
             }
         ));
-        jScrollPane4.setViewportView(jTable1);
+        jScrollPane4.setViewportView(clientstable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,6 +194,7 @@ public class LendingWindowAttention extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JTable clientstable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -185,7 +202,6 @@ public class LendingWindowAttention extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables
