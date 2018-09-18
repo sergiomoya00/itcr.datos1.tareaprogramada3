@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class DoublyLinkedList<T> implements List<T>{
+public class DoubleLinkedList<T> implements List<T>{
 
     private Node<T> head;
     private Node<T> current;
@@ -18,7 +18,7 @@ public class DoublyLinkedList<T> implements List<T>{
     private int position;
     private int size;
 
-    public DoublyLinkedList() {
+    public DoubleLinkedList() {
         this.head = new Node<T>();
         this.current = this.head;
         this.tail = this.head;

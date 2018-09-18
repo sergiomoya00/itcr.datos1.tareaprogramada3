@@ -75,7 +75,7 @@ public class SimpleLinkedListTest {
     
     @Test
     public void testDouble() {
-        DoublyLinkedList<String> instance = new DoublyLinkedList<String>();
+        DoubleLinkedList<String> instance = new DoubleLinkedList<String>();
         instance.insert("One");
         instance.insert("Two");
         instance.insert("Three");
