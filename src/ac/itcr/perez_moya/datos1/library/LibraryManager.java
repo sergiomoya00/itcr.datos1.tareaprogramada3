@@ -9,6 +9,7 @@ import ac.itcr.perez_moya.datos1.collections.SimpleLinkeList;
 import ac.itcr.perez_moya.datos1.library.user.Customer;
 import ac.itcr.perez_moya.datos1.library.user.Order;
 import ac.itcr.perez_moya.datos1.library.user.UserData;
+import ac.itcr.perez_moya.datos1.library.InventoryEntry;
 import com.sun.accessibility.internal.resources.accessibility;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,7 +38,6 @@ public class LibraryManager {
 
     public void removeLibrary(int index) {
         libraries.remove(index);
-
     }
 
     static {

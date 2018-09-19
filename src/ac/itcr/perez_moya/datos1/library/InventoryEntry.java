@@ -10,7 +10,7 @@ package ac.itcr.perez_moya.datos1.library;
  * @author samoy
  */
 public class InventoryEntry {
-    
+
     private String issn;
     private int id;
     private int quantity;
@@ -38,7 +38,4 @@ public class InventoryEntry {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
-    
-    
 }

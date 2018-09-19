@@ -25,7 +25,7 @@ public class LibrarySchedule {
             this.openHours.add(new SimpleLinkeList<>());
         }
     
-        }
+    }
     
     
     public Collection <Openhours> getSchedule(int dayOfWeek){

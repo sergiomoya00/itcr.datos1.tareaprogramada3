@@ -64,6 +64,12 @@ public class ClientInfo extends javax.swing.JFrame {
 
         jLabel6.setText("Teléfono:");
 
+        clientName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clientNameActionPerformed(evt);
+            }
+        });
+
         clientEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clientEmailActionPerformed(evt);
@@ -157,6 +163,10 @@ public class ClientInfo extends javax.swing.JFrame {
         OrderComplete order = new OrderComplete();
         order.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void clientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clientNameActionPerformed
 
     /**
      * @param args the command line arguments

@@ -86,7 +86,7 @@ public class BookManagement extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Modificar");
+        jButton3.setText("Ver detalle");
 
         bookmanageTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

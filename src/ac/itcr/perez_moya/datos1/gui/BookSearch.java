@@ -18,8 +18,13 @@ import javax.swing.table.DefaultTableModel;
  * @author samoy
  */
 public class BookSearch extends javax.swing.JFrame {
+    
+    private Book book;
 
-    /**
+    public Book getBook() {
+        return book;
+    }
+    /**}
      * Creates new form BookSearch
      */
     public BookSearch() {
@@ -233,8 +238,9 @@ public class BookSearch extends javax.swing.JFrame {
     }//GEN-LAST:event_orderBottonActionPerformed
 
     private void detailBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailBottonActionPerformed
-        // TODO add your handling code here:
-
+        Object detail = this.bookstable.getValueAt(this.bookstable.getSelectedRow(), this.bookstable.getSelectedColumn());
+        BookDetail bookd = new BookDetail();        // TODO add your handling code here:
+        bookd.setVisible(true);
     }//GEN-LAST:event_detailBottonActionPerformed
 
     private void booksNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_booksNameActionPerformed
