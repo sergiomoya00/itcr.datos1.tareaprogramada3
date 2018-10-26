@@ -21,6 +21,5 @@ public class Config {
         this.queue = queue;
     }
     
-    
 }
 
