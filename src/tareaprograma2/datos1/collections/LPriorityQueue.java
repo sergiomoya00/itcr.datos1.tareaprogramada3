@@ -5,7 +5,7 @@
  */
 package tareaprograma2.datos1.collections;
 
-import tareaprogramada2.datos1.register.*;
+import tareaprogramada2.datos1.register.Patient;
 
 import java.util.Collection;
 import java.util.Iterator;
