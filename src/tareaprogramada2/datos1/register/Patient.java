@@ -110,4 +110,3 @@ public class Patient {
         return "Patient{" + "Name=" + Name + ", Birthdate=" + Birthdate + ", Details=" + Details + ", Type=" + Type + ", Token=" + Token + ", Phone=" + Phone + ", Doctor=" + Doctor + ", Tab=" + Tab + ", Priority=" + Priority + '}';
     }	
 }
-
