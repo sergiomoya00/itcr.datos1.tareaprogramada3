@@ -97,13 +97,13 @@ public class Patient {
 		Priority = priority;
 	}
 
-    public int getTab() {
-        return Tab;
-    }
+        public int getTab() {
+            return Tab;
+        }
 
-    public void setTab(int Tab) {
-        this.Tab = Tab;
-    }
+        public void setTab(int Tab) {
+            this.Tab = Tab;
+        }
 
     @Override
     public String toString() {
