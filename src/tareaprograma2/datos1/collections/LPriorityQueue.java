@@ -5,7 +5,7 @@
  */
 package tareaprograma2.datos1.collections;
 
-import tareaprogramada2.datos1.register.Patients;
+import tareaprogramada2.datos1.register.Patient;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -342,15 +342,5 @@ public class LPriorityQueue<T> implements List<T> {
         return msg;
         ///return "LPriorityQueue{" + "back=" + back + ", size=" + size + ", front=" + front + '}';
     }
-    
-    public static void main(String[] args) {
-    	LPriorityQueue<Patients> cola = new LPriorityQueue<>(); // it is a min heap
-        Patients nombre = new Patients("Ronaldo", "08/06/1999", "Dolor estomacal", "Diarrea", "V-D-01", 8765, true, 9);
-       //cola.enqueque( nombre, 3);
-        cola.add(0, nombre);
-        cola.toString();
-        Patients nombre2 = new Patients("Ronaldo1", "08/06/1999", "Dolor estomacal", "Diarrea", "V-D-01", 8765, true, 9);
-        cola.enqueque( nombre2, 5);
-        System.out.println(cola.toString());
-    }	
+
 }

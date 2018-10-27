@@ -9,7 +9,7 @@ package tareaprogramada2.datos1.register;
  *
  * @author samoy
  */
-public class Patients {
+public class Patient {
 	
 	private String Name;
 	private String Birthdate;
@@ -18,20 +18,20 @@ public class Patients {
 	private String Token;
 	private int Phone;
 	private boolean Doctor;
+        private int Tab;
 	private int Priority;
-	private static int size=0;
-	
-	public Patients(String name, String birthdate, String details, String type, String token, int phone, boolean doctor, int priority) {
-		Name = name;
-		Birthdate = birthdate;
-		Details = details;
-		Type = type;
-		Token = token;
-		Phone = phone;
-		Doctor = doctor;
-		Priority = priority;
-		size++;
-	}
+
+    public Patient(String Name, String Birthdate, String Details, String Type, String Token, int Phone, boolean Doctor, int Tab, int Priority) {
+        this.Name = Name;
+        this.Birthdate = Birthdate;
+        this.Details = Details;
+        this.Type = Type;
+        this.Token = Token;
+        this.Phone = Phone;
+        this.Doctor = Doctor;
+        this.Tab = Tab;
+        this.Priority = Priority;
+    }
 
 	public String getName() {
 		return Name;
@@ -97,12 +97,17 @@ public class Patients {
 		Priority = priority;
 	}
 
-	@Override
-	public String toString() {
-		return "Patients [Name=" + Name + ", Birthdate=" + Birthdate + ", Details=" + Details + ", Type=" + Type
-				+ ", Token=" + Token + ", Phone=" + Phone + ", Doctor=" + Doctor + ", Priority=" + Priority + "]";
-	}
+    public int getTab() {
+        return Tab;
+    }
 
-	
+    public void setTab(int Tab) {
+        this.Tab = Tab;
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" + "Name=" + Name + ", Birthdate=" + Birthdate + ", Details=" + Details + ", Type=" + Type + ", Token=" + Token + ", Phone=" + Phone + ", Doctor=" + Doctor + ", Tab=" + Tab + ", Priority=" + Priority + '}';
+    }	
 }
 
