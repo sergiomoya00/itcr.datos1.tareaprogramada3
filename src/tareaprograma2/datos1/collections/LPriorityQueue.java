@@ -342,15 +342,5 @@ public class LPriorityQueue<T> implements List<T> {
         return msg;
         ///return "LPriorityQueue{" + "back=" + back + ", size=" + size + ", front=" + front + '}';
     }
-    
-    public static void main(String[] args) {
-    	LPriorityQueue<Patient> cola = new LPriorityQueue<>(); // it is a min heap
-        Patient nombre = new Patient("Ronaldo", "08/06/1999", "Dolor estomacal", "Diarrea", "V-D-01", 8765, true, 9);
-       //cola.enqueque( nombre, 3);
-        cola.add(0, nombre);
-        cola.toString();
-        Patient nombre2 = new Patient("Ronaldo1", "08/06/1999", "Dolor estomacal", "Diarrea", "V-D-01", 8765, true, 9);
-        cola.enqueque( nombre2, 5);
-        System.out.println(cola.toString());
-    }	
+
 }
