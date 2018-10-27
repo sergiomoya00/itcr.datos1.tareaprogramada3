@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package structures;
+package tareaprograma2.datos1.collections;
 
-import Objects.*;
+import tareaprogramada2.datos1.register.*;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -344,12 +344,12 @@ public class LPriorityQueue<T> implements List<T> {
     }
     
     public static void main(String[] args) {
-    	LPriorityQueue<Patients> cola = new LPriorityQueue<>(); // it is a min heap
-        Patients nombre = new Patients("Ronaldo", "08/06/1999", "Dolor estomacal", "Diarrea", "V-D-01", 8765, true, 9);
+    	LPriorityQueue<Patient> cola = new LPriorityQueue<>(); // it is a min heap
+        Patient nombre = new Patient("Ronaldo", "08/06/1999", "Dolor estomacal", "Diarrea", "V-D-01", 8765, true, 9);
        //cola.enqueque( nombre, 3);
         cola.add(0, nombre);
         cola.toString();
-        Patients nombre2 = new Patients("Ronaldo1", "08/06/1999", "Dolor estomacal", "Diarrea", "V-D-01", 8765, true, 9);
+        Patient nombre2 = new Patient("Ronaldo1", "08/06/1999", "Dolor estomacal", "Diarrea", "V-D-01", 8765, true, 9);
         cola.enqueque( nombre2, 5);
         System.out.println(cola.toString());
     }	
