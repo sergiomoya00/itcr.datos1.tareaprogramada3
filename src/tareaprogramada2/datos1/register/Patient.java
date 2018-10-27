@@ -11,102 +11,102 @@ package tareaprogramada2.datos1.register;
  */
 public class Patient {
 	
-	private String Name;
-	private String Birthdate;
-	private String Details;
-	private String Type;
-	private String Token;
-	private int Phone;
-	private boolean Doctor;
-        private int Tab;
-	private int Priority;
+	private String name;
+	private String birthdate;
+	private String illnessDetails;
+	private String sufferingType;
+	private String token;
+	private int phone;
+	private boolean doctor;
+        private int numberTab;
+	private int priority;
 
-    public Patient(String Name, String Birthdate, String Details, String Type, String Token, int Phone, boolean Doctor, int Tab, int Priority) {
-        this.Name = Name;
-        this.Birthdate = Birthdate;
-        this.Details = Details;
-        this.Type = Type;
-        this.Token = Token;
-        this.Phone = Phone;
-        this.Doctor = Doctor;
-        this.Tab = Tab;
-        this.Priority = Priority;
+    public Patient(String name, String birthdate, String illnessDetails, String sufferingType, String token, int phone, boolean doctor, int numbernumberTab, int priority) {
+        this.name = name;
+        this.birthdate = birthdate;
+        this.illnessDetails = illnessDetails;
+        this.sufferingType = sufferingType;
+        this.token = token;
+        this.phone = phone;
+        this.doctor = doctor;
+        this.numberTab = numberTab;
+        this.priority = priority;
     }
 
-	public String getName() {
-		return Name;
+	public String getname() {
+		return name;
 	}
 
-	public void setName(String name) {
-		Name = name;
+	public void setname(String name) {
+		this.name = name;
 	}
 
-	public String getBirthdate() {
-		return Birthdate;
+	public String getbirthdate() {
+		return birthdate;
 	}
 
-	public void setBirthdate(String birthdate) {
-		Birthdate = birthdate;
+	public void setbirthdate(String birthdate) {
+		this.birthdate = birthdate;
 	}
 
-	public String getDetails() {
-		return Details;
+	public String getillnessDetails() {
+		return illnessDetails;
 	}
 
-	public void setDetails(String details) {
-		Details = details;
+	public void setillnessDetails(String details) {
+		illnessDetails = details;
 	}
 
-	public String getType() {
-		return Type;
+	public String getsufferingType() {
+		return sufferingType;
 	}
 
-	public void setType(String type) {
-		Type = type;
+	public void setsufferingType(String type) {
+		sufferingType = type;
 	}
 
-	public String getToken() {
-		return Token;
+	public String gettoken() {
+		return token;
 	}
 
-	public void setToken(String token) {
-		Token = token;
+	public void settoken(String token) {
+		this.token = token;
 	}
 
-	public int getPhone() {
-		return Phone;
+	public int getphone() {
+		return phone;
 	}
 
-	public void setPhone(int phone) {
-		Phone = phone;
+	public void setphone(int phone) {
+		this.phone = phone;
 	}
 
-	public boolean isDoctor() {
-		return Doctor;
+	public boolean isdoctor() {
+		return doctor;
 	}
 
-	public void setDoctor(boolean doctor) {
-		Doctor = doctor;
+	public void setdoctor(boolean doctor) {
+		this.doctor = doctor;
 	}
 
-	public int getPriority() {
-		return Priority;
+	public int getpriority() {
+		return priority;
 	}
 
-	public void setPriority(int priority) {
-		Priority = priority;
+	public void setpriority(int priority) {
+		this.priority = priority;
 	}
 
-        public int getTab() {
-            return Tab;
-        }
+    public int getnumberTab() {
+        return numberTab;
+    }
 
-        public void setTab(int Tab) {
-            this.Tab = Tab;
-        }
+    public void setnumberTab(int numberTab) {
+        this.numberTab = numberTab;
+    }
 
     @Override
     public String toString() {
-        return "Patient{" + "Name=" + Name + ", Birthdate=" + Birthdate + ", Details=" + Details + ", Type=" + Type + ", Token=" + Token + ", Phone=" + Phone + ", Doctor=" + Doctor + ", Tab=" + Tab + ", Priority=" + Priority + '}';
+        return "Patient{" + "name=" + name + ", birthdate=" + birthdate + ", illnessDetails=" + illnessDetails + ", sufferingType=" + sufferingType + ", token=" + token + ", phone=" + phone + ", doctor=" + doctor + ", numberTab=" + numberTab + ", priority=" + priority + '}';
     }	
 }
