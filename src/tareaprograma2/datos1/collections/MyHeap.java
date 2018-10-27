@@ -51,8 +51,8 @@ public class MyHeap<T> {
         Patient te = heap[size];
         int curr = 0, son = 1;
         while (son < size) {
-            int ficha = heap[son].getPhone();
-            int ficha2 = heap[son + 1].getPhone();
+            int ficha = heap[son].getPriority();
+            int ficha2 = heap[son + 1].getPriority();
             int ficha3 = te.getPhone();
             if (son + 1 < size && ficha2 < ficha) {
                 son++;
@@ -78,8 +78,8 @@ public class MyHeap<T> {
         size++;
         while (curr > 0) {
             parent = (curr - 1) / 2;
-            int ficha = e.getPhone();
-            int ficha2 = heap[parent].getPhone();
+            int ficha = e.getPriority();
+            int ficha2 = heap[parent].getPriority();
             if (ficha2 <= ficha) {
                 break;
             }

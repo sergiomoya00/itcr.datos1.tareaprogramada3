@@ -38,7 +38,7 @@ public class Patient {
 	}
 
 	public void setname(String name) {
-		name = name;
+		this.name = name;
 	}
 
 	public String getbirthdate() {
@@ -46,7 +46,7 @@ public class Patient {
 	}
 
 	public void setbirthdate(String birthdate) {
-		birthdate = birthdate;
+		this.birthdate = birthdate;
 	}
 
 	public String getillnessDetails() {
@@ -70,7 +70,7 @@ public class Patient {
 	}
 
 	public void settoken(String token) {
-		token = token;
+		this.token = token;
 	}
 
 	public int getphone() {
@@ -78,7 +78,7 @@ public class Patient {
 	}
 
 	public void setphone(int phone) {
-		phone = phone;
+		this.phone = phone;
 	}
 
 	public boolean isdoctor() {
@@ -86,7 +86,7 @@ public class Patient {
 	}
 
 	public void setdoctor(boolean doctor) {
-		doctor = doctor;
+		this.doctor = doctor;
 	}
 
 	public int getpriority() {
@@ -94,15 +94,15 @@ public class Patient {
 	}
 
 	public void setpriority(int priority) {
-		priority = priority;
+		this.priority = priority;
 	}
 
     public int getnumberTab() {
         return numberTab;
     }
 
-    public void setnumberTab(int numbernumberTab) {
-        this.numberTab = numbernumberTab;
+    public void setnumberTab(int numberTab) {
+        this.numberTab = numberTab;
     }
 
     @Override
@@ -110,4 +110,3 @@ public class Patient {
         return "Patient{" + "name=" + name + ", birthdate=" + birthdate + ", illnessDetails=" + illnessDetails + ", sufferingType=" + sufferingType + ", token=" + token + ", phone=" + phone + ", doctor=" + doctor + ", numberTab=" + numberTab + ", priority=" + priority + '}';
     }	
 }
-
