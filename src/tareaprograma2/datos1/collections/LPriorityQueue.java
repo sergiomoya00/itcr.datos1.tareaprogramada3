@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package structures;
+package tareaprograma2.datos1.collections;
 
-import Objects.*;
+import tareaprogramada2.datos1.register.Patients;
 
 import java.util.Collection;
 import java.util.Iterator;

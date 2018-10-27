@@ -1,4 +1,4 @@
-package Applications;
+package tareaprogramada2.datos1.sentimientos;
 
 import java.util.Date;
 import java.util.Properties;
