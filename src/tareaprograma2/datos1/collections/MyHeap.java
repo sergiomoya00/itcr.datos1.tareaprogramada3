@@ -11,22 +11,22 @@ package tareaprograma2.datos1.collections;
  */
 import java.util.Arrays;
 
-import tareaprogramada2.datos1.register.Patients;
+import tareaprogramada2.datos1.register.Patient;
 
 public class MyHeap<T> {
 
-    private Patients[] heap;
+    private Patient[] heap;
     private int capacity;
     private int size;
 
     public MyHeap() {
         capacity = 8;
-        heap = new Patients[capacity];
+        heap = new Patient[capacity];
         size = 0;
     }
 
     private void increaseCapacity() {
-        capacity *= 2;
+        capacity += 1;
         heap = Arrays.copyOf(heap, capacity);
     }
 
@@ -38,17 +38,17 @@ public class MyHeap<T> {
         return size == 0;
     }
 
-    public Patients top() {
+    public Patient top() {
         return size > 0 ? heap[0] : null;
     }
 
-    public Patients remove() {
+    public Patient remove() {
         if (size == 0) {
             return null;
         }
         size--;
-        Patients res = heap[0];
-        Patients te = heap[size];
+        Patient res = heap[0];
+        Patient te = heap[size];
         int curr = 0, son = 1;
         while (son < size) {
             int ficha = heap[son].getPhone();
@@ -68,7 +68,7 @@ public class MyHeap<T> {
         return res;
     }
 
-    public void insert(Patients e) {
+    public void insert(Patient e) {
         if (size == capacity) { // auto scaling
             increaseCapacity();
         }

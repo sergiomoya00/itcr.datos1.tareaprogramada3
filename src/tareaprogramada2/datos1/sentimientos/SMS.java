@@ -1,4 +1,4 @@
-package Applications;
+package tareaprogramada2.datos1.sentimientos;
 
 import java.util.Date;
 import java.util.Properties;
@@ -12,13 +12,13 @@ import javax.mail.internet.MimeMessage;
 
 public class SMS {
 	
-	public static void enviarFichaSMS() {//Envia un corre con la confirmacion del pedido, el libro y la cantidad solicitada
-		java.util.Date fecha = new Date();
+	public static void enviarFichaSMS(String telefono, String ficha, String nombre) {//Envia un corre con la ficha 
+	    java.util.Date fecha = new Date();
 	    String remitente = "tareaprogramada2018ati@gmail.com";
 	    String clave = "aati2018";
-	    String asunto = "Prueba";
-	    String cuerpo = ("Hola" + fecha);
-	    String from= "50683587565@txtlocal.co.uk";
+	    String asunto = "[Ficha]";
+	    String cuerpo = ("Bienvenido a TEC Emergency" + "\n" + nombre + " Su ficha es: " + ficha + "\n" + fecha);
+	    String from= "506" + telefono + "@txtlocal.co.uk";
 	    
 	    Properties props = System.getProperties();
 	    props.put("mail.smtp.host", "smtp.gmail.com");
@@ -46,11 +46,6 @@ public class SMS {
 	    	System.out.println("ERROR");
 	        me.printStackTrace();
 	    }
-	}
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		enviarFichaSMS();
 	}
 
 }
