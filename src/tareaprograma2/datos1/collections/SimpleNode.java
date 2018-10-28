@@ -1,4 +1,4 @@
-package structures;
+package tareaprograma2.datos1.collections;
 
 public class SimpleNode<T> {
 
@@ -7,23 +7,17 @@ public class SimpleNode<T> {
     T value;
     int priority;
 
-    public SimpleNode(SimpleNode<T> next, T value, SimpleNode<T> previous, int priority) {
+    public SimpleNode(SimpleNode<T> next, T value, SimpleNode<T> previous) {
         this.next = next;
         this.value = value;
         this.previous = previous;
-        this.priority = priority;
     }
 
-    public SimpleNode(T value, int priority) {
-        this.value = value;
-        this.priority = priority;
-    }
-    
     public SimpleNode(SimpleNode<T> next, T value){
         this.next = next;
         this.value = value;
     }
-   
+    
     public SimpleNode() {
     }
 
@@ -51,17 +45,9 @@ public class SimpleNode<T> {
         this.previous = previous;
     }
 
-    public int getPriority() {
-        return priority;
-    }
-
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
     @Override
     public String toString() {
-        return "SimpleNode{" + "value=" + value + ", priority=" + priority + '}';
+        return "SimpleNode{" + "value=" + value +'}';
     }
     
     
