@@ -5,20 +5,17 @@
  */
 package tareaprogramada2.datos1.register;
 
+import java.util.ArrayList;
+import java.util.List;
+import tareaprograma2.datos1.collections.*;
+import tareaprogramada2.datos1.register.Patient;
+
 /**
  *
  * @author samoy
  */
-public class Config {
+public class HospitalManager {
 
-    private String heap, queue;
-
-    public Config() {
-    }
-
-    public Config(String heap, String queue) {
-        this.heap = heap;
-        this.queue = queue;
-    }
+    List<Patient> patient = new LPriorityQueue();
 
 }
