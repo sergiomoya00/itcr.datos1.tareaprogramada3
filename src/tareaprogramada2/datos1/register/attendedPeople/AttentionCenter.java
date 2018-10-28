@@ -4,11 +4,18 @@ import tareaprogramada2.datos1.register.Patient;
 
 public class AttentionCenter {
     
-    Patient person =
-           
-    public Patient attentionProcess(){
+    Patient attendedPerson = 
+    
+    public selectPatient(){
+    
+    }        
+            
+            
+    public Patient attentionProcess(attendedPerson){
         
         return 
     }
+    
+   
     
 }
