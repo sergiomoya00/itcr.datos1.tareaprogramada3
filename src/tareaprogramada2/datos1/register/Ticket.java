@@ -61,4 +61,12 @@ public class Ticket implements Comparable<Ticket> {
         return this.ticket.compareTo(o.ticket);
 
     }
+
+    @Override
+    public String toString() {
+        return "Ticket{" + "color=" + color + ", cause=" + cause + ", ticket=" + ticket + '}';
+    }
+    
+    
+    
 }
