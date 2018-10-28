@@ -48,6 +48,26 @@ public class PriorityQueue<T extends Comparable<T>> {
         heap.add(e);
         Collections.sort(heap);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        boolean first = true;
+        
+        for (T value : heap){
+            if (first){
+                first = false;
+            }
+            else{
+                sb.append(",");         
+            }
+            
+            sb.append(String.valueOf(value));
+        }
+        
+        return sb.toString();
+    }
+    
     
     
 }

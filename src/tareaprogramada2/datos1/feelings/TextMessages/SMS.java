@@ -2,14 +2,14 @@ package tareaprogramada2.datos1.feelings.TextMessages;
 
 import java.util.Date;
 import java.util.Properties;
-
+/*
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
+*/
 public class SMS {
 	
 	public static void enviarFichaSMS(String telefono, String ficha, String nombre) {//Envia un corre con la ficha 
@@ -28,7 +28,7 @@ public class SMS {
 	    props.put("mail.smtp.starttls.enable", "true");
 	    props.put("mail.smtp.port", "587");
 
-	    Session session = Session.getDefaultInstance(props);
+	  /*  Session session = Session.getDefaultInstance(props);
 	    MimeMessage message = new MimeMessage(session);
 
 	    try {
@@ -47,5 +47,5 @@ public class SMS {
 	        me.printStackTrace();
 	    }
 	}
-
-}
+*/
+}}
