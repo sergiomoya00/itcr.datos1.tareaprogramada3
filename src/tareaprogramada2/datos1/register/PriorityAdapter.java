@@ -12,6 +12,8 @@ import tareaprogramada2.datos1.register.Patient;
  * @author samoy
  */
 public interface PriorityAdapter {
+    
     void push(Patient patient);
-    void pop(Patient patient);
+    
+    Patient pop();
 }
