@@ -53,7 +53,7 @@ public class MyHeap<T> {
         while (son < size) {
             int ficha = heap[son].getpriority();
             int ficha2 = heap[son + 1].getpriority();
-            int ficha3 = te.getphone();
+            int ficha3 = te.getpriority();
             if (son + 1 < size && ficha2 < ficha) {
                 son++;
             }
