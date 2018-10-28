@@ -5,8 +5,7 @@
  */
 package tareaprogramada2.datos1.register;
 
-public class InicidentPatientCondition {
-    public enum Incident{
+    public enum IncidentPatientCondition{
         I, // Para identificar infarto
         H, // Pérdida de sangre por herida
         P, // Parto
@@ -14,4 +13,3 @@ public class InicidentPatientCondition {
         Q, // Quebradura
         O; //Otro
     }
-}
