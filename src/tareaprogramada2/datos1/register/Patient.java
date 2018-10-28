@@ -9,28 +9,24 @@ package tareaprogramada2.datos1.register;
  *
  * @author samoy
  */
-public class Patient {
+public class Patient implements Comparable<Patient>{
 
     private String name;
     private String birthdate;
     private String illnessDetails;
     private String sufferingType;
-    private String token;
     private int phone;
     private boolean doctor;
-    private int numberTab;
-    private int priority;
+    private Ticket ticket;
 
-    public Patient(String name, String birthdate, String illnessDetails, String sufferingType, String token, int phone, boolean doctor, int numbernumberTab, int priority) {
+    public Patient(String name, String birthdate, String illnessDetails, String sufferingType, int phone, boolean doctor, Ticket ticket) {
         this.name = name;
         this.birthdate = birthdate;
         this.illnessDetails = illnessDetails;
         this.sufferingType = sufferingType;
-        this.token = token;
         this.phone = phone;
         this.doctor = doctor;
-        this.numberTab = numberTab;
-        this.priority = priority;
+        this.ticket = ticket;
     }
 
     public String getname() {
@@ -65,14 +61,6 @@ public class Patient {
         sufferingType = type;
     }
 
-    public String gettoken() {
-        return token;
-    }
-
-    public void settoken(String token) {
-        this.token = token;
-    }
-
     public int getphone() {
         return phone;
     }
@@ -89,24 +77,21 @@ public class Patient {
         this.doctor = doctor;
     }
 
-    public int getpriority() {
-        return priority;
+    public Ticket getTicket() {
+        return ticket;
     }
 
-    public void setpriority(int priority) {
-        this.priority = priority;
-    }
-
-    public int getnumberTab() {
-        return numberTab;
-    }
-
-    public void setnumberTab(int numberTab) {
-        this.numberTab = numberTab;
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
     }
 
     @Override
     public String toString() {
-        return "Patient{" + "name=" + name + ", birthdate=" + birthdate + ", illnessDetails=" + illnessDetails + ", sufferingType=" + sufferingType + ", token=" + token + ", phone=" + phone + ", doctor=" + doctor + ", numberTab=" + numberTab + ", priority=" + priority + '}';
+        return "Patient{" + "name=" + name + ", birthdate=" + birthdate + ", illnessDetails=" + illnessDetails + ", sufferingType=" + sufferingType + ", phone=" + phone + ", doctor=" + doctor + ", ticket=" + ticket + '}';
+    }
+
+    @Override
+    public int compareTo(Patient o) {
+        return this.ticket.compareTo(o.ticket);
     }
 }
