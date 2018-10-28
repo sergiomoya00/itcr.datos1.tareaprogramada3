@@ -12,7 +12,6 @@ package tareaprograma2.datos1.collections;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MyHeap<T extends Comparable<T>> {
 
     private List<T> heap;
@@ -37,11 +36,11 @@ public class MyHeap<T extends Comparable<T>> {
         if (isEmpty()) {
             return null;
         }
-        heap.size();
         T res = heap.get(0);
-        T te = heap.get(size()-1);
+        T te = heap.get(size() - 1);
+        heap.remove(size() -1);
         int curr = 0, son = 1;
-        while (son < size()) {
+        while (son < size() - 1) {
             T ficha = heap.get(son);
             T ficha2 = heap.get(son + 1);
             T ficha3 = te;
@@ -51,7 +50,7 @@ public class MyHeap<T extends Comparable<T>> {
             if (ficha3.compareTo(ficha) <= 0) {
                 break;
             }
-            heap.set(curr,heap.get(son));
+            heap.set(curr, heap.get(son));
             curr = son;
             son = 2 * curr + 1;
         }
@@ -62,7 +61,6 @@ public class MyHeap<T extends Comparable<T>> {
     public void insert(T e) {
         int curr = size();
         int parent;
-        heap.add(size(),e);
         while (curr > 0) {
             parent = (curr - 1) / 2;
             T ficha = e;
@@ -74,5 +72,34 @@ public class MyHeap<T extends Comparable<T>> {
             curr = parent;
         }
         heap.add(curr, e);
+    }
+
+    @Override
+    public String toString() {
+        return "MyHeap{" + "heap=" + heap + '}';
+    }
+
+    public static void main(String[] args) {
+        MyHeap heap = new MyHeap();
+        heap.insert(10);
+        System.out.println(heap.toString());
+        heap.insert(4);
+        System.out.println(heap.toString());
+        heap.insert(3);
+        System.out.println(heap.toString());
+        heap.insert(8);
+        System.out.println(heap.toString());
+        heap.insert(5);
+        System.out.println(heap.toString());
+        heap.insert(9);
+        System.out.println(heap.toString());
+        heap.remove();
+        System.out.println(heap.toString());
+        heap.remove();
+        System.out.println(heap.toString());
+        heap.remove();
+        System.out.println(heap.toString());
+        heap.remove();
+        System.out.println(heap.toString());
     }
 }
