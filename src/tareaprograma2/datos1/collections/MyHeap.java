@@ -7,85 +7,72 @@ package tareaprograma2.datos1.collections;
 
 /**
  *
- * @author samoy
+ *
  */
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
-import tareaprogramada2.datos1.register.Patient;
 
-public class MyHeap<T> {
+public class MyHeap<T extends Comparable<T>> {
 
-    private Patient[] heap;
-    private int capacity;
-    private int size;
+    private List<T> heap;
 
     public MyHeap() {
-        capacity = 8;
-        heap = new Patient[capacity];
-        size = 0;
+        heap = new ArrayList<T>();
     }
 
-    private void increaseCapacity() {
-        capacity += 1;
-        heap = Arrays.copyOf(heap, capacity);
-    }
-
-    public int getSize() {
-        return size;
+    public int size() {
+        return heap.size();
     }
 
     public boolean isEmpty() {
-        return size == 0;
+        return heap.isEmpty();
     }
 
-    public Patient top() {
-        return size > 0 ? heap[0] : null;
+    public T top() {
+        return heap.size() > 0 ? heap.get(0) : null;
     }
 
-    public Patient remove() {
-        if (size == 0) {
+    public T remove() {
+        if (isEmpty()) {
             return null;
         }
-        size--;
-        Patient res = heap[0];
-        Patient te = heap[size];
+        heap.size();
+        T res = heap.get(0);
+        T te = heap.get(size()-1);
         int curr = 0, son = 1;
-        while (son < size) {
-            int ficha = heap[son].getpriority();
-            int ficha2 = heap[son + 1].getpriority();
-            int ficha3 = te.getpriority();
-            if (son + 1 < size && ficha2 < ficha) {
+        while (son < size()) {
+            T ficha = heap.get(son);
+            T ficha2 = heap.get(son + 1);
+            T ficha3 = te;
+            if (son + 1 < size() && ficha2.compareTo(ficha) < 0) {
                 son++;
             }
-            if (ficha3 <= ficha) {
+            if (ficha3.compareTo(ficha) <= 0) {
                 break;
             }
-            heap[curr] = heap[son];
+            heap.set(curr,heap.get(son));
             curr = son;
             son = 2 * curr + 1;
         }
-        heap[curr] = te;
+        heap.set(curr, te);
         return res;
     }
 
-    public void insert(Patient e) {
-        if (size == capacity) { // auto scaling
-            increaseCapacity();
-        }
-        int curr = size;
+    public void insert(T e) {
+        int curr = size();
         int parent;
-        heap[size] = e;
-        size++;
+        heap.add(size(),e);
         while (curr > 0) {
             parent = (curr - 1) / 2;
-            int ficha = e.getpriority();
-            int ficha2 = heap[parent].getpriority();
-            if (ficha2 <= ficha) {
+            T ficha = e;
+            T ficha2 = heap.get(parent);
+            if (ficha2.compareTo(ficha) <= 0) {
                 break;
             }
-            heap[curr] = heap[parent];
+            heap.get(parent);
             curr = parent;
         }
-        heap[curr] = e;
+        heap.add(curr, e);
     }
 }
