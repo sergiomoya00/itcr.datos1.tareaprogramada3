@@ -10,13 +10,12 @@ import java.util.List;
 import tareaprograma2.datos1.collections.*;
 import tareaprogramada2.datos1.register.Patient;
 
-
 /**
  *
  * @author samoy
  */
 public class HospitalManager {
-    
+
     List<Patient> patient = new LPriorityQueue();
-    
+
 }

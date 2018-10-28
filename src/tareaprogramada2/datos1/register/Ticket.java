@@ -9,7 +9,42 @@ public class Ticket implements Comparable<Ticket> {
 
     ColorPatientCondition color;
     IncidentPatientCondition cause;
-    int ticket;
+    Integer ticket;
+
+    public Ticket(ColorPatientCondition color, IncidentPatientCondition cause, Integer ticket) {
+        this.color = color;
+        this.cause = cause;
+        this.ticket = ticket;
+    }
+    
+    public Ticket (){
+    }
+
+    public ColorPatientCondition getColor() {
+        return color;
+    }
+
+    public void setColor(ColorPatientCondition color) {
+        this.color = color;
+    }
+
+    public IncidentPatientCondition getCause() {
+        return cause;
+    }
+
+    public void setCause(IncidentPatientCondition cause) {
+        this.cause = cause;
+    }
+
+    public Integer getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Integer ticket) {
+        this.ticket = ticket;
+    }
+    
+    
 
     @Override
     public int compareTo(Ticket o) {
@@ -17,18 +52,13 @@ public class Ticket implements Comparable<Ticket> {
         if (result != 0) {
             return result;
         }
-        
+
         result = this.cause.compareTo(o.cause);
-        if (result != 0){
+        if (result != 0) {
             return result;
         }
-        
-        ticket = this.cause.compareTo(o.cause);
-            if (result != 0){
-            return ticket;
-            }
-            return 0;
-        }
 
+        return this.ticket.compareTo(o.ticket);
 
+    }
 }

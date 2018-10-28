@@ -5,11 +5,11 @@
  */
 package tareaprogramada2.datos1.register;
 
-    public enum IncidentPatientCondition{
-        I, // Para identificar infarto
-        H, // Pérdida de sangre por herida
-        P, // Parto
-        D, // Dolor estomacal
-        Q, // Quebradura
-        O; //Otro
-    }
+public enum IncidentPatientCondition {
+    I, // Para identificar infarto
+    H, // Pérdida de sangre por herida
+    P, // Parto
+    D, // Dolor estomacal
+    Q, // Quebradura
+    O; //Otro
+}

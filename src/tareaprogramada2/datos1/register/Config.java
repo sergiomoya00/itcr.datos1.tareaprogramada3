@@ -20,6 +20,5 @@ public class Config {
         this.heap = heap;
         this.queue = queue;
     }
-    
-}
 
+}
