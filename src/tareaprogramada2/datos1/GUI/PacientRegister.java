@@ -6,7 +6,11 @@
 package tareaprogramada2.datos1.GUI;
 
 import javax.swing.table.DefaultTableModel;
+import tareaprogramada2.datos1.register.ColorPatientCondition;
+import tareaprogramada2.datos1.register.HospitalManager;
+import tareaprogramada2.datos1.register.IncidentPatientCondition;
 import tareaprogramada2.datos1.register.Patient;
+import tareaprogramada2.datos1.register.Ticket;
 
 /**
  *
@@ -18,6 +22,8 @@ public class PacientRegister extends javax.swing.JFrame {
      * Creates new form PacientRegister
      */
     private Patient patient;
+
+    private int number = 0;
 
     public Patient getPatient() {
         return patient;
@@ -31,9 +37,9 @@ public class PacientRegister extends javax.swing.JFrame {
 
         DefaultTableModel model = ((DefaultTableModel) tableRegister.getModel());  //Ingresa los títulos y valores al JTable.
         model.setRowCount(0);
-        for (Patient patient : ) {
+        for (Patient patient : HospitalManager.getInstance().getAttended()) {
             model.addRow(new Object[]{
-                patient.getName(), patient.getBirthdate(), patient.getDetails(), patient.getType(), patient.getPriority(), patient.getPhone()
+                patient.getname(), patient.getbirthdate(), patient.getillnessDetails(), patient.getType(), patient.getPriority(), patient.getPhone()
             });
         }
 
@@ -44,7 +50,6 @@ public class PacientRegister extends javax.swing.JFrame {
                 patient.getName(), patient.getBirthdate(), patient.getDetails(), patient.getType(), patient.getPriority(), patient.getPhone()
             });
         }
-        
 
         DefaultTableModel model = ((DefaultTableModel) tableYellow.getModel());  //Ingresa los títulos y valores al JTable.
         model.setRowCount(0);
@@ -408,8 +413,22 @@ public class PacientRegister extends javax.swing.JFrame {
         this.patient.setbirthdate(birthP.getText());
         this.patient.setbirthdate(detailsP.getText());
         this.patient.setsufferingType(typeP.getText());
-        this.patient.setpriority(priority1);
         this.patient.setphone(phone1);
+        ColorPatientCondition color = ColorPatientCondition.valueOf(typeP.getText());
+        IncidentPatientCondition cause = IncidentPatientCondition.valueOf(detailsP.getText());
+        int number = this.number++ % 100;
+        Ticket ticket = new Ticket(color, cause, number);
+        patient.setTicket(ticket);
+        switch (color) {
+            case Verde:
+            case Amarillo:
+                HospitalManager.getInstance().getUrgency().push(patient);
+                break;
+            case Rojo:
+                HospitalManager.getInstance().getEmergency().push(patient);
+                break;
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
