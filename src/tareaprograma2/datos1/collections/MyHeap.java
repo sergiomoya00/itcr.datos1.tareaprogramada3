@@ -83,28 +83,4 @@ public class MyHeap<T extends Comparable<T>> {
     public String toString() {
         return "MyHeap{" + "heap=" + heap + '}';
     }
-
-    public static void main(String[] args) {
-        MyHeap heap = new MyHeap();
-        heap.insert(10);
-        System.out.println(heap.toString());
-        heap.insert(4);
-        System.out.println(heap.toString());
-        heap.insert(3);
-        System.out.println(heap.toString());
-        heap.insert(8);
-        System.out.println(heap.toString());
-        heap.insert(5);
-        System.out.println(heap.toString());
-        heap.insert(9);
-        System.out.println(heap.toString());
-        heap.remove();
-        System.out.println(heap.toString());
-        heap.remove();
-        System.out.println(heap.toString());
-        heap.remove();
-        System.out.println(heap.toString());
-        heap.remove();
-        System.out.println(heap.toString());
-    }
 }

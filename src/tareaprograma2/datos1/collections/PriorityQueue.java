@@ -14,63 +14,58 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import tareaprogramada2.datos1.register.Patient;
-
 public class PriorityQueue<T extends Comparable<T>> {
 
-    private List<T> heap;
+    private List<T> priorityQueue;
 
     public PriorityQueue() {
-        heap = new LPriorityQueue<T>();
+        priorityQueue = new ArrayList<T>();
     }
 
     public int size() {
-        return heap.size();
+        return priorityQueue.size();
     }
 
     public boolean isEmpty() {
-        return heap.isEmpty();
+        return priorityQueue.isEmpty();
     }
 
     public T top() {
-        return heap.size() > 0 ? heap.get(0) : null;
+        return priorityQueue.size() > 0 ? priorityQueue.get(0) : null;
     }
 
     public T remove() {
-        if (heap.isEmpty()) {
+        if (priorityQueue.isEmpty()) {
             return null;
         }
-        T result = heap.get(0);
-        heap.remove(0);
+        T result = priorityQueue.get(0);
+        priorityQueue.remove(0);
         return result;
     }
 
     public void insert(T e) {
-        heap.add(e);
-        Collections.sort(heap);
+        priorityQueue.add(e);
+        Collections.sort(priorityQueue);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         boolean first = true;
-        
-        for (T value : heap){
+        for (T value : priorityQueue){
             if (first){
                 first = false;
             }
             else{
                 sb.append(",");         
             }
-            
             sb.append(String.valueOf(value));
         }
-        
         return sb.toString();
     }
 
     public Iterator<T> iterator() {
-        return heap.iterator(); //To change body of generated methods, choose Tools | Templates.
+        return priorityQueue.iterator(); //To change body of generated methods, choose Tools | Templates.
     }
     
     
