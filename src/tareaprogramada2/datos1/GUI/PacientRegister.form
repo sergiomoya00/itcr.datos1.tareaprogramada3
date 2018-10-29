@@ -42,7 +42,10 @@
                       <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="380" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -234,10 +237,12 @@
                           <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton6" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="55" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="11" max="32767" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="578" max="-2" attributes="0"/>
                       <Component id="jButton8" min="-2" max="-2" attributes="0"/>
@@ -493,13 +498,8 @@
     <Component class="javax.swing.JComboBox" name="type">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="6">
-            <StringItem index="0" value="Infarto"/>
-            <StringItem index="1" value="P&#xe9;rdida Sangre por Herida"/>
-            <StringItem index="2" value="Parto"/>
-            <StringItem index="3" value="Dolor Estomacal"/>
-            <StringItem index="4" value="Quebradura"/>
-            <StringItem index="5" value="Otro"/>
+          <StringArray count="1">
+            <StringItem index="0" value="Tipo"/>
           </StringArray>
         </Property>
       </Properties>
@@ -513,16 +513,19 @@
     <Component class="javax.swing.JComboBox" name="colorP">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Verde"/>
-            <StringItem index="1" value="Amarillo"/>
-            <StringItem index="2" value="Rojo"/>
+          <StringArray count="1">
+            <StringItem index="0" value="Color"/>
           </StringArray>
         </Property>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jButton9"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

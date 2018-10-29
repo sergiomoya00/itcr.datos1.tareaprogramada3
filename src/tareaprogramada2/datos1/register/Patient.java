@@ -9,7 +9,7 @@ package tareaprogramada2.datos1.register;
  *
  * @author samoy
  */
-public class Patient implements Comparable<Patient>{
+public class Patient implements Comparable<Patient> {
 
     private String name;
     private String birthdate;
@@ -20,8 +20,7 @@ public class Patient implements Comparable<Patient>{
     private Ticket ticket;
     private long inputTime;
     private long outputTime;
-    
-   
+
     public Patient(String name, String birthdate, String illnessDetails, String sufferingType, int phone, boolean doctor, Ticket ticket) {
         this.name = name;
         this.birthdate = birthdate;
@@ -33,7 +32,7 @@ public class Patient implements Comparable<Patient>{
     }
 
     public Patient() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     public String getname() {
@@ -101,15 +100,15 @@ public class Patient implements Comparable<Patient>{
     public int compareTo(Patient o) {
         return this.ticket.compareTo(o.ticket);
     }
-    
+
     public void input() {
         this.inputTime = System.currentTimeMillis();
     }
-    
+
     public void output() {
         this.outputTime = System.currentTimeMillis();
     }
-    
+
     public long duration() {
         return ((outputTime - inputTime) / 1000L);
     }

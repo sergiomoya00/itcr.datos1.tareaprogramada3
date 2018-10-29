@@ -6,7 +6,7 @@
 package tareaprogramada2.datos1.register;
 
 public enum ColorPatientCondition {
-    Rojo,
+    Verde,
     Amarillo,
-    Verde;
+    Rojo;
 }
