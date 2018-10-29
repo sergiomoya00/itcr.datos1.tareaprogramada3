@@ -5,10 +5,7 @@
  */
 package tareaprogramada2.datos1.GUI;
 
-/**
- *
- * @author samoy
- */
+
 public class Admin extends javax.swing.JFrame {
 
     /**
