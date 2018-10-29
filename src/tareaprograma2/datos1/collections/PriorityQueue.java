@@ -21,7 +21,7 @@ public class PriorityQueue<T extends Comparable<T>> {
     private List<T> heap;
 
     public PriorityQueue() {
-        heap = new LPriorityQueue<T>();
+        heap = new ArrayList<T>();
     }
 
     public int size() {
