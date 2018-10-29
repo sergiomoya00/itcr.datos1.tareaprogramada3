@@ -9,15 +9,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- *
- * @author Mario
- */
 public class FechaHora {
 
     public static void main(String[] args) {
         Date date = new Date();
-//Caso 1: obtener la hora y salida por pantalla con formato:
         DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
         int i = (int) new Date().getTime();
         System.out.println("Integer : " + i);

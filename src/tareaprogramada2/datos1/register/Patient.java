@@ -18,7 +18,10 @@ public class Patient implements Comparable<Patient>{
     private int phone;
     private boolean doctor;
     private Ticket ticket;
-
+    private long inputTime;
+    private long outputTime;
+    
+   
     public Patient(String name, String birthdate, String illnessDetails, String sufferingType, int phone, boolean doctor, Ticket ticket) {
         this.name = name;
         this.birthdate = birthdate;
@@ -93,5 +96,17 @@ public class Patient implements Comparable<Patient>{
     @Override
     public int compareTo(Patient o) {
         return this.ticket.compareTo(o.ticket);
+    }
+    
+    public void input() {
+        this.inputTime = System.currentTimeMillis();
+    }
+    
+    public void output() {
+        this.outputTime = System.currentTimeMillis();
+    }
+    
+    public long duration() {
+        return ((outputTime - inputTime) / 1000L);
     }
 }
