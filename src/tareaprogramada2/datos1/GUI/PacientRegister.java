@@ -31,9 +31,19 @@ public class PacientRegister extends javax.swing.JFrame {
 
     public PacientRegister() {
         initComponents();
+
+        this.type.addItem("Tipo");
+        for (IncidentPatientCondition condition : IncidentPatientCondition.values()) {
+            type.addItem(condition.name());
+        }
     }
 
     private void refresh() {
+
+        String condition = (String) type.getSelectedItem();
+        if (type.getSelectedIndex() == 0) {
+            condition = null;
+        }
 
         DefaultTableModel model = ((DefaultTableModel) tableGreen.getModel());  //Ingresa los títulos y valores al JTable.
         model.setRowCount(0);
@@ -102,8 +112,8 @@ public class PacientRegister extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        type = new javax.swing.JComboBox<>();
+        colorP = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -250,14 +260,14 @@ public class PacientRegister extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Infarto", "Pérdida Sangre por Herida", "Parto", "Dolor Estomacal", "Quebradura", "Otro" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Infarto", "Pérdida Sangre por Herida", "Parto", "Dolor Estomacal", "Quebradura", "Otro" }));
+        type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                typeActionPerformed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Verde", "Amarillo", "Rojo" }));
+        colorP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Verde", "Amarillo", "Rojo" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -314,8 +324,8 @@ public class PacientRegister extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(phoneP, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(detailsP, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(colorP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(322, 322, 322)
@@ -388,11 +398,11 @@ public class PacientRegister extends javax.swing.JFrame {
                                                 .addGap(15, 15, 15)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                     .addComponent(jLabel5)
-                                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                     .addComponent(jLabel6)
-                                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                                    .addComponent(colorP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(5, 5, 5)
                                         .addComponent(jLabel8)
@@ -439,18 +449,16 @@ public class PacientRegister extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String priority = priorityP.getText();
-        int priority1 = Integer.parseInt(priority);
         String phone = phoneP.getText();
         int phone1 = Integer.parseInt(phone);
         this.patient = new Patient();
         this.patient.setname(nameP.getText());
         this.patient.setbirthdate(birthP.getText());
         this.patient.setbirthdate(detailsP.getText());
-        this.patient.setsufferingType(typeP.getText());
+        this.patient.setsufferingType((String) type.getSelectedItem());
         this.patient.setphone(phone1);
-        ColorPatientCondition color = ColorPatientCondition.valueOf(typeP.getText());
-        IncidentPatientCondition cause = IncidentPatientCondition.valueOf(detailsP.getText());
+        ColorPatientCondition color = ColorPatientCondition.valueOf((String) type.getSelectedItem());
+        IncidentPatientCondition cause = IncidentPatientCondition.valueOf((String) colorP.getSelectedItem());
         int number = this.number++ % 100;
         Ticket ticket = new Ticket(color, cause, number);
         patient.setTicket(ticket);
@@ -475,9 +483,9 @@ public class PacientRegister extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_typeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -516,6 +524,7 @@ public class PacientRegister extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField birthP;
+    private javax.swing.JComboBox<String> colorP;
     private javax.swing.JTextField detailsP;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -525,8 +534,6 @@ public class PacientRegister extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -550,5 +557,6 @@ public class PacientRegister extends javax.swing.JFrame {
     private javax.swing.JTable tableGreen;
     private javax.swing.JTable tableRed;
     private javax.swing.JTable tableYellow;
+    private javax.swing.JComboBox<String> type;
     // End of variables declaration//GEN-END:variables
 }

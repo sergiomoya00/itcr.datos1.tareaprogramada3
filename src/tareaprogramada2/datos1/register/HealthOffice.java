@@ -17,7 +17,6 @@ public class HealthOffice {
     }
 
     HealthOffice() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Patient getPerson() {
@@ -59,7 +58,5 @@ public class HealthOffice {
     public void setPatientCounter(int patientCounter) {
         this.patientCounter = patientCounter;
     }
-    
-    
 
 }
