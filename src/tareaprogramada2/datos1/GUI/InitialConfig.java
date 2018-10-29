@@ -220,8 +220,8 @@ public class InitialConfig extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.greenHeap.getAccessibleContext();
-        HospitalManager.getInstance().initialize();
+        this.greenHeap.isSelected();
+        HospitalManager.getInstance().Initialize();
         PacientRegister register = new PacientRegister();
         register.setVisible(true);
         // TODO add your handling code here:
