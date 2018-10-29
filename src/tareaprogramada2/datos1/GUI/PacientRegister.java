@@ -35,27 +35,27 @@ public class PacientRegister extends javax.swing.JFrame {
 
     private void refresh() {
 
-        DefaultTableModel model = ((DefaultTableModel) tableRegister.getModel());  //Ingresa los títulos y valores al JTable.
+        DefaultTableModel model = ((DefaultTableModel) tableGreen.getModel());  //Ingresa los títulos y valores al JTable.
         model.setRowCount(0);
-        for (Patient patient : HospitalManager.getInstance().getAttended()) {
+        for (Patient patient : HospitalManager.getInstance().getUrgencyGreen()) {
             model.addRow(new Object[]{
-                patient.getname(), patient.getbirthdate(), patient.getillnessDetails(), patient.getType(), patient.getPriority(), patient.getPhone()
+                patient.getname(), patient.getbirthdate(), patient.getillnessDetails(), patient.getsufferingType(), patient.getphone()
             });
         }
 
-        DefaultTableModel model2 = ((DefaultTableModel) tableGreen.getModel());  //Ingresa los títulos y valores al JTable.
+        DefaultTableModel model2 = ((DefaultTableModel) tableYellow.getModel());  //Ingresa los títulos y valores al JTable.
         model.setRowCount(0);
-        for (Patient patient : LibraryManager.getInstance().search(newBook)) {
+        for (Patient patient : HospitalManager.getInstance().getUrgencyYellow()) {
             model.addRow(new Object[]{
-                patient.getName(), patient.getBirthdate(), patient.getDetails(), patient.getType(), patient.getPriority(), patient.getPhone()
+                patient.getname(), patient.getbirthdate(), patient.getillnessDetails(), patient.getsufferingType(), patient.getphone()
             });
         }
 
-        DefaultTableModel model3 = ((DefaultTableModel) tableYellow.getModel());  //Ingresa los títulos y valores al JTable.
+        DefaultTableModel model3 = ((DefaultTableModel) tableRed.getModel());  //Ingresa los títulos y valores al JTable.
         model.setRowCount(0);
-        for (Patient patient : LibraryManager.getInstance().search(newBook)) {
+        for (Patient patient : HospitalManager.getInstance().getEmergency()) {
             model.addRow(new Object[]{
-                patient.getName(), patient.getBirthdate(), patient.getDetails(), patient.getType(), patient.getPriority(), patient.getPhone()
+                patient.getname(), patient.getbirthdate(), patient.getillnessDetails(), patient.getsufferingType(), patient.getphone()
             });
         }
     }

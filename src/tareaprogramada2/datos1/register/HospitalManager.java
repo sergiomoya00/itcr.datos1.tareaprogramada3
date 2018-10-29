@@ -18,26 +18,51 @@ import tareaprogramada2.datos1.register.attendedPeople.AttentionCenter;
  */
 public class HospitalManager {
 
-    private PriorityAdapter urgency;
+    private PriorityAdapter urgencyGreen;
+    private PriorityAdapter urgencyYellow;
     private PriorityAdapter emergency;
     private PriorityAdapter attended;
 
-
     List<AttentionCenter> attentionC = new SimpleLinkeList<>();
-    List<HealthOffice> greenConsutory = new SimpleLinkeList<>();
+    List<HealthOffice> greenConsultory = new SimpleLinkeList<>();
+    List<HealthOffice> yellowConsultory = new SimpleLinkeList<>();
+    List<HealthOffice> redConsultory = new SimpleLinkeList<>();
+    List<HealthOffice> attendedConsultory = new SimpleLinkeList<>();
 
     public List<HealthOffice> getGreenConsutory() {
-        return greenConsutory;
+        return greenConsultory;
     }
+
+    public List<HealthOffice> getYellowConsutory() {
+        return yellowConsultory;
+    }
+
+    public List<HealthOffice> getRedConsutory() {
+        return redConsultory;
+    }
+
+    public List<HealthOffice> getAttendedConsutory() {
+        return attendedConsultory;
+    }
+
+    public PriorityAdapter getUrgencyGreen() {
+        return urgencyGreen;
+    }
+
+    public void setUrgencyGreen(PriorityAdapter urgencyGreen) {
+        this.urgencyGreen = urgencyGreen;
+    }
+
+    public PriorityAdapter getUrgencyYellow() {
+        return urgencyYellow;
+    }
+
+    public void setUrgencyYellow(PriorityAdapter urgencyYellow) {
+        this.urgencyYellow = urgencyYellow;
+    }
+
+
     
-
-    public PriorityAdapter getUrgency() {
-        return urgency;
-    }
-
-    public void setUrgency(PriorityAdapter urgency) {
-        this.urgency = urgency;
-    }
 
     public PriorityAdapter getEmergency() {
         return emergency;
@@ -65,15 +90,23 @@ public class HospitalManager {
     }
 
     public void Initialize(boolean urgencyHeap, boolean emergencyHeap, boolean attendedHeap) {
-        this.urgency = urgencyHeap ? new HeapPriorityAdapter()
+        this.urgencyGreen = urgencyHeap ? new HeapPriorityAdapter()
                 : new QueuePriorityAdapter();
-
+        this.urgencyYellow = urgencyHeap ? new HeapPriorityAdapter()
+                : new QueuePriorityAdapter();
+        this.emergency = emergencyHeap ? new HeapPriorityAdapter()
+                : new QueuePriorityAdapter();
+        this.attended = attendedHeap ? new HeapPriorityAdapter()
+                : new QueuePriorityAdapter();
     }
 
     public void Initialize(int consultoryQGreen, int consultoryQYellow, int consultoryQRed) {
-        for (int i=0;i<consultoryQGreen;i++){
-        this.greenConsutory.add(new HealthOffice());
-        }//To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < consultoryQGreen; i++) {
+            this.greenConsultory.add(new HealthOffice());
+            this.yellowConsultory.add(new HealthOffice());
+            this.redConsultory.add(new HealthOffice());
+            this.attendedConsultory.add(new HealthOffice());
+        }
     }
 
 }
