@@ -5,6 +5,7 @@
  */
 package tareaprogramada2.datos1.GUI;
 
+import tareaprogramada2.datos1.register.HospitalManager;
 import tareaprogramada2.datos1.register.Patient;
 
 /**
@@ -36,6 +37,8 @@ public class InitialConfig extends javax.swing.JFrame {
         buttonGroup5 = new javax.swing.ButtonGroup();
         buttonGroup6 = new javax.swing.ButtonGroup();
         buttonGroup7 = new javax.swing.ButtonGroup();
+        buttonGroup8 = new javax.swing.ButtonGroup();
+        buttonGroup9 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -45,12 +48,12 @@ public class InitialConfig extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jRadioButton6 = new javax.swing.JRadioButton();
+        greenHeap = new javax.swing.JRadioButton();
+        greenPriority = new javax.swing.JRadioButton();
+        yellowHeap = new javax.swing.JRadioButton();
+        redHeap = new javax.swing.JRadioButton();
+        yellowPriority = new javax.swing.JRadioButton();
+        redPriority = new javax.swing.JRadioButton();
         quantityG = new javax.swing.JTextField();
         quantityY = new javax.swing.JTextField();
         quantityR = new javax.swing.JTextField();
@@ -83,32 +86,37 @@ public class InitialConfig extends javax.swing.JFrame {
 
         jLabel10.setText("Cantidad de Consultorios:");
 
-        jRadioButton1.setText("Heap");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        greenHeap.setText("Heap");
+        greenHeap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                greenHeapActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("Cola de prioridad");
-
-        jRadioButton3.setText("Heap");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        greenPriority.setText("Cola de prioridad");
+        greenPriority.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                greenPriorityActionPerformed(evt);
             }
         });
 
-        jRadioButton4.setText("Heap");
-
-        jRadioButton5.setText("Cola de prioridad");
-        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
+        yellowHeap.setText("Heap");
+        yellowHeap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton5ActionPerformed(evt);
+                yellowHeapActionPerformed(evt);
             }
         });
 
-        jRadioButton6.setText("Cola de prioridad");
+        redHeap.setText("Heap");
+
+        yellowPriority.setText("Cola de prioridad");
+        yellowPriority.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yellowPriorityActionPerformed(evt);
+            }
+        });
+
+        redPriority.setText("Cola de prioridad");
 
         quantityG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,12 +156,12 @@ public class InitialConfig extends javax.swing.JFrame {
                         .addComponent(jLabel4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton6)
-                    .addComponent(jRadioButton1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton4, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton5, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(greenPriority)
+                    .addComponent(redPriority)
+                    .addComponent(greenHeap, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(yellowHeap, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(redHeap, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(yellowPriority, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(66, 66, 66))
             .addGroup(layout.createSequentialGroup()
                 .addGap(266, 266, 266)
@@ -161,77 +169,83 @@ public class InitialConfig extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(231, 231, 231))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(greenHeap, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jRadioButton2)
+                    .addComponent(greenPriority)
                     .addComponent(quantityG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton3))
+                    .addComponent(yellowHeap))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jRadioButton5)
+                    .addComponent(yellowPriority)
                     .addComponent(quantityY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton4))
-                .addGap(18, 18, 18)
+                    .addComponent(redHeap, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jRadioButton6)
+                    .addComponent(redPriority)
                     .addComponent(quantityR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.greenHeap.isSelected();
+        HospitalManager.getInstance().Initialize();
         PacientRegister register = new PacientRegister();
         register.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void greenHeapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_greenHeapActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_greenHeapActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void yellowHeapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yellowHeapActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_yellowHeapActionPerformed
 
-    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
+    private void yellowPriorityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yellowPriorityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton5ActionPerformed
+    }//GEN-LAST:event_yellowPriorityActionPerformed
 
     private void quantityGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityGActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_quantityGActionPerformed
+
+    private void greenPriorityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_greenPriorityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_greenPriorityActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,6 +290,10 @@ public class InitialConfig extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.ButtonGroup buttonGroup7;
+    private javax.swing.ButtonGroup buttonGroup8;
+    private javax.swing.ButtonGroup buttonGroup9;
+    private javax.swing.JRadioButton greenHeap;
+    private javax.swing.JRadioButton greenPriority;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -285,14 +303,12 @@ public class InitialConfig extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
-    private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JTextField quantityG;
     private javax.swing.JTextField quantityR;
     private javax.swing.JTextField quantityY;
+    private javax.swing.JRadioButton redHeap;
+    private javax.swing.JRadioButton redPriority;
+    private javax.swing.JRadioButton yellowHeap;
+    private javax.swing.JRadioButton yellowPriority;
     // End of variables declaration//GEN-END:variables
 }

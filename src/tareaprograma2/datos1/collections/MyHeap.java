@@ -10,6 +10,7 @@ package tareaprograma2.datos1.collections;
  *
  */
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class MyHeap<T extends Comparable<T>> {
@@ -38,7 +39,7 @@ public class MyHeap<T extends Comparable<T>> {
         }
         T res = heap.get(0);
         T te = heap.get(size() - 1);
-        heap.remove(size() -1);
+        heap.remove(size() - 1);
         int curr = 0, son = 1;
         while (son < size() - 1) {
             T ficha = heap.get(son);
@@ -72,6 +73,10 @@ public class MyHeap<T extends Comparable<T>> {
             curr = parent;
         }
         heap.add(curr, e);
+    }
+
+    public Iterator<T> iterator() {
+        return heap.iterator();
     }
 
     @Override

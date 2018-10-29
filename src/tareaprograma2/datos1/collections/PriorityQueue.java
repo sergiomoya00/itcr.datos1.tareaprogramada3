@@ -11,6 +11,7 @@ package tareaprograma2.datos1.collections;
  */
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import tareaprogramada2.datos1.register.Patient;
@@ -66,6 +67,10 @@ public class PriorityQueue<T extends Comparable<T>> {
         }
         
         return sb.toString();
+    }
+
+    public Iterator<T> iterator() {
+        return heap.iterator(); //To change body of generated methods, choose Tools | Templates.
     }
     
     

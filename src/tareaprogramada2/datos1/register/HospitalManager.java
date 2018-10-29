@@ -16,6 +16,16 @@ import tareaprogramada2.datos1.register.Patient;
  */
 public class HospitalManager {
 
-    List<Patient> patient = new LPriorityQueue();
+    private PriorityAdapter adapter;
+
+    private static final HospitalManager instance = new HospitalManager();
+
+    
+    public static HospitalManager getInstance() {
+        return instance;
+    }
+    
+    public void Initialize(){
+    }
 
 }
