@@ -11,7 +11,7 @@ import tareaprogramada2.datos1.register.Patient;
  *
  * @author samoy
  */
-public interface PriorityAdapter {
+public interface PriorityAdapter extends Iterable<Patient>{
     
     void push(Patient patient);
     

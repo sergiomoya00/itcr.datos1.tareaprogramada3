@@ -221,7 +221,16 @@ public class InitialConfig extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.greenHeap.isSelected();
-        HospitalManager.getInstance().Initialize();
+        boolean urgencyHeap=this.greenHeap.isSelected();
+        boolean emergencyHeap = this.yellowHeap.isSelected();
+        boolean attendedHeap = this.redHeap.isSelected();
+        
+        int consultoryQGreen = Integer.valueOf(quantityG.getText());
+        int consultoryQYellow = Integer.valueOf(quantityY.getText());
+        int consultoryQRed = Integer.valueOf(quantityR.getText());
+        
+        HospitalManager.getInstance().Initialize(consultoryQGreen, consultoryQYellow, consultoryQRed);
+        HospitalManager.getInstance().Initialize(urgencyHeap,emergencyHeap,attendedHeap);
         PacientRegister register = new PacientRegister();
         register.setVisible(true);
         // TODO add your handling code here:

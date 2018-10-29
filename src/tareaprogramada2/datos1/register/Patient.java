@@ -32,6 +32,10 @@ public class Patient implements Comparable<Patient>{
         this.ticket = ticket;
     }
 
+    public Patient() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getname() {
         return name;
     }
