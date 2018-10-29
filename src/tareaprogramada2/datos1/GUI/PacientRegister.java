@@ -412,15 +412,15 @@ public class PacientRegister extends javax.swing.JFrame {
         patient.setTicket(ticket);
         switch (color) {
             case Verde:
+                HospitalManager.getInstance().getUrgencyYellow().push(patient);
+                break;
             case Amarillo:
-                HospitalManager.getInstance().getUrgency().push(patient);
+                HospitalManager.getInstance().getUrgencyYellow().push(patient);
                 break;
             case Rojo:
                 HospitalManager.getInstance().getEmergency().push(patient);
                 break;
         }
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void phonePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phonePActionPerformed
