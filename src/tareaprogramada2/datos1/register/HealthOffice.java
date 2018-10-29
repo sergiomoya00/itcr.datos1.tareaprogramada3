@@ -8,12 +8,12 @@ public class HealthOffice {
     int id;
     int patientCounter;
 
-    public HealthOffice(Patient person, ColorPatientCondition color, boolean available, int id, int patientCounter) {
+    public HealthOffice(Patient person, ColorPatientCondition color, int id) {
         this.person = person;
         this.color = color;
-        this.available = available;
+        this.available = true;
         this.id = id;
-        this.patientCounter = patientCounter;
+        this.patientCounter = 0;
     }
 
     public Patient getPerson() {
