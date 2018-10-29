@@ -72,7 +72,7 @@ public class HospitalManager {
 
     public void Initialize(int consultoryQGreen, int consultoryQYellow, int consultoryQRed) {
         for (int i=0;i<consultoryQGreen;i++){
-        this.greenConsutory.add(new HealthOffice())
+        this.greenConsutory.add(new HealthOffice());
         }//To change body of generated methods, choose Tools | Templates.
     }
 
