@@ -107,11 +107,26 @@ public class HospitalManager {
                 : new QueuePriorityAdapter();
     }
 
-    public void InitializeG(int consultoryQGreen, int consultoryQYellow, int consultoryQRed) {
+    public void InitializeG(int consultoryQGreen) {
         for (int i = 0; i < consultoryQGreen; i++) {
             this.greenConsultory.add(new HealthOffice());
+        }
+    }
+
+    public void InitializeY(int consultoryQYellow) {
+        for (int i = 0; i < consultoryQYellow; i++) {
             this.yellowConsultory.add(new HealthOffice());
+        }
+    }
+
+    public void InitializeR(int consultoryQRed) {
+        for (int i = 0; i < consultoryQRed; i++) {
             this.redConsultory.add(new HealthOffice());
+        }
+    }
+
+    public void InitializeA(int consultoryQAttention) {
+        for (int i = 0; i < consultoryQAttention; i++) {
             this.attendedConsultory.add(new HealthOffice());
         }
     }

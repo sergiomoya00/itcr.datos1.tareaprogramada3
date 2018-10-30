@@ -68,7 +68,7 @@ public class InitialConfig extends javax.swing.JFrame {
         maxAtte = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        quantityAttended = new javax.swing.JTextField();
 
         jLabel6.setText("jLabel6");
 
@@ -187,7 +187,7 @@ public class InitialConfig extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel18)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(quantityAttended, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,7 +293,7 @@ public class InitialConfig extends javax.swing.JFrame {
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(quantityAttended, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addComponent(jButton1))))
         );
@@ -322,8 +322,13 @@ public class InitialConfig extends javax.swing.JFrame {
         int consultoryQGreen = Integer.valueOf(quantityG.getText());
         int consultoryQYellow = Integer.valueOf(quantityY.getText());
         int consultoryQRed = Integer.valueOf(quantityR.getText());
+        int consultoryQAttention = Integer.valueOf(quantityAttended.getText());
 
-        HospitalManager.getInstance().Initialize(consultoryQGreen, consultoryQYellow, consultoryQRed);
+        HospitalManager.getInstance().InitializeG(consultoryQGreen);
+        HospitalManager.getInstance().InitializeY(consultoryQYellow);
+        HospitalManager.getInstance().InitializeR(consultoryQRed);
+        HospitalManager.getInstance().InitializeA(consultoryQAttention);
+        
         HospitalManager.getInstance().Initialize(urgencyHeap, emergencyHeap, attendedHeap);
         PacientRegister register = new PacientRegister();
         register.setVisible(true);
@@ -420,9 +425,9 @@ public class InitialConfig extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField maxAtte;
     private javax.swing.JTextField minAtte;
+    private javax.swing.JTextField quantityAttended;
     private javax.swing.JTextField quantityG;
     private javax.swing.JTextField quantityR;
     private javax.swing.JTextField quantityY;
