@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class LPriorityQueue<T extends Comparable<T>> implements List<T> {
+public class LPriorityQueue<T extends Comparable<T>> extends SimpleLinkeList<T> implements List<T> {
 
     private SimpleNode<T> back;
     private int size;
