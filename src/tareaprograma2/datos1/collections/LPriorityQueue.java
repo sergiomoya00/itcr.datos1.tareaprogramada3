@@ -32,6 +32,8 @@ public class LPriorityQueue<T extends Comparable<T>> extends SimpleLinkeList<T> 
         this.outcomeCounter = 0;
     }
 
+   
+
     public int peopleWaiting(int incomeCounter, int outcomeCounter) {
         int result = incomeCounter - outcomeCounter;
         return result;
