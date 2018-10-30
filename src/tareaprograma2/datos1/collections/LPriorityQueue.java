@@ -32,7 +32,7 @@ public class LPriorityQueue<T extends Comparable<T>> extends SimpleLinkeList<T> 
         this.outcomeCounter = 0;
     }
 
-    LPriorityQueue() {
+    LPriorityQueue(){
          //To change body of generated methods, choose Tools | Templates.
     }
 
