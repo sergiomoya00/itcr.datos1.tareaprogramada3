@@ -50,6 +50,7 @@ public class Patient implements Comparable<Patient> {
     public void setbirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
+    
 
     public String getillnessDetails() {
         return illnessDetails;

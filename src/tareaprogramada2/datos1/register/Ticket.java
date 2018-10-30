@@ -17,6 +17,7 @@ public class Ticket implements Comparable<Ticket> {
         this.ticket = ticket;
     }
     
+    
     public Ticket (){
     }
 

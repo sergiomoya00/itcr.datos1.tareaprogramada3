@@ -139,4 +139,5 @@ public class HospitalManager {
             this.attendedConsultory.add(new HealthOffice());
         }
     }
+    
 }

@@ -16,4 +16,5 @@ public interface PriorityAdapter extends Iterable<Patient>{
     void push(Patient patient);
     
     Patient pop();
+    
 }

@@ -18,6 +18,7 @@ public class HealthOffice {
 
     HealthOffice() {
     }
+    
 
     public Patient getPerson() {
         return person;

@@ -91,6 +91,7 @@ public class PacientRegister extends javax.swing.JFrame {
                 patient.getname(), patient.getbirthdate(), patient.getillnessDetails(), patient.getsufferingType(), patient.getphone()
             });
         }
+        
     }
 
     /**
