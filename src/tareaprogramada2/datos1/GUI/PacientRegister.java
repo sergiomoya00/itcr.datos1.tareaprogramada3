@@ -308,7 +308,7 @@ public class PacientRegister extends javax.swing.JFrame {
 
         jButton9.setText("Aceptar");
 
-        jButton10.setText("jButton10");
+        jButton10.setText("Liberar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
