@@ -23,6 +23,8 @@ public class PacientRegister extends javax.swing.JFrame {
      */
     private Patient patient;
 
+    private HospitalManager quantityConsul;
+
     private int number = 0;
 
     public Patient getPatient() {
@@ -49,7 +51,7 @@ public class PacientRegister extends javax.swing.JFrame {
         if (type.getSelectedIndex() == 0) {
             condition = null;
         }
-        
+
         String color = (String) colorP.getSelectedItem();
         if (colorP.getSelectedIndex() == 0) {
             condition = null;

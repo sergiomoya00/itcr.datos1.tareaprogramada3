@@ -31,6 +31,14 @@ public class HospitalManager {
     List<HealthOffice> attendedConsultory = new SimpleLinkeList<>();
     List<DurationProvider> duration = new SimpleLinkeList<>();
 
+    public List<DurationProvider> getDuration() {
+        return duration;
+    }
+
+    public void addDuration(DurationProvider newDuration) {
+        this.duration.add(newDuration);
+    }
+
     public List<HealthOffice> getGreenConsutory() {
         return greenConsultory;
     }
@@ -88,7 +96,7 @@ public class HospitalManager {
     public void Initialize() {
     }
 
-    public void Initialize(boolean urgencyHeap, boolean emergencyHeap, boolean attendedHeap) {
+    public void Initialize(boolean urgencyHeap, boolean emergencyHeap, boolean attendedHeap) { // 
         this.urgencyGreen = urgencyHeap ? new HeapPriorityAdapter()
                 : new QueuePriorityAdapter();
         this.urgencyYellow = urgencyHeap ? new HeapPriorityAdapter()
@@ -99,11 +107,26 @@ public class HospitalManager {
                 : new QueuePriorityAdapter();
     }
 
-    public void Initialize(int consultoryQGreen, int consultoryQYellow, int consultoryQRed) {
+    public void InitializeG(int consultoryQGreen) {
         for (int i = 0; i < consultoryQGreen; i++) {
             this.greenConsultory.add(new HealthOffice());
+        }
+    }
+
+    public void InitializeY(int consultoryQYellow) {
+        for (int i = 0; i < consultoryQYellow; i++) {
             this.yellowConsultory.add(new HealthOffice());
+        }
+    }
+
+    public void InitializeR(int consultoryQRed) {
+        for (int i = 0; i < consultoryQRed; i++) {
             this.redConsultory.add(new HealthOffice());
+        }
+    }
+
+    public void InitializeA(int consultoryQAttention) {
+        for (int i = 0; i < consultoryQAttention; i++) {
             this.attendedConsultory.add(new HealthOffice());
         }
     }
