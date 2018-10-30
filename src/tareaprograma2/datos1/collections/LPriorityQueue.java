@@ -3,8 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 package tareaprograma2.datos1.collections;
 
 import tareaprogramada2.datos1.register.Patient;
@@ -14,52 +12,25 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class LPriorityQueue<T> implements List<T> {
+public class LPriorityQueue<T extends Comparable<T>> implements List<T> {
 
     private SimpleNode<T> back;
     private int size;
     private SimpleNode front;
+    private int incomeCounter;
+    private int outcomeCounter;
 
-    public LPriorityQueue() {
+    public LPriorityQueue(SimpleNode<T> back, int size, SimpleNode front, int incomeCounter, int outcomeCounter) {
         this.front = new SimpleNode<>();
         this.back = this.front;
         this.size = 0;
+        this.incomeCounter = 0;
+        this.outcomeCounter = 0;
     }
 
-    public void enqueque(T patient, int priority) {
-
-        SimpleNode<T> newNode = new SimpleNode( patient , priority ); //Se crea un nuevo nodo con el elemento y un nivel de prioridad
-
-        if (this.size == 0) { //Si la lista es vacia, se inserta el nuevo nodo como front e back de la cola
-            this.front = newNode;
-            this.back = front;
-        
-        } else { //De no ser una cola vacia, se procede a insertar de acuerdo a su nivel de prioridad
-            
-            this.back.setNext(newNode);
-            this.back= this.back.getNext();
-
-            SimpleNode<T> tempNode= this.back; //Nodo tempNode para recorrer la cola
-            
-            for (int i = 0; i < this.size; i++) { //Ciclo de recorrido de la cola
-                if (tempNode.getPriority() >= newNode.getPriority()) { //Si se obtiene un nodo con mayor o igual prioridad, se detiene el ciclo
-                    break;
-                }
-                tempNode = tempNode.getNext(); //Si no se cumple el if anterior, se avanza al nodo siguiente
-            }
-            if (tempNode == null) {
-                this.front.setNext(newNode);
-                newNode.setPrevious(this.front);
-                this.front = newNode;
-            } else {
-                //Una vez obtenido el nodo con mayor o igual prioridad, se procede a insertar utilizando los punteros
-                tempNode.getPrevious().setNext(newNode); //El nodo anterior al obtenido tendra como siguiente el nuevo nodo
-                newNode.setNext(tempNode); //El nuevo nodo apuntara al nodo obtenido
-                tempNode.setPrevious(newNode); //El puntero anterior del nodo obtenido apuntara al nuevo nodo
-            }
-          
-        }
-        this.size++;
+    public int peopleWaiting(int incomeCounter, int outcomeCounter) {
+        int result = incomeCounter - outcomeCounter;
+        return result;
     }
 
     public T dequeque() {
@@ -78,6 +49,7 @@ public class LPriorityQueue<T> implements List<T> {
                 this.back = this.front;
             }
             size--;
+            outcomeCounter++;
             return tempValue;
         }
     }
@@ -143,8 +115,34 @@ public class LPriorityQueue<T> implements List<T> {
 
     @Override
     public boolean add(T e) {
-        this.enqueque(e, 7);
-        return true;//To change body of generated methods, choose Tools | Templates.
+        //Se crea un nuevo nodo con el elemento a insertar
+        SimpleNode<T> newNode = new SimpleNode(e);
+        if (this.size == 0) {
+            this.front = newNode;
+            this.back = front;
+        }
+
+        int curr = size();
+        SimpleNode<T> tempNode = back;  //Nodo tempNode para recorrer la cola
+        back = back.getNext();
+
+        while (curr > 0) {
+
+            T ficha = e;
+            T ficha2 = tempNode.getPrevious().getValue();
+            if (ficha2.compareTo(ficha) <= 0) {
+                break;
+            }
+            tempNode = tempNode.getPrevious();
+            curr--;
+        }
+        tempNode.getPrevious().setNext(newNode);
+        newNode.setNext(tempNode);
+        tempNode.setPrevious(newNode);
+
+        this.size++;
+        incomeCounter++;
+        return true;
     }
 
     @Override
@@ -172,6 +170,7 @@ public class LPriorityQueue<T> implements List<T> {
         current.setNext(current.getNext().getNext());
 
         size--;
+
         return true;
 
     }
