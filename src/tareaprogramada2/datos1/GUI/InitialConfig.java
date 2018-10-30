@@ -8,6 +8,7 @@ package tareaprogramada2.datos1.GUI;
 import tareaprogramada2.datos1.register.HospitalManager;
 import tareaprogramada2.datos1.register.Patient;
 import tareaprogramada2.datos1.register.DurationProvider;
+import tareaprogramada2.datos1.register.OfficeQuantity;
 
 /**
  *
@@ -17,6 +18,7 @@ public class InitialConfig extends javax.swing.JFrame {
 
     private DurationProvider duration;
 
+    private OfficeQuantity oQuantity;
     /**
      * Creates new form InitialConfig
      */
@@ -135,6 +137,12 @@ public class InitialConfig extends javax.swing.JFrame {
         quantityG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quantityGActionPerformed(evt);
+            }
+        });
+
+        quantityY.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quantityYActionPerformed(evt);
             }
         });
 
@@ -311,6 +319,21 @@ public class InitialConfig extends javax.swing.JFrame {
         this.duration.setMax(maxs);
         HospitalManager.getInstance().addDuration(duration);
         
+        String qG = quantityG.getText();
+        int qGr = Integer.parseInt(qG);
+        String qY = quantityY.getText();
+        int qYe = Integer.parseInt(qY);
+        String qR = quantityR.getText();
+        int qRe = Integer.parseInt(qR);
+        String qA = quantityAttended.getText();
+        int qAt = Integer.parseInt(qR);
+        this.oQuantity=new OfficeQuantity();
+        this.oQuantity.setGreenQuantity(qGr);
+        this.oQuantity.setYellowQuantity(qYe);
+        this.oQuantity.setRedQuantity(qRe);
+        this.oQuantity.setAttentionQuantity(qAt);
+        HospitalManager.getInstance().addOfficeQ(oQuantity);
+        
         boolean urgencyHeap = this.greenHeap.isSelected();
         boolean emergencyHeap = this.yellowHeap.isSelected();
         boolean attendedHeap = this.redHeap.isSelected();
@@ -361,6 +384,10 @@ public class InitialConfig extends javax.swing.JFrame {
     private void maxAtteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maxAtteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_maxAtteActionPerformed
+
+    private void quantityYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityYActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_quantityYActionPerformed
 
     /**
      * @param args the command line arguments
