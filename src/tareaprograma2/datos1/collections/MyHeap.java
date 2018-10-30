@@ -60,9 +60,9 @@ public class MyHeap<T extends Comparable<T>> {
     }
 
     public void insert(T e) {
-        int curr = size();
-        int parent;
-        while (curr > 0) {
+        int curr = size();       //Tamaño del arreglo
+        int parent;             //Padre del nodo
+        while (curr > 0) {                     
             parent = (curr - 1) / 2;
             T ficha = e;
             T ficha2 = heap.get(parent);

@@ -5,7 +5,6 @@ public class SimpleNode<T> {
     SimpleNode<T> next;
     SimpleNode<T> previous;
     T value;
-    int priority;
 
     public SimpleNode(SimpleNode<T> next, T value, SimpleNode<T> previous) {
         this.next = next;
@@ -15,6 +14,10 @@ public class SimpleNode<T> {
 
     public SimpleNode(SimpleNode<T> next, T value){
         this.next = next;
+        this.value = value;
+    }
+    
+    public SimpleNode(T value){
         this.value = value;
     }
     
