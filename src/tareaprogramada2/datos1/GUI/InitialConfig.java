@@ -306,9 +306,10 @@ public class InitialConfig extends javax.swing.JFrame {
         int mins = Integer.parseInt(min);
         String max = maxAtte.getText();
         int maxs = Integer.parseInt(max);
-        
-        //this.duration.setMin(mins);
-        //this.duration.setMax(maxs);
+        this.duration = new DurationProvider();
+        this.duration.setMin(mins);
+        this.duration.setMax(maxs);
+        HospitalManager.getInstance().addDuration(duration);
         
         boolean urgencyHeap = this.greenHeap.isSelected();
         boolean emergencyHeap = this.yellowHeap.isSelected();

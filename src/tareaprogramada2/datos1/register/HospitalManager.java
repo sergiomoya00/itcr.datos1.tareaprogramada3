@@ -31,6 +31,14 @@ public class HospitalManager {
     List<HealthOffice> attendedConsultory = new SimpleLinkeList<>();
     List<DurationProvider> duration = new SimpleLinkeList<>();
 
+    public List<DurationProvider> getDuration() {
+        return duration;
+    }
+
+    public void addDuration(DurationProvider newDuration) {
+        this.duration.add(newDuration);
+    }
+
     public List<HealthOffice> getGreenConsutory() {
         return greenConsultory;
     }
