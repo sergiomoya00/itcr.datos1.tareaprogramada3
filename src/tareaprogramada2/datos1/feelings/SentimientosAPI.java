@@ -6,17 +6,12 @@ package tareaprogramada2.datos1.feelings;
  * and open the template in the editor.
  */
 
-package tareaprogramada2.datos1.sentimientos;
 
 import com.google.cloud.language.v1.Document;
 import com.google.cloud.language.v1.Document.Type;
 import com.google.cloud.language.v1.LanguageServiceClient;
 import com.google.cloud.language.v1.Sentiment;
 
-/**
- *
- * @author samoy
- */
 
 
 public class SentimientosAPI {
