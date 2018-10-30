@@ -28,6 +28,10 @@ public class LPriorityQueue<T extends Comparable<T>> implements List<T> {
         this.outcomeCounter = 0;
     }
 
+    LPriorityQueue() {
+         //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int peopleWaiting(int incomeCounter, int outcomeCounter) {
         int result = incomeCounter - outcomeCounter;
         return result;

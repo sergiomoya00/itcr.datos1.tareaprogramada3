@@ -13,13 +13,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import tareaprograma2.datos1.collections.LPriorityQueue;
 
 public class PriorityQueue<T extends Comparable<T>> {
 
     private List<T> priorityQueue;
 
     public PriorityQueue() {
-        priorityQueue = new ArrayList<T>();
+        priorityQueue = new LPriorityQueue<T>();
     }
 
     public int size() {
