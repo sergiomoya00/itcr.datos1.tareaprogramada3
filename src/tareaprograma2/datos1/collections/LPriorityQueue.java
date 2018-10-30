@@ -12,15 +12,19 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
+/**
+ *
+ * @param <T>
+ */
 public class LPriorityQueue<T extends Comparable<T>> extends SimpleLinkeList<T> implements List<T> {
 
     private SimpleNode<T> back;
     private int size;
-    private SimpleNode front;
+    private SimpleNode<T> front;
     private int incomeCounter;
     private int outcomeCounter;
 
-    public LPriorityQueue(SimpleNode<T> back, int size, SimpleNode front, int incomeCounter, int outcomeCounter) {
+    public LPriorityQueue() {
         this.front = new SimpleNode<>();
         this.back = this.front;
         this.size = 0;
@@ -121,13 +125,13 @@ public class LPriorityQueue<T extends Comparable<T>> extends SimpleLinkeList<T> 
             this.front = newNode;
             this.back = front;
         }
-
+        int position = 0;
         int curr = size();
-        SimpleNode<T> tempNode = back;  //Nodo tempNode para recorrer la cola
+        back.setNext(new SimpleNode(null));
         back = back.getNext();
+        SimpleNode<T> tempNode = back;  //Nodo tempNode para recorrer la cola
 
         while (curr > 0) {
-
             T ficha = e;
             T ficha2 = tempNode.getPrevious().getValue();
             if (ficha2.compareTo(ficha) <= 0) {
@@ -135,11 +139,10 @@ public class LPriorityQueue<T extends Comparable<T>> extends SimpleLinkeList<T> 
             }
             tempNode = tempNode.getPrevious();
             curr--;
+            position++;
         }
-        tempNode.getPrevious().setNext(newNode);
-        newNode.setNext(tempNode);
-        tempNode.setPrevious(newNode);
 
+        this.add(size() - position, e);
         this.size++;
         incomeCounter++;
         return true;
@@ -332,16 +335,12 @@ public class LPriorityQueue<T extends Comparable<T>> extends SimpleLinkeList<T> 
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public String toString() {
-        String msg = "";
-        SimpleNode<T> current = this.front;
-        for (int i = 0; i < this.size; i++) {
-            msg += current.toString();
-            current = current.getNext();
+        while (size > 0) {
+            System.out.println(front.getValue());
+            size--;
+            front.getNext();
         }
-        return msg;
-        ///return "LPriorityQueue{" + "back=" + back + ", size=" + size + ", front=" + front + '}';
+        return "LPriorityQueue{" + "back=" + back + ", size=" + size + ", front=" + front + '}';
     }
-
 }
