@@ -332,7 +332,6 @@ public class InitialConfig extends javax.swing.JFrame {
         HospitalManager.getInstance().Initialize(urgencyHeap, emergencyHeap, attendedHeap);
         PacientRegister register = new PacientRegister();
         register.setVisible(true);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void greenHeapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_greenHeapActionPerformed
