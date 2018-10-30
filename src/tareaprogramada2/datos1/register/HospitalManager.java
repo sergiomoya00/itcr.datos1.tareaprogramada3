@@ -88,7 +88,7 @@ public class HospitalManager {
     public void Initialize() {
     }
 
-    public void Initialize(boolean urgencyHeap, boolean emergencyHeap, boolean attendedHeap) {
+    public void Initialize(boolean urgencyHeap, boolean emergencyHeap, boolean attendedHeap) { // 
         this.urgencyGreen = urgencyHeap ? new HeapPriorityAdapter()
                 : new QueuePriorityAdapter();
         this.urgencyYellow = urgencyHeap ? new HeapPriorityAdapter()

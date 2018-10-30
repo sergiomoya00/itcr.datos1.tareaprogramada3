@@ -307,12 +307,16 @@ public class InitialConfig extends javax.swing.JFrame {
         String max = maxAtte.getText();
         int maxs = Integer.parseInt(max);
         
-        this.duration.setMin(mins);
-        this.duration.setMax(maxs);
+        //this.duration.setMin(mins);
+        //this.duration.setMax(maxs);
         
         boolean urgencyHeap = this.greenHeap.isSelected();
         boolean emergencyHeap = this.yellowHeap.isSelected();
         boolean attendedHeap = this.redHeap.isSelected();
+        
+        boolean urgencyQueue = this.greenPriority.isSelected();
+        boolean emergencyQueue = this.yellowPriority.isSelected();
+        boolean attendedQueue = this.redPriority.isSelected();
 
         int consultoryQGreen = Integer.valueOf(quantityG.getText());
         int consultoryQYellow = Integer.valueOf(quantityY.getText());
