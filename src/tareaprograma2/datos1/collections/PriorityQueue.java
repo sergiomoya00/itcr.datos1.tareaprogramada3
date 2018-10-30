@@ -20,7 +20,7 @@ public class PriorityQueue<T extends Comparable<T>> {
     private List<T> priorityQueue;
 
     public PriorityQueue() {
-        priorityQueue = new LPriorityQueue<T>();
+        priorityQueue = new ArrayList<>();
     }
 
     public int size() {
