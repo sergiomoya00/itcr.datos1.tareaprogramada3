@@ -9,12 +9,12 @@ import java.util.Random;
 
 /**
  *
- * 
+ *
  */
 public class DurationProvider {
-    
-    private final int min;
-    private final int max;
+
+    private int min;
+    private int max;
 
     public DurationProvider(int min, int max) {
         this.min = min;
@@ -28,9 +28,17 @@ public class DurationProvider {
     public int getMax() {
         return max;
     }
-    
-    public int getDuration(){
-        return min+new Random().nextInt(max-min);
+
+    public void setMin(int min) {
+        this.min = min;
     }
-    
+
+    public void setMax(int max) {
+        this.max = max;
+    }
+
+    public int getDuration() {
+        return min + new Random().nextInt(max - min);
+    }
+
 }

@@ -11,6 +11,7 @@ import java.util.List;
 import tareaprograma2.datos1.collections.*;
 import tareaprogramada2.datos1.register.Patient;
 import tareaprogramada2.datos1.register.attendedPeople.AttentionCenter;
+import tareaprogramada2.datos1.register.DurationProvider;
 
 /**
  *
@@ -28,6 +29,7 @@ public class HospitalManager {
     List<HealthOffice> yellowConsultory = new SimpleLinkeList<>();
     List<HealthOffice> redConsultory = new SimpleLinkeList<>();
     List<HealthOffice> attendedConsultory = new SimpleLinkeList<>();
+    List<DurationProvider> duration = new SimpleLinkeList<>();
 
     public List<HealthOffice> getGreenConsutory() {
         return greenConsultory;
@@ -60,9 +62,6 @@ public class HospitalManager {
     public void setUrgencyYellow(PriorityAdapter urgencyYellow) {
         this.urgencyYellow = urgencyYellow;
     }
-
-
-    
 
     public PriorityAdapter getEmergency() {
         return emergency;
@@ -108,5 +107,4 @@ public class HospitalManager {
             this.attendedConsultory.add(new HealthOffice());
         }
     }
-
 }

@@ -7,12 +7,15 @@ package tareaprogramada2.datos1.GUI;
 
 import tareaprogramada2.datos1.register.HospitalManager;
 import tareaprogramada2.datos1.register.Patient;
+import tareaprogramada2.datos1.register.DurationProvider;
 
 /**
  *
  * @author samoy
  */
 public class InitialConfig extends javax.swing.JFrame {
+
+    private DurationProvider duration;
 
     /**
      * Creates new form InitialConfig
@@ -61,8 +64,8 @@ public class InitialConfig extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        minRed = new javax.swing.JTextField();
-        maxRed = new javax.swing.JTextField();
+        minAtte = new javax.swing.JTextField();
+        maxAtte = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -139,15 +142,15 @@ public class InitialConfig extends javax.swing.JFrame {
 
         jLabel15.setText("Tiempo Maximo:");
 
-        minRed.addActionListener(new java.awt.event.ActionListener() {
+        minAtte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                minRedActionPerformed(evt);
+                minAtteActionPerformed(evt);
             }
         });
 
-        maxRed.addActionListener(new java.awt.event.ActionListener() {
+        maxAtte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maxRedActionPerformed(evt);
+                maxAtteActionPerformed(evt);
             }
         });
 
@@ -207,8 +210,8 @@ public class InitialConfig extends javax.swing.JFrame {
                                                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                                 .addGap(18, 18, 18)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(minRed, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(maxRed, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                    .addComponent(minAtte, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(maxAtte, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -270,14 +273,14 @@ public class InitialConfig extends javax.swing.JFrame {
                         .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
-                            .addComponent(minRed, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(minAtte, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel15))
-                            .addComponent(maxRed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(maxAtte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,7 +302,14 @@ public class InitialConfig extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                
+        String min = minAtte.getText();
+        int mins = Integer.parseInt(min);
+        String max = maxAtte.getText();
+        int maxs = Integer.parseInt(max);
+        
+        this.duration.setMin(mins);
+        this.duration.setMax(maxs);
+        
         boolean urgencyHeap = this.greenHeap.isSelected();
         boolean emergencyHeap = this.yellowHeap.isSelected();
         boolean attendedHeap = this.redHeap.isSelected();
@@ -335,13 +345,13 @@ public class InitialConfig extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_greenPriorityActionPerformed
 
-    private void minRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minRedActionPerformed
+    private void minAtteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minAtteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_minRedActionPerformed
+    }//GEN-LAST:event_minAtteActionPerformed
 
-    private void maxRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maxRedActionPerformed
+    private void maxAtteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maxAtteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_maxRedActionPerformed
+    }//GEN-LAST:event_maxAtteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,8 +416,8 @@ public class InitialConfig extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField maxRed;
-    private javax.swing.JTextField minRed;
+    private javax.swing.JTextField maxAtte;
+    private javax.swing.JTextField minAtte;
     private javax.swing.JTextField quantityG;
     private javax.swing.JTextField quantityR;
     private javax.swing.JTextField quantityY;
