@@ -318,7 +318,7 @@ public class InitialConfig extends javax.swing.JFrame {
         boolean urgencyQueue = this.greenPriority.isSelected();
         boolean emergencyQueue = this.yellowPriority.isSelected();
         boolean attendedQueue = this.redPriority.isSelected();
-
+        
         int consultoryQGreen = Integer.valueOf(quantityG.getText());
         int consultoryQYellow = Integer.valueOf(quantityY.getText());
         int consultoryQRed = Integer.valueOf(quantityR.getText());

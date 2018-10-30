@@ -64,7 +64,7 @@ public class PacientRegister extends javax.swing.JFrame {
         model.setRowCount(0);
         for (Patient patient : HospitalManager.getInstance().getUrgencyGreen()) {
             model.addRow(new Object[]{
-                patient.getname(), patient.getsufferingType(), 
+                patient.getname(), patient.getsufferingType()
             });
         }
     }
