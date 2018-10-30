@@ -30,6 +30,11 @@ public class HospitalManager {
     List<HealthOffice> redConsultory = new SimpleLinkeList<>();
     List<HealthOffice> attendedConsultory = new SimpleLinkeList<>();
     List<DurationProvider> duration = new SimpleLinkeList<>();
+    List<OfficeQuantity> oQuantity = new SimpleLinkeList<>();
+
+    public List<OfficeQuantity> getoQuantity() {
+        return oQuantity;
+    }
 
     public List<DurationProvider> getDuration() {
         return duration;
@@ -37,6 +42,10 @@ public class HospitalManager {
 
     public void addDuration(DurationProvider newDuration) {
         this.duration.add(newDuration);
+    }
+
+    public void addOfficeQ(OfficeQuantity newOfficeQuantity) {
+        this.oQuantity.add(newOfficeQuantity);
     }
 
     public List<HealthOffice> getGreenConsutory() {
