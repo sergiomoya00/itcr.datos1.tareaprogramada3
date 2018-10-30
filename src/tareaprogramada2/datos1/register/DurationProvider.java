@@ -16,6 +16,9 @@ public class DurationProvider {
     private int min;
     private int max;
 
+    public DurationProvider() {
+    }
+
     public DurationProvider(int min, int max) {
         this.min = min;
         this.max = max;

@@ -11,8 +11,12 @@ package tareaprogramada2.datos1.register;
  */
 public class OfficeQuantity {
 
-    public enum QuantityO {
-
+    private int greenQuantity;
+    private int yellowQuantity;
+    private int redQuantity;
+    private int attentionQuantity;
+    
+    
     }
 
     /**
@@ -24,4 +28,4 @@ public class OfficeQuantity {
      * int seis, int siete, int ocho, int nueve, int diez) { this.uno = 1;
      * this.dos = 2; }
      */
-}
+
