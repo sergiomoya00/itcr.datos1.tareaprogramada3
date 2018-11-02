@@ -7,8 +7,8 @@ package tareaprogramada3.datos1.structures;
 
 /**
  *
- * @author 
+ * @author
  */
-public class LinkedList {
+public class Structure {
     
 }
