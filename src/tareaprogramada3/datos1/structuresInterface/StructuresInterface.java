@@ -8,12 +8,13 @@ package tareaprogramada3.datos1.structuresInterface;
 
 public interface StructuresInterface<T> {  //An interface to implement 
     
-    public abstract void add(T value);     
-    public abstract T remove(T object);
-    public abstract T search(T object);
-    public abstract int size();
-    public abstract void clear();
-    public abstract T set(T object, int index);
-    public abstract T get(int index);
+    public void add(T element);     
+    public  T remove(T element);
+    public  T search(T element);
+    public int size();
+    public  void clear();
+    public boolean isEmpty();
+    public T set(T element, int index);
+    public T get(int index);
 
 }
