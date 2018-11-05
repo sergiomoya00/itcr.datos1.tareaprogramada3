@@ -1,27 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tareaprogramada3.datos1.structures.Graph;
+
+import java.util.*;
 
 import tareaprogramada3.datos1.structuresInterface.StructuresInterface;
 
-
-public class Graph implements StructuresInterface{
+public class Graph<T> implements StructuresInterface{
+    
+    
+    public LinkedList <VertexNode> vertexes;  //List of vertex of the graph
 
     @Override
-    public void add() {
+    public void add(Object value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+  
+    
+    
+
+    @Override
+    public Object remove(Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void remove(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void search(Object object) {
+    public Object search(Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -44,5 +47,9 @@ public class Graph implements StructuresInterface{
     public Object get(int index) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
+
+   
     
 }

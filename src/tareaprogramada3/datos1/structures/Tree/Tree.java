@@ -16,12 +16,12 @@ public class Tree implements StructuresInterface
     }
 
     @Override
-    public void remove(Object object) {
+    public Object remove(Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void search(Object object) {
+    public Object search(Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -44,5 +44,7 @@ public class Tree implements StructuresInterface
     public Object get(int index) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
     
 }

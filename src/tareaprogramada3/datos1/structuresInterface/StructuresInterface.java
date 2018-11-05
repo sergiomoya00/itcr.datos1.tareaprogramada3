@@ -8,9 +8,9 @@ package tareaprogramada3.datos1.structuresInterface;
 
 public interface StructuresInterface<T> {  //An interface to implement 
     
-    public abstract void add();     
-    public abstract void remove(T object);
-    public abstract void search(T object);
+    public abstract void add(T value);     
+    public abstract T remove(T object);
+    public abstract T search(T object);
     public abstract int size();
     public abstract void clear();
     public abstract T set(T object, int index);
