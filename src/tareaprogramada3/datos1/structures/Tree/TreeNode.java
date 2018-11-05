@@ -5,11 +5,6 @@
  */
 package tareaprogramada3.datos1.structures.Tree;
 
-/**
- *
- * @author Shirley
- */
-
 
 public class TreeNode<T> {
     
@@ -22,8 +17,6 @@ public class TreeNode<T> {
 
     public TreeNode(T value) {
         this.value = value;
-        this.subRight = null;
-        this.subLeft = null;
     }
 
     public TreeNode(T value, TreeNode subRight, TreeNode subLeft) {
@@ -37,7 +30,10 @@ public class TreeNode<T> {
         this.subRight = subRight;
         this.subLeft = null;
     }
-   
+    
+    public TreeNode(TreeNode subRight){
+        this.subRight = subRight;
+    }
   
     public T getValue() {
         return value;
@@ -62,8 +58,4 @@ public class TreeNode<T> {
     public void setSubLeft(TreeNode subLeft) {
         this.subLeft = subLeft;
     }
-    
-    
-    
-    
 }
