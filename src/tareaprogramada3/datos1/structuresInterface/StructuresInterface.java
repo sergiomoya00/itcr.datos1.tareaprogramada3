@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tareaprogramada3.datos1.structures;
+package tareaprogramada3.datos1.structuresInterface;
 
 
 public interface StructuresInterface<T> {  //An interface to implement 

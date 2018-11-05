@@ -3,15 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tareaprogramada3.datos1.structures.LinkedList;
+package tareaprogramada3.datos1.structures.Tree;
 
-import tareaprogramada3.datos1.structures.StructuresInterface;
+import tareaprogramada3.datos1.structuresInterface.StructuresInterface;
 
-/**
- *
- * @author 
- */
-public class LinkedList implements StructuresInterface {
+public class Tree implements StructuresInterface
+{
 
     @Override
     public void add() {
