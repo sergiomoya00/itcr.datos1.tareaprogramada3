@@ -9,7 +9,7 @@ import tareaprogramada3.datos1.structuresInterface.StructuresInterface;
 
 public class Tree<T extends Comparable<T>> implements StructuresInterface {
 
-    TreeNode root;
+    TreeNode<T> root;
     public int size;
 
     public Tree() {
@@ -24,10 +24,11 @@ public class Tree<T extends Comparable<T>> implements StructuresInterface {
             newNode = root;
         }
 
-        TreeNode current = root;
-        TreeNode father;
+        TreeNode<T> current = root;
+        TreeNode<T> father;
         while (true) {
             father = current;
+
             if (current.getValue().compareTo(element) < 0) { //NO SE EJECUTA BIEN EL CompareTo
                 current = current.subLeft;
                 if (current == null) {
@@ -51,9 +52,29 @@ public class Tree<T extends Comparable<T>> implements StructuresInterface {
             return true;
         }
         return false;
-   }
    
-
+    }
+    
+    public T searchMin(){
+        TreeNode<T> current = this.root;
+        
+        while (! current.subLeft.isEmpty()){     //No lo lee, supongo que por estar en la interfaz
+            current = current.subLeft;
+        }
+        
+        return current.getValue();
+    }
+    
+    
+    public T searchMax(){
+        TreeNode<T> current = this.root;
+        
+        while (! current.subRight.isEmpty()){     //No lo lee, supongo que por estar en la interfaz
+            current = current.subRight;
+        }
+        return current.getValue();
+    }
+    
     @Override
     public Object remove(Object element) {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -65,8 +86,8 @@ public class Tree<T extends Comparable<T>> implements StructuresInterface {
             return null;
         }
 
-        TreeNode current = root;
-        TreeNode father;
+        TreeNode<T> current = root;
+        TreeNode<T> father;
 
         while (true) {
             father = current;
@@ -77,7 +98,8 @@ public class Tree<T extends Comparable<T>> implements StructuresInterface {
 
             if (current.getValue().equals(element)) {
                 break;
-            } else if (current.getValue().compareTo(element) < 0) { //NO SE EJECUTA BIEN EL CompareTo
+            } 
+            else if (current.getValue().compareTo(element) < 0) { //NO SE EJECUTA BIEN EL CompareTo
                 current = current.subLeft;
             }
             else {
