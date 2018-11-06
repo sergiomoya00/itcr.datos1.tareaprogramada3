@@ -6,7 +6,7 @@
 package tareaprogramada3.datos1.structuresInterface;
 
 
-public interface StructuresInterface<T> {  //An interface to implement 
+public interface StructuresInterface<T extends Comparable<T>> {  //An interface to implement 
     
     public void add(T element);     
     public  T remove(T element);
@@ -14,7 +14,5 @@ public interface StructuresInterface<T> {  //An interface to implement
     public int size();
     public  void clear();
     public boolean isEmpty();
-    public T set(T element, int index);
-    public T get(int index);
 
 }

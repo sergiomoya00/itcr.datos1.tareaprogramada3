@@ -17,8 +17,8 @@ public class Tree<T extends Comparable<T>> implements StructuresInterface {
         size = 0;
     }
 
-    @Override
-    public void add(Object element) {
+    
+    public void add(T element) {
         TreeNode newNode = new TreeNode(element);
         if (isEmpty()) {
             newNode = root;
@@ -29,7 +29,7 @@ public class Tree<T extends Comparable<T>> implements StructuresInterface {
         while (true) {
             father = current;
 
-            if (current.getValue().compareTo(element) < 0) { //NO SE EJECUTA BIEN EL CompareTo
+            if ((current.getValue()).compareTo(element) < 0) { //NO SE EJECUTA BIEN EL CompareTo
                 current = current.subLeft;
                 if (current == null) {
                     father.subLeft = newNode;
@@ -81,7 +81,7 @@ public class Tree<T extends Comparable<T>> implements StructuresInterface {
     }
 
     @Override
-    public Object search(Object element) {
+    public Object search(T element) {
         if (isEmpty()) {
             return null;
         }
@@ -99,7 +99,7 @@ public class Tree<T extends Comparable<T>> implements StructuresInterface {
             if (current.getValue().equals(element)) {
                 break;
             } 
-            else if (current.getValue().compareTo(element) < 0) { //NO SE EJECUTA BIEN EL CompareTo
+            else if ((current.getValue()).compareTo(element) < 0) { //NO SE EJECUTA BIEN EL CompareTo
                 current = current.subLeft;
             }
             else {
@@ -125,15 +125,6 @@ public class Tree<T extends Comparable<T>> implements StructuresInterface {
         root = null;
     }
 
-    @Override
-    public Object set(Object element, int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Object get(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public boolean isEmpty() {
@@ -141,6 +132,16 @@ public class Tree<T extends Comparable<T>> implements StructuresInterface {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void add(Object element) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object search(Object element) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
