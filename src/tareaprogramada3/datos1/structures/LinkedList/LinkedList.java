@@ -1,42 +1,35 @@
-package tareaprogramada3.datos1.structures.Graph;
-
-import java.util.*;
-import tareaprogramada3.datos1.structuresInterface.GraphBehavior;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tareaprogramada3.datos1.structures.LinkedList;
 
 import tareaprogramada3.datos1.structuresInterface.StructuresInterface;
 
 /**
  *
- * @author Milagro
- * @param <T>
+ * @author 
  */
-public class Graph<T> implements GraphBehavior<Comparable<T>> {
+public class LinkedList implements StructuresInterface {
 
-    public LinkedList<VertexNode> vertexes;  //List of vertex of the graph
-    public LinkedList<VertexNode> edges;
+    @Override
+    public void add() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object remove(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object search(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void add(Comparable<T> element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Comparable<T> remove(Comparable<T> element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Comparable<T> search(Comparable<T> element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean isEmpty() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -45,4 +38,16 @@ public class Graph<T> implements GraphBehavior<Comparable<T>> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public Object set(Object object, int index) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Object get(int index) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
+    
 }

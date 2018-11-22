@@ -26,6 +26,5 @@ public class GeoCode {
                 "1600 Amphitheatre Parkway Mountain View, CA 94043").awaitIgnoreError();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         System.out.println(gson.toJson(results[0].addressComponents));
-        
     }
 }
