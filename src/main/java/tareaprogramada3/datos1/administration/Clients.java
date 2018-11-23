@@ -5,7 +5,7 @@
  */
 package tareaprogramada3.datos1.administration;
 
-import tareaprogramada3.datos1.structures.Graph.Grafo;
+import tareaprogramada3.datos1.structures.Graph.*;
 
 /**
  *
