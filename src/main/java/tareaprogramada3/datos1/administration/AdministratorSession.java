@@ -10,6 +10,12 @@ import tareaprogramada3.datos1.structures.Graph.*;
 
 public class AdministratorSession {
 
+    private static final AdministratorSession instance = new AdministratorSession();
+
+    public static AdministratorSession getInstance() {
+        return instance;
+    }
+
     BinarySearchTree<Clients> clients = new BinarySearchTree<>();
 
     public boolean insertClients(Clients newClient) {
