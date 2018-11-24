@@ -54,9 +54,8 @@ public class AdministratorSession {
     }
 
     //Get the information from a place
-    public void getPlaceInfo(String name) {
-        sites.obtenerVerticePorID(name);
-
+    public Vertice<Object> getPlaceInfo(String name) {
+        return sites.obtenerVerticePorID(name);
     }
 
 }
