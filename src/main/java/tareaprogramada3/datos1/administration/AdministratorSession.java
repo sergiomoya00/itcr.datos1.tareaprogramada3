@@ -17,8 +17,6 @@ public class AdministratorSession {
 	private static Dijkstra dijkstra;
         
         ControladorGrafo places = new ControladorGrafo();
-        
-        
         BinarySearchTree<Clients> clients = new BinarySearchTree<>();
         
         public boolean insertClients(Clients newClient){
