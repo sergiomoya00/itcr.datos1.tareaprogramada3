@@ -10,8 +10,6 @@ import tareaprogramada3.datos1.structures.Graph.*;
 
 public class AdministratorSession {
 
-    ControladorGrafo places = new ControladorGrafo();
-
     BinarySearchTree<Clients> clients = new BinarySearchTree<>();
 
     public boolean insertClients(Clients newClient) {
@@ -54,5 +52,9 @@ public class AdministratorSession {
         sites.obtenerVerticePorID(name);
 
     }
+    
+    
+    
+    
 
 }
