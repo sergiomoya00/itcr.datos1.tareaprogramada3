@@ -44,7 +44,8 @@ public class AdministratorSession {
     ControladorGrafo sites = new ControladorGrafo();
 
     //Add a place to a vertex
-    public void newVertexForPlaces(String name, Object node) {
+    
+    public void newVertexForPlaces(String name, String node) {
         sites.nuevoVertice(name, node);
     }
 
@@ -57,5 +58,41 @@ public class AdministratorSession {
     public Vertice<Object> getPlaceInfo(String name) {
         return sites.obtenerVerticePorID(name);
     }
+    // Luego se inicializa el grafo que actuara directamente sobre las listas del
+    // controlador
+    
+    Grafo grafo = new Grafo(sites.getVertices(), sites.getAristas());
+    //System.out.println(grafo.toString());
+
+    // Por �ltimo se utliza el Dijkstra para obtener la ruta m�s corta de un punto a
+    // otro
+    
+    
+    Dijkstra shortestRoute = new Dijkstra(grafo);
+    
+    public void showBestRoute(){
+        shortestRoute.ejecutarGrafo(shortestRoute.getVertices().get(0));
+    
+    }
+    
+    
+    ///OBTIENE LAS DISTANCIAS A TODOS LOS VERTICES A PARTIR DEL GET(NUM) anterior
+    public void showDistancesFromASite(){
+        System.out.println(shortestRoute.getDistancias().toString());
+    }
+
+    ///OBTIENE EL CAMINO M�S CORTO A PARTIR DE get(0) a get(4) EN ESTE CASO , puede ser cualquiera
+    public void shortestRouteFront2Points(){
+        System.out.println(shortestRoute.obtenerListadoCamino(shortestRoute.getVertices().get(3))); //El get(3) puede cambiar
+    }
+		
+    //Obtener la distancia entre dos v�rtices
+    public void DistanceFrom2Points(){
+        double distanciaMinima = shortestRoute.getDistancias().get(shortestRoute.getVertices().get(3));
+        System.out.println(distanciaMinima);
+    }
+    
+    
+    
 
 }
