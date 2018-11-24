@@ -50,9 +50,35 @@ public class AdministratorSession {
     //Get the information from a place
     public void getPlaceInfo(String name) {
         sites.obtenerVerticePorID(name);
+    }
+    // Luego se inicializa el grafo que actuara directamente sobre las listas del
+    // controlador
+    
+    Grafo grafo = new Grafo(sites.getVertices(), sites.getAristas());
+    //System.out.println(grafo.toString());
 
+    // Por �ltimo se utliza el Dijkstra para obtener la ruta m�s corta de un punto a
+    // otro
+    
+    
+    Dijkstra shortestRoute = new Dijkstra(grafo);
+    
+    public void showBestRoute(){
+        shortestRoute.ejecutarGrafo(shortestRoute.getVertices().get(0));
+    
     }
     
+    
+    ///OBTIENE LAS DISTANCIAS A TODOS LOS VERTICES A PARTIR DEL GET(NUM) anterior
+    public void 
+    System.out.println(dijkstra.getDistancias().toString());
+
+    ///OBTIENE EL CAMINO M�S CORTO A PARTIR DE get(0) a get(4) EN ESTE CASO , puede ser cualquiera
+    System.out.println(dijkstra.obtenerListadoCamino(dijkstra.getVertices().get(3)));
+		
+    //Obtener la distancia entre dos v�rtices
+    double distanciaMinima = dijkstra.getDistancias().get(dijkstra.getVertices().get(3));
+    System.out.println(distanciaMinima);
     
     
     
