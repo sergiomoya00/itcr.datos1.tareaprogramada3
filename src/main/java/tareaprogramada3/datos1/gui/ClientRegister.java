@@ -49,7 +49,7 @@ public class ClientRegister extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Registro de cliente");
 
@@ -144,8 +144,7 @@ public class ClientRegister extends javax.swing.JFrame {
         this.client.setTelephone(phone);
         this.client.setMail(emailtxt.getText());
         this.client.setBirth(birthtxt.getText());
-        //AdministratorSession.getInstance().addCustomer(customer);
-        //OrderComplete order = new OrderComplete();
+        AdministratorSession.getInstance().insertClients(client);
 
         SelectPlaces selectp = new SelectPlaces();
         selectp.setVisible(true);         // TODO add your handling code here:

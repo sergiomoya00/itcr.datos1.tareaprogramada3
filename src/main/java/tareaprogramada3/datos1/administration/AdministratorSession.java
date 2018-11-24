@@ -45,7 +45,7 @@ public class AdministratorSession {
 
     //Add a place to a vertex
     
-    public void newVertexForPlaces(String name, Place node) {
+    public void newVertexForPlaces(String name, String node) {
         sites.nuevoVertice(name, node);
     }
 
@@ -55,8 +55,8 @@ public class AdministratorSession {
     }
 
     //Get the information from a place
-    public void getPlaceInfo(String name) {
-        sites.obtenerVerticePorID(name);
+    public Vertice<Object> getPlaceInfo(String name) {
+        return sites.obtenerVerticePorID(name);
     }
     // Luego se inicializa el grafo que actuara directamente sobre las listas del
     // controlador
