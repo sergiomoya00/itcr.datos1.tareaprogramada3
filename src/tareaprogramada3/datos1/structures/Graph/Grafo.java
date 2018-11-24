@@ -1,13 +1,13 @@
-package graph;
+package tareaprogramada3.datos1.structures.Graph;
 
 import java.util.List;
 
 /**
  * La clase grafo permite generar los linkeos entre los v�rtices y las aristas
- * 
- * @author AARON RM
- *
+
  */
+
+//UNE VERTICES Y ARISTAS
 public class Grafo {
 	private List<Vertice<Object>> vertices;
 	private List<Arista> aristas;

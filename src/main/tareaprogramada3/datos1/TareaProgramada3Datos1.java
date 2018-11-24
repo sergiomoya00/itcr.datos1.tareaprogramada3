@@ -1,4 +1,4 @@
-package tareaprogramada3.datos1;
+package main.tareaprogramada3.datos1;
 
 
 public class TareaProgramada3Datos1 {

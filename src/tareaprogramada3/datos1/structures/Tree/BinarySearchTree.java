@@ -1,4 +1,4 @@
-package tareaprogramada3.datos1.structures.tree;
+package tareaprogramada3.datos1.structures.Tree;
 
 import java.util.Comparator;
 import java.util.Iterator;
@@ -13,7 +13,10 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 	 * @param <X>
 	 */
 	@SuppressWarnings("hiding")
-	private class Node<X> {
+	
+
+        //NODO PARA LOS ELEMENTOS DEL ÁRBOL (ROOT Y COMPARATOR)
+        private class Node<X> {
 		private X elemento;
 		private Node<X> izq, der;
 
@@ -67,6 +70,8 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 		comparator = comp;
 	}
 
+        
+        //COMPARA LOS ELEMENTOS PARA VER DONDE SE INSERTA EL NUEVO ELEMENTO
 	private int compare(X elemA, X elemB) {
 		if (comparator == null)
 			return elemA.compareTo(elemB);
@@ -79,10 +84,14 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 	 * 
 	 * @param data
 	 */
+        
+        //PARA INSERTAR Y ALAMACENAR EL DATO   //ESTE ES EL QUE SE TIENE QUE LLAMAR EN EL MANAGER
 	public void insertarNodo(X data) {
 		raiz = insert(raiz, data);
 	}
 
+        
+        //PARA DETERMINAR LA POSICIÓN 
 	private Node<X> insert(Node<X> nuevoNodo, X nodoInsertado) {
 		if (nuevoNodo == null)
 			return new Node<X>(nodoInsertado);
@@ -104,10 +113,13 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 	 * @param toSearch
 	 * @return
 	 */
+        //PARA BUSCAR UN ELEMENTO DE TIPO GÉNERICO. //ESTE ES EL QUE SE PONE EN MANAGER
 	public boolean buscarNodo(X toSearch) {
 		return search(raiz, toSearch);
 	}
-
+        
+        
+        //PARA UTILIZAR EL COMPARATOR Y ENCONTAR EL ELEMENTO DESEADO
 	private boolean search(Node<X> p, X toSearch) {
 		if (p == null)
 			return false;
@@ -124,10 +136,14 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 	 * 
 	 * @param eliminarNodo
 	 */
+        
+        
+        //PARA ELIMINAR UN ELEMENTO, ESTA ES LA FUNCIÓN QUE SE LLAMA EN EL MANAGER
 	public void eliminarNodo(X eliminarNodo) {
 		raiz = delete(raiz, eliminarNodo);
 	}
-
+        
+        //FUNCION AUXILIAR DEL BORRADO DEL ELEMENTO
 	private Node<X> delete(Node<X> nodoTemp, X nodoElim) {
 		if (nodoTemp == null)
 			throw new RuntimeException("cannot delete.");
@@ -149,7 +165,8 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 		}
 		return nodoTemp;
 	}
-
+        
+        //PARA OBTENER UN DATO
 	private X obtenerDato(Node<X> p) {
 		while (p.der != null)
 			p = p.der;
@@ -169,12 +186,14 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 	}
 
 	/**
-	 * Preorden
+	 * PreordenS
 	 */
+        //RECORRIDO PREORDEN
 	public void preOrder() {
 		preOrderHelper(raiz);
 	}
-
+        
+        //RECORRIDO PREORDEN
 	private void preOrderHelper(Node<X> nodoTemp) {
 		if (nodoTemp != null) {
 			System.out.print(nodoTemp + " ");
@@ -216,6 +235,7 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 	/**
 	 * Clonado
 	 */
+        //UNA CLONACIÓN RARA QUE SE SACÓ ESE HP DEL CULO
 	public BinarySearchTree<X> clone() {
 		BinarySearchTree<X> twin = null;
 
@@ -240,6 +260,8 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 	 * 
 	 * @return
 	 */
+        
+        //ALTURA DEL ÁRBOL
 	public int height() {
 		return height(raiz);
 	}
@@ -256,10 +278,11 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 	 * 
 	 * @return
 	 */
+        //CONTAR LAS HOJAS
 	public int countLeaves() {
 		return countLeaves(raiz);
 	}
-
+        
 	private int countLeaves(Node<X> p) {
 		if (p == null)
 			return 0;
@@ -275,6 +298,8 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 	 * @param pre
 	 * @param in
 	 */
+        
+        //RESTAURAR EL ÁRBOL EN ORDEN Y EN PREORDEN
 	public void restore(X[] pre, X[] in) {
 		raiz = restore(pre, 0, pre.length - 1, in, 0, in.length - 1);
 	}
@@ -299,6 +324,8 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 	 * 
 	 * @return
 	 */
+        
+        ///ANCHURA DEL ÁRBOL
 	public int width() {
 		int max = 0;
 		for (int k = 0; k <= height(); k++) {
@@ -316,6 +343,7 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 	 * @param depth
 	 * @return
 	 */
+       
 	public int width(Node<X> p, int depth) {
 		if (p == null)
 			return 0;
@@ -331,6 +359,8 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 	 * 
 	 * @return
 	 */
+        
+        // CAMINO MÁS LARGO ENTRE TODAS LAS HOJAS
 	public int diameter() {
 		return diameter(raiz);
 	}

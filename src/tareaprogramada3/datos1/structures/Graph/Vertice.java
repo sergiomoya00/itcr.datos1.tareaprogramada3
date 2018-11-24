@@ -1,4 +1,4 @@
-package graph;
+package tareaprogramada3.datos1.structures.Graph;
 
 /**
  * Los v�rtices del Dijkstra son sus nodos de información, por lo que estos

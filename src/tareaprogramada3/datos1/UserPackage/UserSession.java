@@ -5,8 +5,10 @@
  */
 package tareaprogramada3.datos1.UserPackage;
 
-
+/**
+ *
+ * @author 
+ */
 public class UserSession {
-
     
 }

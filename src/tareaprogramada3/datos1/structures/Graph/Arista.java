@@ -1,4 +1,4 @@
-package graph;
+package tareaprogramada3.datos1.structures.Graph;
 
 /**
  * Esta clase posee el comportamiento que tendrá el Dijkstra en el momento de

@@ -1,6 +1,5 @@
-package graph;
+package tareaprogramada3.datos1.structures.Graph;
 
-import graph.Grafo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,6 +27,7 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Object>> {
 	 * 
 	 * @param Grafo que se usará para el comportamiento 
 	 */
+        
 	public Dijkstra(Grafo Grafo) {
 		this.vertices = new ArrayList<Vertice<Object>>(Grafo.getVertices());
 		this.aristas = new ArrayList<Arista>(Grafo.getAristas());
@@ -100,6 +100,9 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Object>> {
 	 *            Nodo hacia el cual se desea ir
 	 * @return La distancia entre v�rtices de la arista
 	 */
+        
+        
+        //RETORNA CAMINO MÁS CORTO
 	private double obtenerDistanciaMasCorta(Vertice<Object> pDestino) {
 		Double dist = distancias.get(pDestino);
 		if (dist == null)
