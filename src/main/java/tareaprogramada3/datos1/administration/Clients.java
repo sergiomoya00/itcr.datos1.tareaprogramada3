@@ -11,7 +11,7 @@ import tareaprogramada3.datos1.structures.Graph.*;
  *
  * @author
  */
-public class Clients {
+public class Clients implements Comparable<Clients> {
     private String name;
     private int id;
     private int telephone;
@@ -64,6 +64,11 @@ public class Clients {
 
     public void setBirth(String birth) {
         this.birth = birth;
+    }
+
+    @Override
+    public int compareTo(Clients o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
