@@ -45,7 +45,7 @@ public class AdministratorSession {
 
     //Add a place to a vertex
     
-    public void newVertexForPlaces(String name, Object node) {
+    public void newVertexForPlaces(String name, Place node) {
         sites.nuevoVertice(name, node);
     }
 
