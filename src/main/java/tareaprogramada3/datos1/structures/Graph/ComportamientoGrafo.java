@@ -10,8 +10,11 @@ import java.util.*;
  *            Este genérico permite utilizar cualquier objeto, de modo que este
  *            objeto sea parte del nodo del grafo
  */
+
+//MÉTODOS PREDETERMINADOS DE TODOS LOS GRAFOS
 public interface ComportamientoGrafo<objeoGenerico> {
-	public void ejecutarGrafo(objeoGenerico Grafo);
+	
+        public void ejecutarGrafo(objeoGenerico Grafo);
 
 	public LinkedList<objeoGenerico> obtenerListadoCamino(objeoGenerico pDestino);
 }

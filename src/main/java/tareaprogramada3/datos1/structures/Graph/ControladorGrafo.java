@@ -12,6 +12,8 @@ import tareaprogramada3.datos1.structures.Graph.Vertice;
  * clase para controlar el grafo
  */
 public class ControladorGrafo {
+    
+        
 	private List<Vertice<Object>> vertices;
 	private List<Arista> aristas;
 	private LinkedList<Vertice<Object>> trazo;
@@ -31,7 +33,8 @@ public class ControladorGrafo {
 	 * 
 	 * @return trazo con camino
 	 */
-	public LinkedList<Vertice<Object>> getTrazo() {
+        
+        public LinkedList<Vertice<Object>> getTrazo() {
 		return trazo;
 	}
 
@@ -90,11 +93,11 @@ public class ControladorGrafo {
 	 * @param distanciaTrayecto   La distancia que hay entre el Vértice de partida
 	 *                            y el v�rtice de llegada
 	 */
-	public void nuevaArista(String id_arista, int id_lista_vertices_A, int id_lista_vertices_B,
-			double distanciaTrayecto) {
-
-		Arista arista = new Arista(id_arista, vertices.get(id_lista_vertices_A),
-				vertices.get(id_lista_vertices_B), distanciaTrayecto);
+	
+        // CREA UNA NUEVA ARISTA
+        public void nuevaArista(String id_arista, int id_lista_vertices_A, int id_lista_vertices_B, double distanciaTrayecto) {
+               
+		Arista arista = new Arista(id_arista, vertices.get(id_lista_vertices_A), vertices.get(id_lista_vertices_B), distanciaTrayecto);
 		aristas.add(arista);
 	}
 
@@ -104,6 +107,8 @@ public class ControladorGrafo {
 	 * @param id_vertice  ID del vértice que se desea cear
 	 * @param nodoExterno Objeto externo que se desea insertar dentro del vértice
 	 */
+        
+        //CREA NUEVO VÉRTICE
 	public void nuevoVertice(String id_vertice, Object nodoExterno) {
 		Vertice<Object> vertice = new Vertice<Object>(id_vertice, nodoExterno);
 		vertices.add(vertice);
@@ -115,6 +120,8 @@ public class ControladorGrafo {
 	 * @param id_vertice id del vértice buscado
 	 * @return vértice con el valor buscado
 	 */
+        
+        //PARA OBTENER UN VÉRTICE POR ID
 	public Vertice<Object> obtenerVerticePorID(String id_vertice) {
 		Vertice<Object> verticeNuevo = null;
 		for (Vertice<Object> verticeAnidado : vertices) {
