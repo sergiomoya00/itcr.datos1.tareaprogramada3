@@ -44,6 +44,7 @@ public class AdministratorSession {
     ControladorGrafo sites = new ControladorGrafo();
 
     //Add a place to a vertex
+    
     public void newVertexForPlaces(String name, Object node) {
         sites.nuevoVertice(name, node);
     }
@@ -76,15 +77,20 @@ public class AdministratorSession {
     
     
     ///OBTIENE LAS DISTANCIAS A TODOS LOS VERTICES A PARTIR DEL GET(NUM) anterior
-    public void 
-    System.out.println(dijkstra.getDistancias().toString());
+    public void showDistancesFromASite(){
+        System.out.println(shortestRoute.getDistancias().toString());
+    }
 
     ///OBTIENE EL CAMINO M�S CORTO A PARTIR DE get(0) a get(4) EN ESTE CASO , puede ser cualquiera
-    System.out.println(dijkstra.obtenerListadoCamino(dijkstra.getVertices().get(3)));
+    public void shortestRouteFront2Points(){
+        System.out.println(shortestRoute.obtenerListadoCamino(shortestRoute.getVertices().get(3))); //El get(3) puede cambiar
+    }
 		
     //Obtener la distancia entre dos v�rtices
-    double distanciaMinima = dijkstra.getDistancias().get(dijkstra.getVertices().get(3));
-    System.out.println(distanciaMinima);
+    public void DistanceFrom2Points(){
+        double distanciaMinima = shortestRoute.getDistancias().get(shortestRoute.getVertices().get(3));
+        System.out.println(distanciaMinima);
+    }
     
     
     
