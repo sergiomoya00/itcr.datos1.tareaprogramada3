@@ -130,6 +130,22 @@ public class BinarySearchTree<X extends Comparable<X>> implements Iterable<X> {
 		else
 			return search(p.der, toSearch);
 	}
+        
+        
+        public X getNode(X element){
+            return searchGetNode(raiz, element);
+        }
+
+	private X searchGetNode(Node<X> p, X toSearch) {
+		if (p == null)
+			return null;
+		else if (compare(toSearch, p.elemento) == 0)
+			return p.elemento;
+		else if (compare(toSearch, p.elemento) < 0)
+			return searchGetNode(p.izq, toSearch);
+		else
+			return searchGetNode(p.der, toSearch);
+	}
 
 	/**
 	 * Eliminar

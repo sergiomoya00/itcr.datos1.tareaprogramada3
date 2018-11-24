@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 package tareaprogramada3.datos1.manager;
+import tareaprogramada3.datos1.administration.*;
 
-/**
- *
- * @author
- */
 public class Managment {
     
+
 }
