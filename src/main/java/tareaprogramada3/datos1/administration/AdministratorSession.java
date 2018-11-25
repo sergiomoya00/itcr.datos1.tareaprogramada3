@@ -19,12 +19,12 @@ public class AdministratorSession {
     BinarySearchTree<Clients> clients = new BinarySearchTree<>();
 
     public boolean insertClients(Clients newClient) {
-        clients.insertarNodo(newClient);
+        clients.insertNode(newClient);
         return true;
     }
 
     public boolean verifyClient(Clients searchTo) {  //Search Node
-        if (clients.buscarNodo(searchTo)) {
+        if (clients.searchNode(searchTo)) {
             return true;
         }
         return false;
@@ -36,59 +36,59 @@ public class AdministratorSession {
 
     public Clients deleteClients(Clients clientToDelete) {
         if (verifyClient(clientToDelete)) {
-            clients.eliminarNodo(clientToDelete);
+            clients.deleteNode(clientToDelete);
         }
         return null;
     }
 
-    ControladorGrafo sites = new ControladorGrafo();
+    GraphLeader sites = new GraphLeader();
 
     //Add a place to a vertex
     
-    public void newVertexForPlaces(String name, String node) {
-        sites.nuevoVertice(name, node);
+    public void newVertexForPlaces(String name, Place node) {
+        sites.newVertexNode(name, node);
     }
 
     //Add an edge 
-    public void addEdge(String name, int idA, int idB, double distance) {
-        sites.nuevaArista(name, idA, idB, distance);
+    public void addEdge(String name, int id_A, int id_B, double distance) {
+        sites.newEdge(name, id_A, id_B, distance);
     }
 
     //Get the information from a place
-    public Vertice<Object> getPlaceInfo(String name) {
-        return sites.obtenerVerticePorID(name);
+    public VertexNode<Place> getPlaceInfo(String name) {
+        return sites.getVertexNodeByUsing_Id(name);
     }
     // Luego se inicializa el grafo que actuara directamente sobre las listas del
     // controlador
     
-    Grafo grafo = new Grafo(sites.getVertices(), sites.getAristas());
+    Graph graphForSites = new Graph(sites.getVertexNodes(), sites.getEdges());
     //System.out.println(grafo.toString());
 
     // Por �ltimo se utliza el Dijkstra para obtener la ruta m�s corta de un punto a
     // otro
     
     
-    Dijkstra shortestRoute = new Dijkstra(grafo);
+    Dijkstra shortestRoute = new Dijkstra(graphForSites);
     
     public void showBestRoute(){
-        shortestRoute.ejecutarGrafo(shortestRoute.getVertices().get(0));
+        shortestRoute.runGraph(shortestRoute.getVertexNodes().get(0));
     
     }
     
     
     ///OBTIENE LAS DISTANCIAS A TODOS LOS VERTICES A PARTIR DEL GET(NUM) anterior
     public void showDistancesFromASite(){
-        System.out.println(shortestRoute.getDistancias().toString());
+        System.out.println(shortestRoute.getDistances().toString());
     }
 
     ///OBTIENE EL CAMINO M�S CORTO A PARTIR DE get(0) a get(4) EN ESTE CASO , puede ser cualquiera
     public void shortestRouteFront2Points(){
-        System.out.println(shortestRoute.obtenerListadoCamino(shortestRoute.getVertices().get(3))); //El get(3) puede cambiar
+        System.out.println(shortestRoute.getListedRoute(shortestRoute.getVertexNodes().get(3))); //El get(3) puede cambiar
     }
 		
     //Obtener la distancia entre dos v�rtices
     public void DistanceFrom2Points(){
-        double distanciaMinima = shortestRoute.getDistancias().get(shortestRoute.getVertices().get(3));
+        double distanciaMinima = shortestRoute.getDistances().get(shortestRoute.getVertexNodes().get(3));
         System.out.println(distanciaMinima);
     }
     

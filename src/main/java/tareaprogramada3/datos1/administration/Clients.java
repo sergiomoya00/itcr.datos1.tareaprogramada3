@@ -17,13 +17,13 @@ public class Clients implements Comparable<Clients> {
     private int telephone;
     private String mail;
     private String birth;
-    private Grafo subgraph;
+    private Graph subgraph;
 
-    public Grafo getSubgraph() {
+    public Graph getSubgraph() {
         return subgraph;
     }
 
-    public void setSubgraph(Grafo subgraph) {
+    public void setSubgraph(Graph subgraph) {
         this.subgraph = subgraph;
     }
     public String getName() {

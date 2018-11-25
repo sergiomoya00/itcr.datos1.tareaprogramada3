@@ -14,173 +14,173 @@ import java.util.Set;
  * Esta clase posee el comportamiento que tendrá el Dijkstra en el momento de
  * ser ejecutado
  * */
-public class Dijkstra implements ComportamientoGrafo<Vertice<Place>> {
-	private List<Vertice<Place>> vertices; // Listado de vertices
-	private List<Arista> aristas; // Listado de aristas
-	private Set<Vertice<Place>> verticeControlado; // Corresponde a vértices ya contados en un trayecto
-	private Set<Vertice<Place>> verticeNoControlado; // Corresponde a los vértices no contados en el trayecto
-	private Map<Vertice<Place>, Vertice<Place>> predecesores; // Vértices vecinos del trayecto
-	private Map<Vertice<Place>, Double> distancias; // Guarda la distancia de un vertice hacia todos los demás
+public class Dijkstra implements GraphBehavior<VertexNode<Place>> {
+	private List<VertexNode<Place>> vertexNodes; // Listado de vertexNodes
+	private List<Edge> edges; // Listado de edges
+	private Set<VertexNode<Place>> visitedVertex; // Corresponde a vértices ya contados en un trayecto
+	private Set<VertexNode<Place>> noVisitedVertex; // Corresponde a los vértices no contados en el trayecto
+	private Map<VertexNode<Place>, VertexNode<Place>> neighbors; // Vértices neighbors del trayecto
+	private Map<VertexNode<Place>, Double> distances; // Guarda la distancia de un vertex hacia todos los demás
 
 	/**
 	 * CONSTRUCTOR ComportamientoDijkstra Este constructor únicamente requiere de un
-	 * grafo para poder utilizarse Genera el comportamiento para dicho grafo
+	 * graph para poder utilizarse Genera el comportamiento para dicho graph
 	 * 
-	 * @param Grafo que se usará para el comportamiento 
+	 * @param Graph que se usará para el comportamiento 
 	 */
         
-	public Dijkstra(Grafo Grafo) {
-		this.vertices = new ArrayList<Vertice<Place>>(Grafo.getVertices());
-		this.aristas = new ArrayList<Arista>(Grafo.getAristas());
+	public Dijkstra(Graph graph) {
+		this.vertexNodes = new ArrayList<VertexNode<Place>>(graph.getVertexNodes());
+		this.edges = new ArrayList<Edge>(graph.getEdges());
 	}
 
 	// GETTERS AND SETTERS
-	public List<Vertice<Place>> getVertices() {
-		return vertices;
+	public List<VertexNode<Place>> getVertexNodes() {
+		return vertexNodes;
 	}
 
-	public void setVertices(List<Vertice<Place>> vertices) {
-		this.vertices = vertices;
+	public void setVertexNodes(List<VertexNode<Place>> vertexNodes) {
+		this.vertexNodes = vertexNodes;
 	}
 
-	public List<Arista> getAristas() {
-		return aristas;
+	public List<Edge> getEdges() {
+		return edges;
 	}
 
-	public void setAristas(List<Arista> aristas) {
-		this.aristas = aristas;
+	public void setEdges(List<Edge> edges) {
+		this.edges = edges;
 	}
 
-	public Set<Vertice<Place>> getVerticeControlado() {
-		return verticeControlado;
+	public Set<VertexNode<Place>> getVisitedVertexNode() {
+		return visitedVertex;
 	}
 
-	public void setVerticeControlado(Set<Vertice<Place>> verticeControlado) {
-		this.verticeControlado = verticeControlado;
+	public void setVisitedVertexNode(Set<VertexNode<Place>> visitedVertex) {
+		this.visitedVertex = visitedVertex;
 	}
 
-	public Set<Vertice<Place>> getVerticeNoControlado() {
-		return verticeNoControlado;
+	public Set<VertexNode<Place>> getnoVisitedVertexNode() {
+		return noVisitedVertex;
 	}
 
-	public void setVerticeNoControlado(Set<Vertice<Place>> verticeNoControlado) {
-		this.verticeNoControlado = verticeNoControlado;
+	public void setnoVisitedVertexNode(Set<VertexNode<Place>> noVisitedVertex) {
+		this.noVisitedVertex = noVisitedVertex;
 	}
 
-	public Map<Vertice<Place>, Vertice<Place>> getPredecesores() {
-		return predecesores;
+	public Map<VertexNode<Place>, VertexNode<Place>> getPredecesores() {
+		return neighbors;
 	}
 
-	public void setPredecesores(Map<Vertice<Place>, Vertice<Place>> predecesores) {
-		this.predecesores = predecesores;
+	public void setPredecesores(Map<VertexNode<Place>, VertexNode<Place>> neighbors) {
+		this.neighbors = neighbors;
 	}
 
-	public Map<Vertice<Place>, Double> getDistancias() {
-		return distancias;
+	public Map<VertexNode<Place>, Double> getDistances() {
+		return distances;
 	}
 
-	public void setDistancias(Map<Vertice<Place>, Double> distancias) {
-		this.distancias = distancias;
+	public void setDistancias(Map<VertexNode<Place>, Double> distances) {
+		this.distances = distances;
 	}
 
 	/**
-	 * Permite averiguar si un vertice se encuentra ya contado dentro del trazo
+	 * Permite averiguar si un vertex se encuentra ya contado dentro del stroke
 	 * 
-	 * @param vertice
+	 * @param vertex
 	 *            nodo que se desea comparar
 	 * @return True si se encuentra dentro de los nodos controlados
 	 */
-	private boolean esControlado(Vertice<Place> vertice) {
-		return verticeControlado.contains(vertice);
+	private boolean isVisited(VertexNode<Place> vertex) {
+		return visitedVertex.contains(vertex);
 	}
 
 	/**
 	 * Obtiene la distancia de los destinos dentro del trayecto
 	 * 
-	 * @param pDestino
+	 * @param T_Destiny
 	 *            Nodo hacia el cual se desea ir
-	 * @return La distancia entre v�rtices de la arista
+	 * @return La distancia entre v�rtices de la edge
 	 */
         
         
         //RETORNA CAMINO MÁS CORTO
-	private double obtenerDistanciaMasCorta(Vertice<Place> pDestino) {
-		Double dist = distancias.get(pDestino);
+	private double getShortestDistance(VertexNode<Place> T_Destiny) {
+		Double dist = distances.get(T_Destiny);
 		if (dist == null)
 			return Double.MAX_VALUE;
 		return dist;
 	}
 
 	/**
-	 * Permite obtener la distancia más corta de un vertice a otro
+	 * Permite obtener la distancia más corta de un vertex a otro
 	 * 
-	 * @param vertices
+	 * @param vertexNodes
 	 *            este set permite generar un listado de los diferentes nodos
 	 *            mapeados para configurar la salida más corta
 	 * @return Los v�rtices por los cuales es más corto el camino
 	 */
-	private Vertice<Place> obtenerMinimo(Set<Vertice<Place>> vertices) {
-		Vertice<Place> minimo = null;
-		for (Vertice<Place> vertice : vertices) {
-			if (minimo == null)
-				minimo = vertice;
+	private VertexNode<Place> getMinimium(Set<VertexNode<Place>> vertexNodes) {
+		VertexNode<Place> minimium = null;
+		for (VertexNode<Place> vertex : vertexNodes) {
+			if (minimium == null)
+				minimium = vertex;
 			else {
-				if (obtenerDistanciaMasCorta(vertice) < obtenerDistanciaMasCorta(minimo))
-					minimo = vertice;
+				if (getShortestDistance(vertex) < getShortestDistance(minimium))
+					minimium = vertex;
 			}
 		}
-		return minimo;
+		return minimium;
 	}
 
 	/**
-	 * Permite obtener los vecinos de un trazo desde un punto a otro del grafo
+	 * Permite obtener los neighbors de un stroke desde un punto a otro del graph
 	 * 
-	 * @param pVertice
-	 *            Que funcionará como centroide para obtener sus vecinos
+	 * @param T_VertexNode
+	 *            Que funcionará como centroide para obtener sus neighbors
 	 * @return Listado de vértices que conforman un camino en común
 	 */
-	private List<Vertice<Place>> obtenerVecinos(Vertice<Place> pVertice) {
-		List<Vertice<Place>> vecinos = new ArrayList<Vertice<Place>>();
-		for (Arista arista : aristas) {
-			if (arista.getPuntoPartida().equals(pVertice) && !esControlado(arista.getPuntoLlegada()))
-				vecinos.add(arista.getPuntoLlegada());
+	private List<VertexNode<Place>> getNeighbors(VertexNode<Place> T_VertexNode) {
+		List<VertexNode<Place>> neighbors = new ArrayList<VertexNode<Place>>();
+		for (Edge edge : edges) {
+			if (edge.getStart().equals(T_VertexNode) && !isVisited(edge.getEnd()))
+				neighbors.add(edge.getEnd());
 		}
-		return vecinos;
+		return neighbors;
 	}
 
 	/**
-	 * Obtiene la distancia entre 2 vertices de ubicaciones distintas
+	 * Obtiene la distancia entre 2 vertexNodes de ubicaciones distintas
 	 * 
 	 * @param partida
 	 *            Vértice del cuál se parte
 	 * @param llegada
 	 *            Vértice de destino
-	 * @return La distancia para ser guardada dentro de las distancias como una
+	 * @return La distancia para ser guardada dentro de las distances como una
 	 *         longitud
 	 */
-	private double obtenerDistancia(Vertice<Place> partida, Vertice<Place> llegada) {
-		for (Arista arista : aristas) {
-			if (arista.getPuntoPartida().equals(partida) && arista.getPuntoLlegada().equals(llegada))
-				return arista.getLongitud();
+	private double getDistance(VertexNode<Place> partida, VertexNode<Place> llegada) {
+		for (Edge edge : edges) {
+			if (edge.getStart().equals(partida) && edge.getEnd().equals(llegada))
+				return edge.getSize();
 		}
-		throw new RuntimeException("Estos vertices no tienen uni�n uno con el otro");
+		throw new RuntimeException("Not possible to get the distance, vertexes are not linked");
 	}
 
 	/**
-	 * Permite generar la distancia más corta entre 2 vertices. Esta distancia está
+	 * Permite generar la distancia más corta entre 2 vertexNodes. Esta distancia está
 	 * dada por medio del conjunto de infotmaición de los métodos anteriores
 	 * 
-	 * @param pVertice
+	 * @param T_VertexNode
 	 *            Vértice del cual se desea obtener una distancia mínima
 	 */
-	private void obtenerDistanciaMinima(Vertice<Place> pVertice) {
-		List<Vertice<Place>> verticesVecinos = obtenerVecinos(pVertice);
-		for (Vertice<Place> verticeDestino : verticesVecinos) {
-			if (obtenerDistanciaMasCorta(verticeDestino) > obtenerDistanciaMasCorta(pVertice) + obtenerDistancia(pVertice, verticeDestino)) {
-				distancias.put(verticeDestino,
-						obtenerDistanciaMasCorta(pVertice) + obtenerDistancia(pVertice, verticeDestino));
-				predecesores.put(verticeDestino, pVertice);
-				verticeNoControlado.add(verticeDestino);
+	private void getMinimiumDistance(VertexNode<Place> T_VertexNode) {
+		List<VertexNode<Place>> vertexNeighbors = getNeighbors(T_VertexNode);
+		for (VertexNode<Place> destinyVertex : vertexNeighbors) {
+			if (getShortestDistance(destinyVertex) > getShortestDistance(T_VertexNode) + getDistance(T_VertexNode, destinyVertex)) {
+				distances.put(destinyVertex,
+						getShortestDistance(T_VertexNode) + getDistance(T_VertexNode, destinyVertex));
+				neighbors.put(destinyVertex, T_VertexNode);
+				noVisitedVertex.add(destinyVertex);
 			}
 		}
 	}
@@ -188,23 +188,23 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Place>> {
 	/**
 	 * Este método permite generar un mapeo general a partir de un nodo centroide.
 	 * Este centroide será el nodo de partida y todos los demás nodos serán los de
-	 * llegada. De manera automática se podran obtener las diferentes distancias
+	 * llegada. De manera automática se podran obtener las diferentes distances
 	 * hacia cada uno de los nodos.
 	 * 
-	 * Este métodos se debe ejecutar antes que obtenerListadoCamino().
+	 * Este métodos se debe ejecutar antes que getListedRoute().
 	 */
-	public void ejecutarGrafo(Vertice<Place> pVertice) {
-		verticeControlado = new HashSet<Vertice<Place>>();
-		verticeNoControlado = new HashSet<Vertice<Place>>();
-		distancias = new HashMap<Vertice<Place>, Double>();
-		predecesores = new HashMap<Vertice<Place>, Vertice<Place>>();
-		distancias.put(pVertice, 0.0);
-		verticeNoControlado.add(pVertice);
-		while (verticeNoControlado.size() > 0) {
-			Vertice<Place> vertice = obtenerMinimo(verticeNoControlado);
-			verticeControlado.add(vertice);
-			verticeNoControlado.remove(vertice);
-			obtenerDistanciaMinima(vertice);
+	public void runGraph(VertexNode<Place> T_VertexNode) {
+		visitedVertex = new HashSet<VertexNode<Place>>();
+		noVisitedVertex = new HashSet<VertexNode<Place>>();
+		distances = new HashMap<VertexNode<Place>, Double>();
+		neighbors = new HashMap<VertexNode<Place>, VertexNode<Place>>();
+		distances.put(T_VertexNode, 0.0);
+		noVisitedVertex.add(T_VertexNode);
+		while (noVisitedVertex.size() > 0) {
+			VertexNode<Place> vertex = getMinimium(noVisitedVertex);
+			visitedVertex.add(vertex);
+			noVisitedVertex.remove(vertex);
+			getMinimiumDistance(vertex);
 		}
 	}
 
@@ -212,23 +212,23 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Place>> {
 	 * Permite generar un listado de nodos mediante los cuales se llegará al destino
 	 * mediante una distancia más corta.
 	 * 
-	 * Este método debe ejecutarse desupués de ejecutarGrafo();
+	 * Este método debe ejecutarse desupués de runGraph();
 	 * 
-	 * @param pDestino
+	 * @param T_Destiny
 	 *            Corresponde al vértice destino al cuál se desea llegar a partir de
 	 *            uno conocido
 	 */
-	public LinkedList<Vertice<Place>> obtenerListadoCamino(Vertice<Place> pDestino) {
-		LinkedList<Vertice<Place>> caminoDijkstra = new LinkedList<Vertice<Place>>();
-		Vertice<Place> trazo = pDestino;
-		if (predecesores.get(trazo) == null)
+	public LinkedList<VertexNode<Place>> getListedRoute(VertexNode<Place> T_Destiny) {
+		LinkedList<VertexNode<Place>> DijkstraRoute = new LinkedList<VertexNode<Place>>();
+		VertexNode<Place> stroke = T_Destiny;
+		if (neighbors.get(stroke) == null)
 			return null;
-		caminoDijkstra.add(trazo);
-		while (predecesores.get(trazo) != null) {
-			trazo = predecesores.get(trazo);
-			caminoDijkstra.add(trazo);
+		DijkstraRoute.add(stroke);
+		while (neighbors.get(stroke) != null) {
+			stroke = neighbors.get(stroke);
+			DijkstraRoute.add(stroke);
 		}                
-                Collections.reverse(caminoDijkstra);
-		return caminoDijkstra;
+                Collections.reverse(DijkstraRoute);
+		return DijkstraRoute;
 	}
 }

@@ -6,15 +6,15 @@ import java.util.*;
  * Interface que contiene los métodos de ejecución para cualquier grafo
  * 
  *
- * @param <objeoGenerico>
+ * @param <Generic>
  *            Este genérico permite utilizar cualquier objeto, de modo que este
  *            objeto sea parte del nodo del grafo
  */
 
 //MÉTODOS PREDETERMINADOS DE TODOS LOS GRAFOS
-public interface ComportamientoGrafo<objeoGenerico> {
+public interface GraphBehavior<Generic> {
 	
-        public void ejecutarGrafo(objeoGenerico Grafo);
+        public void runGraph(Generic Grafo);
 
-	public LinkedList<objeoGenerico> obtenerListadoCamino(objeoGenerico pDestino);
+	public LinkedList<Generic> getListedRoute(Generic T_Destiny);
 }
