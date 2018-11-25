@@ -4,14 +4,14 @@ package tareaprogramada3.datos1.structures.Graph;
  * Los v�rtices del Dijkstra son sus nodos de información, por lo que estos
  * pueden generar dependencia con otros objetos que se deseen ubicar al grafo.
  *
- * @param <objetoGenerico>
+ * @param <Place>
  */
-public class Vertice<objetoGenerico> {
+public class Vertice<Place> {
 	private String id_vertice;
-	private objetoGenerico nodoInterno;
+	private Place nodoInterno;
 
 	// CONSTRUCTOR
-	public Vertice(String pId, objetoGenerico pNodoInterno) {
+	public Vertice(String pId, Place pNodoInterno) {
 		this.id_vertice = pId;
 		this.nodoInterno = pNodoInterno;
 	}
@@ -25,11 +25,11 @@ public class Vertice<objetoGenerico> {
 		this.id_vertice = id;
 	}
 
-	public objetoGenerico getNodoInterno() {
+	public Place getNodoInterno() {
 		return nodoInterno;
 	}
 
-	public void setNodoInterno(objetoGenerico nodoInterno) {
+	public void setNodoInterno(Place nodoInterno) {
 		this.nodoInterno = nodoInterno;
 	}
 

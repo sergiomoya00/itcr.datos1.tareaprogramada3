@@ -1,6 +1,7 @@
 package tareaprogramada3.datos1.structures.Graph;
 
 import java.util.List;
+import tareaprogramada3.datos1.administration.*;
 
 /**
  * La clase grafo permite generar los linkeos entre los v�rtices y las aristas
@@ -9,7 +10,7 @@ import java.util.List;
 
 //UNE VERTICES Y ARISTAS
 public class Grafo {
-	private List<Vertice<Object>> vertices;
+	private List<Vertice<Place>> vertices;
 	private List<Arista> aristas;
 
 	/**
@@ -18,17 +19,17 @@ public class Grafo {
 	 * @param pVertices lista de vertices del grafo
 	 * @param pAristas  lista de aristas del grafo
 	 */
-	public Grafo(List<Vertice<Object>> pVertices, List<Arista> pAristas) {
+	public Grafo(List<Vertice<Place>> pVertices, List<Arista> pAristas) {
 		this.vertices = pVertices;
 		this.aristas = pAristas;
 	}
 	// GETTERS Y SETTERS
 
-	public List<Vertice<Object>> getVertices() {
+	public List<Vertice<Place>> getVertices() {
 		return vertices;
 	}
 
-	public void setVertices(List<Vertice<Object>> vertices) {
+	public void setVertices(List<Vertice<Place>> vertices) {
 		this.vertices = vertices;
 	}
 

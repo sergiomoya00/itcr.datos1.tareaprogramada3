@@ -1,13 +1,13 @@
 package tareaprogramada3.datos1.structures.Graph;
-
+import tareaprogramada3.datos1.administration.*;
 /**
  * Esta clase posee el comportamiento que tendrá el Dijkstra en el momento de
  * ser ejecutado
  */
 public class Arista {
 	private String id_arista;
-	private Vertice<Object> puntoPartida;
-	private Vertice<Object> puntoLlegada;
+	private Vertice<Place> puntoPartida;
+	private Vertice<Place> puntoLlegada;
 	private double longitud;
 
 	/**
@@ -17,7 +17,7 @@ public class Arista {
          * @param pLlegada punto de llegada (vértice)
          * @param pLongitud peso de la relación
          */
-	public Arista(String pId_arista, Vertice<Object> pPartida, Vertice<Object> pLlegada, double pLongitud) {
+	public Arista(String pId_arista, Vertice<Place> pPartida, Vertice<Place> pLlegada, double pLongitud) {
 		this.id_arista = pId_arista;
 		this.puntoPartida = pPartida;
 		this.puntoLlegada = pLlegada;
@@ -42,28 +42,28 @@ public class Arista {
          * get del punto de partida
          * @return punto de partida (vértice)
          */
-	public Vertice<Object> getPuntoPartida() {
+	public Vertice<Place> getPuntoPartida() {
 		return puntoPartida;
 	}
         /**
          * set del punto de partida
          * @param puntoPartida nuevo vértice
          */
-	public void setPuntoPartida(Vertice<Object> puntoPartida) {
+	public void setPuntoPartida(Vertice<Place> puntoPartida) {
 		this.puntoPartida = puntoPartida;
 	}
         /**
          * get del punto de llegada
          * @return punto de llegada(vértice)
          */
-	public Vertice<Object> getPuntoLlegada() {
+	public Vertice<Place> getPuntoLlegada() {
 		return puntoLlegada;
 	}
         /**
          * set del punto de llegada 
          * @param puntoLlegada punto nuevo de llegada (vértice)
          */
-	public void setPuntoLlegada(Vertice<Object> puntoLlegada) {
+	public void setPuntoLlegada(Vertice<Place> puntoLlegada) {
 		this.puntoLlegada = puntoLlegada;
 	}
         /**

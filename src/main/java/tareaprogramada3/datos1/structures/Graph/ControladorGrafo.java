@@ -3,6 +3,8 @@ package tareaprogramada3.datos1.structures.Graph;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import tareaprogramada3.datos1.administration.Place;
+
 
 /**
  * clase para controlar el grafo
@@ -10,18 +12,18 @@ import java.util.List;
 public class ControladorGrafo {
     
         
-	private List<Vertice<Object>> vertices;
+	private List<Vertice<Place>> vertices;
 	private List<Arista> aristas;
-	private LinkedList<Vertice<Object>> trazo;
+	private LinkedList<Vertice<Place>> trazo;
 
 	/**
 	 * Al generar el contructor se inicializan y se crean objetos de las 3 listas
 	 * necesarias.
 	 */
 	public ControladorGrafo() {
-		this.vertices = new ArrayList<Vertice<Object>>();
+		this.vertices = new ArrayList<Vertice<Place>>();
 		this.aristas = new ArrayList<Arista>();
-		this.trazo = new LinkedList<Vertice<Object>>();
+		this.trazo = new LinkedList<Vertice<Place>>();
 	}
 
 	/**
@@ -30,7 +32,7 @@ public class ControladorGrafo {
 	 * @return trazo con camino
 	 */
         
-        public LinkedList<Vertice<Object>> getTrazo() {
+        public LinkedList<Vertice<Place>> getTrazo() {
 		return trazo;
 	}
 
@@ -39,7 +41,7 @@ public class ControladorGrafo {
 	 * 
 	 * @param trazo trazo por ingresar
 	 */
-	public void setTrazo(LinkedList<Vertice<Object>> trazo) {
+	public void setTrazo(LinkedList<Vertice<Place>> trazo) {
 		this.trazo = trazo;
 	}
 
@@ -48,7 +50,7 @@ public class ControladorGrafo {
 	 * 
 	 * @return vertices del grafo
 	 */
-	public List<Vertice<Object>> getVertices() {
+	public List<Vertice<Place>> getVertices() {
 		return vertices;
 	}
 
@@ -57,7 +59,7 @@ public class ControladorGrafo {
 	 * 
 	 * @param vertices vertices nuevas para el grafo
 	 */
-	public void setVertices(List<Vertice<Object>> vertices) {
+	public void setVertices(List<Vertice<Place>> vertices) {
 		this.vertices = vertices;
 	}
 
@@ -105,8 +107,8 @@ public class ControladorGrafo {
 	 */
         
         //CREA NUEVO VÉRTICE
-	public void nuevoVertice(String id_vertice, Object nodoExterno) {
-		Vertice<Object> vertice = new Vertice<Object>(id_vertice, nodoExterno);
+	public void nuevoVertice(String id_vertice, Place nodoExterno) {
+		Vertice<Place> vertice = new Vertice<Place>(id_vertice, nodoExterno);
 		vertices.add(vertice);
 	}
 
@@ -118,9 +120,9 @@ public class ControladorGrafo {
 	 */
         
         //PARA OBTENER UN VÉRTICE POR ID
-	public Vertice<Object> obtenerVerticePorID(String id_vertice) {
-		Vertice<Object> verticeNuevo = null;
-		for (Vertice<Object> verticeAnidado : vertices) {
+	public Vertice<Place> obtenerVerticePorID(String id_vertice) {
+		Vertice<Place> verticeNuevo = null;
+		for (Vertice<Place> verticeAnidado : vertices) {
 			if (verticeAnidado.getId().equals(id_vertice)) {
 				verticeNuevo = verticeAnidado;
 				return verticeNuevo;

@@ -5,7 +5,8 @@
  */
 package tareaprogramada3.datos1.gui;
 
-import API.Geocoding;
+
+import tareaprogramada3.datos1.GoogleMapsServices.GoogleAPI;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;

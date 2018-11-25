@@ -1,4 +1,5 @@
 package tareaprogramada3.datos1.structures.Graph;
+import tareaprogramada3.datos1.administration.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,13 +14,13 @@ import java.util.Set;
  * Esta clase posee el comportamiento que tendrá el Dijkstra en el momento de
  * ser ejecutado
  * */
-public class Dijkstra implements ComportamientoGrafo<Vertice<Object>> {
-	private List<Vertice<Object>> vertices; // Listado de vertices
+public class Dijkstra implements ComportamientoGrafo<Vertice<Place>> {
+	private List<Vertice<Place>> vertices; // Listado de vertices
 	private List<Arista> aristas; // Listado de aristas
-	private Set<Vertice<Object>> verticeControlado; // Corresponde a vértices ya contados en un trayecto
-	private Set<Vertice<Object>> verticeNoControlado; // Corresponde a los vértices no contados en el trayecto
-	private Map<Vertice<Object>, Vertice<Object>> predecesores; // Vértices vecinos del trayecto
-	private Map<Vertice<Object>, Double> distancias; // Guarda la distancia de un vertice hacia todos los demás
+	private Set<Vertice<Place>> verticeControlado; // Corresponde a vértices ya contados en un trayecto
+	private Set<Vertice<Place>> verticeNoControlado; // Corresponde a los vértices no contados en el trayecto
+	private Map<Vertice<Place>, Vertice<Place>> predecesores; // Vértices vecinos del trayecto
+	private Map<Vertice<Place>, Double> distancias; // Guarda la distancia de un vertice hacia todos los demás
 
 	/**
 	 * CONSTRUCTOR ComportamientoDijkstra Este constructor únicamente requiere de un
@@ -29,16 +30,16 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Object>> {
 	 */
         
 	public Dijkstra(Grafo Grafo) {
-		this.vertices = new ArrayList<Vertice<Object>>(Grafo.getVertices());
+		this.vertices = new ArrayList<Vertice<Place>>(Grafo.getVertices());
 		this.aristas = new ArrayList<Arista>(Grafo.getAristas());
 	}
 
 	// GETTERS AND SETTERS
-	public List<Vertice<Object>> getVertices() {
+	public List<Vertice<Place>> getVertices() {
 		return vertices;
 	}
 
-	public void setVertices(List<Vertice<Object>> vertices) {
+	public void setVertices(List<Vertice<Place>> vertices) {
 		this.vertices = vertices;
 	}
 
@@ -50,35 +51,35 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Object>> {
 		this.aristas = aristas;
 	}
 
-	public Set<Vertice<Object>> getVerticeControlado() {
+	public Set<Vertice<Place>> getVerticeControlado() {
 		return verticeControlado;
 	}
 
-	public void setVerticeControlado(Set<Vertice<Object>> verticeControlado) {
+	public void setVerticeControlado(Set<Vertice<Place>> verticeControlado) {
 		this.verticeControlado = verticeControlado;
 	}
 
-	public Set<Vertice<Object>> getVerticeNoControlado() {
+	public Set<Vertice<Place>> getVerticeNoControlado() {
 		return verticeNoControlado;
 	}
 
-	public void setVerticeNoControlado(Set<Vertice<Object>> verticeNoControlado) {
+	public void setVerticeNoControlado(Set<Vertice<Place>> verticeNoControlado) {
 		this.verticeNoControlado = verticeNoControlado;
 	}
 
-	public Map<Vertice<Object>, Vertice<Object>> getPredecesores() {
+	public Map<Vertice<Place>, Vertice<Place>> getPredecesores() {
 		return predecesores;
 	}
 
-	public void setPredecesores(Map<Vertice<Object>, Vertice<Object>> predecesores) {
+	public void setPredecesores(Map<Vertice<Place>, Vertice<Place>> predecesores) {
 		this.predecesores = predecesores;
 	}
 
-	public Map<Vertice<Object>, Double> getDistancias() {
+	public Map<Vertice<Place>, Double> getDistancias() {
 		return distancias;
 	}
 
-	public void setDistancias(Map<Vertice<Object>, Double> distancias) {
+	public void setDistancias(Map<Vertice<Place>, Double> distancias) {
 		this.distancias = distancias;
 	}
 
@@ -89,7 +90,7 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Object>> {
 	 *            nodo que se desea comparar
 	 * @return True si se encuentra dentro de los nodos controlados
 	 */
-	private boolean esControlado(Vertice<Object> vertice) {
+	private boolean esControlado(Vertice<Place> vertice) {
 		return verticeControlado.contains(vertice);
 	}
 
@@ -103,7 +104,7 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Object>> {
         
         
         //RETORNA CAMINO MÁS CORTO
-	private double obtenerDistanciaMasCorta(Vertice<Object> pDestino) {
+	private double obtenerDistanciaMasCorta(Vertice<Place> pDestino) {
 		Double dist = distancias.get(pDestino);
 		if (dist == null)
 			return Double.MAX_VALUE;
@@ -118,9 +119,9 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Object>> {
 	 *            mapeados para configurar la salida más corta
 	 * @return Los v�rtices por los cuales es más corto el camino
 	 */
-	private Vertice<Object> obtenerMinimo(Set<Vertice<Object>> vertices) {
-		Vertice<Object> minimo = null;
-		for (Vertice<Object> vertice : vertices) {
+	private Vertice<Place> obtenerMinimo(Set<Vertice<Place>> vertices) {
+		Vertice<Place> minimo = null;
+		for (Vertice<Place> vertice : vertices) {
 			if (minimo == null)
 				minimo = vertice;
 			else {
@@ -138,8 +139,8 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Object>> {
 	 *            Que funcionará como centroide para obtener sus vecinos
 	 * @return Listado de vértices que conforman un camino en común
 	 */
-	private List<Vertice<Object>> obtenerVecinos(Vertice<Object> pVertice) {
-		List<Vertice<Object>> vecinos = new ArrayList<Vertice<Object>>();
+	private List<Vertice<Place>> obtenerVecinos(Vertice<Place> pVertice) {
+		List<Vertice<Place>> vecinos = new ArrayList<Vertice<Place>>();
 		for (Arista arista : aristas) {
 			if (arista.getPuntoPartida().equals(pVertice) && !esControlado(arista.getPuntoLlegada()))
 				vecinos.add(arista.getPuntoLlegada());
@@ -157,7 +158,7 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Object>> {
 	 * @return La distancia para ser guardada dentro de las distancias como una
 	 *         longitud
 	 */
-	private double obtenerDistancia(Vertice<Object> partida, Vertice<Object> llegada) {
+	private double obtenerDistancia(Vertice<Place> partida, Vertice<Place> llegada) {
 		for (Arista arista : aristas) {
 			if (arista.getPuntoPartida().equals(partida) && arista.getPuntoLlegada().equals(llegada))
 				return arista.getLongitud();
@@ -172,9 +173,9 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Object>> {
 	 * @param pVertice
 	 *            Vértice del cual se desea obtener una distancia mínima
 	 */
-	private void obtenerDistanciaMinima(Vertice<Object> pVertice) {
-		List<Vertice<Object>> verticesVecinos = obtenerVecinos(pVertice);
-		for (Vertice<Object> verticeDestino : verticesVecinos) {
+	private void obtenerDistanciaMinima(Vertice<Place> pVertice) {
+		List<Vertice<Place>> verticesVecinos = obtenerVecinos(pVertice);
+		for (Vertice<Place> verticeDestino : verticesVecinos) {
 			if (obtenerDistanciaMasCorta(verticeDestino) > obtenerDistanciaMasCorta(pVertice) + obtenerDistancia(pVertice, verticeDestino)) {
 				distancias.put(verticeDestino,
 						obtenerDistanciaMasCorta(pVertice) + obtenerDistancia(pVertice, verticeDestino));
@@ -192,15 +193,15 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Object>> {
 	 * 
 	 * Este métodos se debe ejecutar antes que obtenerListadoCamino().
 	 */
-	public void ejecutarGrafo(Vertice<Object> pVertice) {
-		verticeControlado = new HashSet<Vertice<Object>>();
-		verticeNoControlado = new HashSet<Vertice<Object>>();
-		distancias = new HashMap<Vertice<Object>, Double>();
-		predecesores = new HashMap<Vertice<Object>, Vertice<Object>>();
+	public void ejecutarGrafo(Vertice<Place> pVertice) {
+		verticeControlado = new HashSet<Vertice<Place>>();
+		verticeNoControlado = new HashSet<Vertice<Place>>();
+		distancias = new HashMap<Vertice<Place>, Double>();
+		predecesores = new HashMap<Vertice<Place>, Vertice<Place>>();
 		distancias.put(pVertice, 0.0);
 		verticeNoControlado.add(pVertice);
 		while (verticeNoControlado.size() > 0) {
-			Vertice<Object> vertice = obtenerMinimo(verticeNoControlado);
+			Vertice<Place> vertice = obtenerMinimo(verticeNoControlado);
 			verticeControlado.add(vertice);
 			verticeNoControlado.remove(vertice);
 			obtenerDistanciaMinima(vertice);
@@ -217,9 +218,9 @@ public class Dijkstra implements ComportamientoGrafo<Vertice<Object>> {
 	 *            Corresponde al vértice destino al cuál se desea llegar a partir de
 	 *            uno conocido
 	 */
-	public LinkedList<Vertice<Object>> obtenerListadoCamino(Vertice<Object> pDestino) {
-		LinkedList<Vertice<Object>> caminoDijkstra = new LinkedList<Vertice<Object>>();
-		Vertice<Object> trazo = pDestino;
+	public LinkedList<Vertice<Place>> obtenerListadoCamino(Vertice<Place> pDestino) {
+		LinkedList<Vertice<Place>> caminoDijkstra = new LinkedList<Vertice<Place>>();
+		Vertice<Place> trazo = pDestino;
 		if (predecesores.get(trazo) == null)
 			return null;
 		caminoDijkstra.add(trazo);
