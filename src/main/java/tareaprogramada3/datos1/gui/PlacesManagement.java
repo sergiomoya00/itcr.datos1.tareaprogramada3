@@ -198,7 +198,7 @@ public class PlacesManagement extends javax.swing.JFrame {
             String lon = String.valueOf(direccion.getlon(lugar));
             double lonf = Integer.parseInt(lon);
 
-            String xx = String.valueOf(Geocoding.Rating(i));
+            String xx = String.valueOf(direccion.Rating(i));
             float xd = Integer.parseInt(xx);
 
             this.place = new Place();
@@ -295,7 +295,7 @@ public class PlacesManagement extends javax.swing.JFrame {
             String lon = String.valueOf(direccion.getlon(lugar));
             double lonf = Integer.parseInt(lon);
 
-            String xx = String.valueOf(Geocoding.Rating(i));
+            String xx = String.valueOf(direccion.Rating(i));
             float xd = Integer.parseInt(xx);
 
             this.place = new Place();

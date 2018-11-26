@@ -144,7 +144,7 @@ public class ClientRegister extends javax.swing.JFrame {
         this.client.setTelephone(phone);
         this.client.setMail(emailtxt.getText());
         this.client.setBirth(birthtxt.getText());
- //       this.client.setSubgraph();
+        //this.client.setSubgraph();
         AdministratorSession.getInstance().insertClients(client);
 
         RouteClient routee = new RouteClient();

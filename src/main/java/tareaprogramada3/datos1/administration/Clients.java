@@ -7,23 +7,35 @@ package tareaprogramada3.datos1.administration;
 
 import tareaprogramada3.datos1.structures.Graph.*;
 
-/**
- *
- * @author
- */
 public class Clients implements Comparable<Clients> {
-    private String name;
-    private int id;
-    private int telephone;
-    private String mail;
-    private String birth;
-    private Graph subgraph;
+    public String name;
+    public int id;
+    public int telephone;
+    public String mail;
+    public String birth;
+    public GraphLeader subgraph;
 
-    public Graph getSubgraph() {
+    public Clients(String name, int id, int telephone, String mail, String birth, GraphLeader subgraph) {
+        this.name = name;
+        this.id = id;
+        this.telephone = telephone;
+        this.mail = mail;
+        this.birth = birth;
+        this.subgraph = subgraph;
+    }
+    
+    public Clients(){
+    }
+  
+    public Clients(GraphLeader subgraph) {
+        this.subgraph = subgraph;
+    }
+    
+    public GraphLeader getSubgraph() {
         return subgraph;
     }
 
-    public void setSubgraph(Graph subgraph) {
+    public void setSubgraph(GraphLeader subgraph) {
         this.subgraph = subgraph;
     }
     public String getName() {
@@ -70,5 +82,4 @@ public class Clients implements Comparable<Clients> {
     public int compareTo(Clients o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

@@ -94,25 +94,23 @@ public class Geocoding {
         return direccion;
     }
 
-    public String getlat(String lugar) {
+    public double getlat(String lugar) {
         GeoApiContext context = new GeoApiContext.Builder()
                 .apiKey("AIzaSyDEcRlP4hWCSsl0U6mG9VLkCsLrjnbUqp8")
                 .build();
         GeocodingResult[] results = GeocodingApi.geocode(context,
                 lugar).awaitIgnoreError();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String latitud = gson.toJson(results[0].geometry.location.lat);
+        double latitud = results[0].geometry.location.lat;
         return latitud;
     }
 
-    public String getlon(String lugar) {
+    public double getlon(String lugar) {
         GeoApiContext context = new GeoApiContext.Builder()
                 .apiKey("AIzaSyDEcRlP4hWCSsl0U6mG9VLkCsLrjnbUqp8")
                 .build();
         GeocodingResult[] results = GeocodingApi.geocode(context,
                 lugar).awaitIgnoreError();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String longitud = gson.toJson(results[0].geometry.location.lng);
+        double longitud = results[0].geometry.location.lng;
         return longitud;
     }
 
@@ -192,7 +190,7 @@ public class Geocoding {
         }
     }
 
-    public static String Rating(String place) throws ApiException, InterruptedException, IOException {
+    public String Rating(String place) throws ApiException, InterruptedException, IOException {
         float Rating;
         GeoApiContext context = new GeoApiContext.Builder()
                 .apiKey("AIzaSyDslDVmXZsDFmXRo6mTVcJXVSb6m5K-qBI")
