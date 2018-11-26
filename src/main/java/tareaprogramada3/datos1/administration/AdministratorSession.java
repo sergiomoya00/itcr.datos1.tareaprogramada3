@@ -8,10 +8,14 @@ package tareaprogramada3.datos1.administration;
 import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import javafx.beans.property.SimpleListProperty;
 import tareaprogramada3.datos1.structures.Tree.BinarySearchTree;
 import tareaprogramada3.datos1.structures.Graph.*;
+import tareaprogramada3.datos1.structures.Graph.Dijkstra;
 
 public class AdministratorSession {
 
@@ -82,12 +86,12 @@ public class AdministratorSession {
     public void showDistancesFromASite() {
         System.out.println(shortestRoute.getDistances().toString());
     }
-
-    ///OBTIENE EL CAMINO M�S CORTO A PARTIR DE get(0) a get(4) EN ESTE CASO , puede ser cualquiera
+  
+  ///OBTIENE EL CAMINO M�S CORTO A PARTIR DE get(0) a get(4) EN ESTE CASO , puede ser cualquiera
     public void shortestRouteFront2Points() {
         System.out.println(shortestRoute.getListedRoute(shortestRoute.getVertexNodes().get(3))); //El get(3) puede cambiar
     }
-
+        double distanciaMinima = shortestRoute.getDistances().get(shortestRoute.getVertexNodes().get(3));
     //Obtener la distancia entre dos v�rtices
     public void DistanceFrom2Points() {
         double distanciaMinima = shortestRoute.getDistances().get(shortestRoute.getVertexNodes().get(3));
@@ -100,11 +104,6 @@ public class AdministratorSession {
         this.place.add(newPlace);
     }
 
-    /*
-    public Collection<Place> getPlace() {
-        return place;
-    }
-     */
     public List<Place> getPlace() {
         return place;
     }
@@ -112,4 +111,63 @@ public class AdministratorSession {
     public Collection<Place> getPlaces() {
         return place;
     }
+    
+    private static GraphLeader sitesForClient;
+    private static Graph graphSitesForClient;	
+    private static Dijkstra dijkstraSubgraph;
+    
+    
+//Añadir un lugar al subgrafo
+    public void addPlaceSubgraph(String name, Place node){
+        sitesForClient.newVertexNode(name, node);
+    }
+    
+    ///OBTIENE LAS DISTANCIAS A TODOS LOS VERTICES A PARTIR DEL GET(NUM) anterior
+    public void showDistancesFromASiteSubgraph() {
+         graphSitesForClient = new Graph(sitesForClient.getVertexNodes(), sitesForClient.getEdges());
+        dijkstraSubgraph = new Dijkstra(graphSitesForClient);
+        System.out.println(shortestRoute.getDistances().toString());
+    }
+    
+    //Add an edge 
+    public void addEdgeSubgraph(String name, int id_A, int id_B, long distance) {
+        sitesForClient.newEdge(name, id_A, id_B, distance);
+    }
+    
+    public void runSubgraph(VertexNode<Place> site){
+        graphSitesForClient = new Graph(sitesForClient.getVertexNodes(), sitesForClient.getEdges());
+        dijkstraSubgraph = new Dijkstra(graphSitesForClient);
+        dijkstraSubgraph.runGraph(site);
+    }
+    
+    public LinkedList<VertexNode<Place>> getListedRouteSubgraph (VertexNode<Place> T_Destiny){
+        graphSitesForClient = new Graph(sitesForClient.getVertexNodes(), sitesForClient.getEdges());
+        dijkstraSubgraph = new Dijkstra(graphSitesForClient);
+        return dijkstraSubgraph.getListedRoute(T_Destiny);
+    }
+    
+    
+    ///OBTIENE LAS DISTANCIAS A TODOS LOS VERTICES A PARTIR DEL GET(NUM) anterior
+    public void getDistancesFrom1Point(){
+        graphSitesForClient = new Graph(sitesForClient.getVertexNodes(), sitesForClient.getEdges());
+        dijkstraSubgraph = new Dijkstra(graphSitesForClient);
+        System.out.println(dijkstraSubgraph.getDistances().toString());
+    }
+
+    ///OBTIENE EL CAMINO M�S CORTO A PARTIR DE get(0) a get(4) EN ESTE CASO , puede ser cualquiera
+    public void getListedRouteFromSpecificPoints(){
+        graphSitesForClient = new Graph(sitesForClient.getVertexNodes(), sitesForClient.getEdges());
+        dijkstraSubgraph = new Dijkstra(graphSitesForClient);
+        System.out.println(dijkstraSubgraph.getListedRoute(dijkstraSubgraph.getVertexNodes().get(3)));
+    }
+		
+    //Obtener la distancia entre dos v�rtices
+    //limit es hasta donde va a agarrar la distancia
+    public void getDistanceBetween2Points(int limit){
+        graphSitesForClient = new Graph(sitesForClient.getVertexNodes(), sitesForClient.getEdges());
+        dijkstraSubgraph = new Dijkstra(graphSitesForClient);
+        double distanciaMinima = dijkstraSubgraph.getDistances().get(dijkstraSubgraph.getVertexNodes().get(limit));
+	System.out.println(distanciaMinima);
+    }
+    
 }
