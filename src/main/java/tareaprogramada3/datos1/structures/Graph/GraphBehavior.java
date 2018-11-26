@@ -14,7 +14,7 @@ import java.util.*;
 //MÉTODOS PREDETERMINADOS DE TODOS LOS GRAFOS
 public interface GraphBehavior<Generic> {
 	
-        public void runGraph(Generic Grafo);
+        public void runGraph(Generic Graph);
 
 	public LinkedList<Generic> getListedRoute(Generic T_Destiny);
 }

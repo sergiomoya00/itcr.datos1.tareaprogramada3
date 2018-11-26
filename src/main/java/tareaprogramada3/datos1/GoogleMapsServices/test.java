@@ -7,7 +7,7 @@ package tareaprogramada3.datos1.GoogleMapsServices;
 
 import com.google.maps.errors.ApiException;
 import java.io.IOException;
-import static tareaprogramada3.datos1.GoogleMapsServices.GoogleAPI.PlaceType;
+import static tareaprogramada3.datos1.GoogleMapsServices.GoogleAPI.*;
 
 /**
  *
@@ -16,7 +16,7 @@ import static tareaprogramada3.datos1.GoogleMapsServices.GoogleAPI.PlaceType;
 public class test {
     
     public static void main(String[] args) throws ApiException, InterruptedException, IOException {
-        System.out.println(PlaceType("ChIJI4HuuIbjoI8RdoRCEaF6a1U"));
+        System.out.println(getType("ChIJI4HuuIbjoI8RdoRCEaF6a1U"));
 
     }
     

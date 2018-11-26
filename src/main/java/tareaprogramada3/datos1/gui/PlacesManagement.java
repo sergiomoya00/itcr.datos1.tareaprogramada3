@@ -12,7 +12,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import javax.swing.table.DefaultTableModel;
-import tareaprogramada3.datos1.GoogleMapsServices.GoogleAPI;
 import tareaprogramada3.datos1.administration.AdministratorSession;
 import API.Geocoding;
 import com.google.maps.GeoApiContext;
@@ -25,6 +24,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import tareaprogramada3.datos1.administration.Place;
 import tareaprogramada3.datos1.structures.Graph.VertexNode;
 
 /**
@@ -38,13 +39,23 @@ public class PlacesManagement extends javax.swing.JFrame {
      */
     private String area;
 
-    public int start1;
+    private int start1;
 
-    public int destiny;
+    private int destiny;
+    
+    private String desS;
+    
+    private String orgS;
 
     private int counter = 0;
 
     private VertexNode vertex;
+
+    private Place place;
+
+    public Place getPlaces() {
+        return place;
+    }
 
     public VertexNode getVertex() {
         return vertex;
@@ -55,30 +66,38 @@ public class PlacesManagement extends javax.swing.JFrame {
     }
 
     private void refresh() {
-        String lugar = txtdirectionxd.getText();
-        Geocoding direccion = new Geocoding();
-        String q = direccion.getid(lugar);
         DefaultTableModel model1 = ((DefaultTableModel) searchedPlaces.getModel());
         model1.setRowCount(0);//Ingresa los títulos y valores al JTable.
-
-        //for (Patient patient : HospitalManager.getInstance().getUrgencyGreen()) {
-        model1.addRow(new Object[]{ //AdministratorSession.getInstance().getPlaceInfo(q)
-        });
+        for (Place place : AdministratorSession.getInstance().getPlace()) {
+            model1.addRow(new Object[]{
+                place.getPlaceID(), place.getName()
+//AdministratorSession.getInstance().getPlaceInfo(q)
+            });
+        }
     }
 
-    private void addRoute() {
+    private void addRoute() throws ApiException, InterruptedException, IOException {
 
         String v = getVertex().getVertexNodeId();
         int vfinal = Integer.parseInt(v);
 
         destiny = (int) searchedPlaces.getValueAt(searchedPlaces.getSelectedColumn(), searchedPlaces.getSelectedRow());
         start1 = vfinal;
+        
+        desS = (String) searchedPlaces.getValueAt(searchedPlaces.getSelectedColumn(), searchedPlaces.getSelectedRow());
+        orgS = v;
+        
+        Geocoding temp = new Geocoding();
 
-        AdministratorSession.getInstance().addEdge("lol", start1, destiny, destiny);
+        long distance;
+        distance = (temp.getDriveDist(orgS, desS));
+
+        AdministratorSession.getInstance().addEdge("lol", start1, destiny, distance);
 
     }
 
     public void getimage() {
+        
         area = txtdirectionxd.getText();
 
         Geocoding direccion = new Geocoding();
@@ -118,11 +137,45 @@ public class PlacesManagement extends javax.swing.JFrame {
     }
 
     private void DirectionSearch() throws UnsupportedEncodingException, MalformedURLException, ApiException, InterruptedException, IOException {
+        //imagen
+        area = txtdirectionxd.getText();
+
+        Geocoding direccion = new Geocoding();
+        GeoApiContext context = new GeoApiContext.Builder()
+                .apiKey("AIzaSyAx6wyHg-u40Cll05DxD8d1v0jnnCyuIdM")
+                .build();
+        PlaceDetails results = null;
+        try {
+            results = PlacesApi.placeDetails(context, direccion.getid(area)).await();
+        } catch (ApiException ex) {
+            Logger.getLogger(Photo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Photo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Photo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String urlstring = "https://maps.googleapis.com/maps/api/place/photo?";
+        urlstring = urlstring + "&maxheight=" + String.valueOf(results.photos[0].height);
+        urlstring = urlstring + "&maxwidth=" + String.valueOf(results.photos[0].width);
+        urlstring = urlstring + "&photoreference=" + results.photos[0].photoReference;
+        urlstring = urlstring + "&key=" + "AIzaSyAx6wyHg-u40Cll05DxD8d1v0jnnCyuIdM";
+        URL url = null;
+        try {
+            url = new URL(urlstring);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Photo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Image image = null;
+        try {
+            image = ImageIO.read(url);
+        } catch (IOException ex) {
+            Logger.getLogger(Photo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        image = image.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+
         if (!this.txtdirectionxd.getText().isEmpty()) {
             txtdireccionencontrada.setText("");
             String lugar = txtdirectionxd.getText();
-
-            Geocoding direccion = new Geocoding();
 
             txtdireccionencontrada.setText(String.valueOf(direccion.getdirection(lugar)));
             txtlatitud.setText(String.valueOf(direccion.getlat(lugar)));
@@ -135,7 +188,29 @@ public class PlacesManagement extends javax.swing.JFrame {
             tel.setText(direccion.PhoneNumber(u));
             String q = direccion.getid(lugar);
             web.setText(direccion.WebSite(q));
+            ImageIcon imageicon = new ImageIcon(image);
+            JOptionPane.showMessageDialog(null, "", "",
+                    JOptionPane.PLAIN_MESSAGE, imageicon);
+            //imag.setIcon(imageicon);
             //AdministratorSession.getInstance().newVertexForPlaces(q, lugar);
+            String lat = String.valueOf(direccion.getlat(lugar));
+            double latf = Integer.parseInt(lat);
+
+            String lon = String.valueOf(direccion.getlon(lugar));
+            double lonf = Integer.parseInt(lon);
+
+            this.place = new Place();
+            this.place.setName(lugar);
+            this.place.setPlaceID(q);
+            this.place.setLatitude((direccion.getlat(lugar)));
+            this.place.setLongitude((direccion.getlon(lugar)));
+            this.place.setRating((direccion.Rating(i)));
+            this.place.setPhoneNumber((direccion.PhoneNumber(u)));
+            this.place.setUrl((direccion.WebSite(q)));
+            this.place.setExactAddress((direccion.getdirection(lugar)));
+            this.place.setPhoto(image);
+//          this.place.setSchedule(u);
+            AdministratorSession.getInstance().addPlace(place);
         }
     }
 
@@ -689,10 +764,18 @@ public class PlacesManagement extends javax.swing.JFrame {
 
     private void addpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addpActionPerformed
         if (counter > 1) {
-            addRoute();
-            AdministratorSession.getInstance().newVertexForPlaces(searchedPlaces.getValueAt(searchedPlaces.getSelectedColumn(), searchedPlaces.getSelectedRow()), node);
+            try {
+                addRoute();
+            } catch (ApiException ex) {
+                Logger.getLogger(PlacesManagement.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(PlacesManagement.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(PlacesManagement.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            AdministratorSession.getInstance().newVertexForPlaces((String) searchedPlaces.getValueAt(searchedPlaces.getSelectedColumn(), searchedPlaces.getSelectedRow()), place);
         } else {
-            AdministratorSession.getInstance().newVertexForPlaces(searchedPlaces.getValueAt(searchedPlaces.getSelectedColumn(), searchedPlaces.getSelectedRow()), node);
+            AdministratorSession.getInstance().newVertexForPlaces((String) searchedPlaces.getValueAt(searchedPlaces.getSelectedColumn(), searchedPlaces.getSelectedRow()), place);
             counter++;
         }
 
@@ -715,15 +798,11 @@ public class PlacesManagement extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PlacesManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PlacesManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PlacesManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PlacesManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */

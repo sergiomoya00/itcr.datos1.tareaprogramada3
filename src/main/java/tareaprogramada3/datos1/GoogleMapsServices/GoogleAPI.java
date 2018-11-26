@@ -5,6 +5,11 @@
  */
 package tareaprogramada3.datos1.GoogleMapsServices;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.maps.DirectionsApi;
 import com.google.maps.DistanceMatrixApi;
 import com.google.maps.DistanceMatrixApiRequest;
@@ -14,6 +19,8 @@ import com.google.maps.PlacesApi;
 import com.google.maps.errors.ApiException;
 import com.google.maps.model.DistanceMatrix;
 import com.google.maps.model.GeocodingResult;
+import com.google.maps.model.PlacesSearchResponse;
+import com.google.maps.model.PlacesSearchResult;
 import com.google.maps.model.TravelMode;
 import java.io.IOException;
 import java.net.URL;
@@ -45,17 +52,6 @@ public class GoogleAPI {
                 place).awaitIgnoreError();
         Address = results[0].formattedAddress;
         return Address;
-    }
-
-    public static String PlaceType(String place) throws ApiException, InterruptedException, IOException {
-        String Type;
-        GeoApiContext context = new GeoApiContext.Builder()
-                .apiKey("AIzaSyDslDVmXZsDFmXRo6mTVcJXVSb6m5K-qBI")
-                .build();
-        GeocodingResult[] results = GeocodingApi.geocode(context,
-                place).awaitIgnoreError();
-        Type = Arrays.toString(results[0].types);
-        return Type;
     }
 
     public static double Latitude(String place) throws ApiException, InterruptedException, IOException {
@@ -152,4 +148,62 @@ public class GoogleAPI {
         return distApart;
     }
 
+    public static String getSchedule(String IDPlace) throws ApiException, InterruptedException, IOException {
+        GeoApiContext context = new GeoApiContext.Builder()
+                .apiKey("AIzaSyDslDVmXZsDFmXRo6mTVcJXVSb6m5K-qBI")
+                .build();
+        com.google.maps.model.PlaceDetails results = PlacesApi.placeDetails(context, IDPlace).await();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String gson2 = gson.toJson(results);
+
+        JsonParser parser = new JsonParser();
+        JsonArray gsonAr = parser.parse("[" + gson2 + "]").getAsJsonArray();
+        JsonObject gsonObj = gsonAr.get(0).getAsJsonObject();
+        JsonObject gsonSche = gsonObj.get("openingHours").getAsJsonObject();
+        JsonArray gsonWeek = gsonSche.get("weekdayText").getAsJsonArray();
+        int cont = 0;
+
+        String schedule = "Horario: ";
+        while (cont != gsonWeek.size()) {
+            schedule = schedule + "\n" + gsonWeek.get(cont);
+            cont++;
+        }
+        return schedule;
+    }
+
+    public static String getType(String IDPlace) throws ApiException, InterruptedException, IOException {
+        GeoApiContext context = new GeoApiContext.Builder()
+                .apiKey("AIzaSyDslDVmXZsDFmXRo6mTVcJXVSb6m5K-qBI")
+                .build();
+        com.google.maps.model.PlaceDetails results = PlacesApi.placeDetails(context, IDPlace).await();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String gson2 = gson.toJson(results);
+
+        JsonParser parser = new JsonParser();
+        JsonArray gsonAr = parser.parse("[" + gson2 + "]").getAsJsonArray();
+        JsonObject gsonObj = gsonAr.get(0).getAsJsonObject();
+        JsonArray gsonTyp = gsonObj.get("types").getAsJsonArray();
+        int cont = 0;
+
+        String types = "Tipo de Lugar: ";
+        while (cont != gsonTyp.size()) {
+            types = types + "\n" + gsonTyp.get(cont);
+            cont++;
+        }
+        return types;
+    }
+
+    public static String getCoincidences(String namePlace) throws ApiException, InterruptedException, IOException {
+        GeoApiContext context = new GeoApiContext.Builder()
+                .apiKey("AIzaSyDslDVmXZsDFmXRo6mTVcJXVSb6m5K-qBI")
+                .build();
+        PlacesSearchResponse results = PlacesApi.textSearchQuery(context, namePlace).await();
+        String coincidences = "";
+        for (PlacesSearchResult result : results.results) {
+            coincidences = coincidences + "\n" + result.name;
+        }
+        return coincidences;
+    }
+    
+    
 }
