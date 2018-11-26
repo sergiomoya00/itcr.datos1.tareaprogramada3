@@ -94,7 +94,7 @@ public class AdministratorSession {
         System.out.println(distanciaMinima);
     }
 
-    List<Place> place = new SimpleLinkeList<>();
+    List<Place> place = new ArrayList<>();
 
     public void addPlace(Place newPlace) {
         this.place.add(newPlace);
