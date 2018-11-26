@@ -13,6 +13,9 @@ import java.awt.Image;
  */
 public class Place {
     String name;
+    String descriptionPlace;
+    String activitiesPlace;
+    double pricePlace;
     String PlaceID;
     String exactAddress;
     double latitude;
@@ -28,8 +31,11 @@ public class Place {
     public Place() {
     }
 
-    public Place(String name, String PlaceID, String exactAddress, double latitude, double longitude, String phoneNumber, float rating, String webSite, String url, String schedule, String typePlace, Image photo) {
+    public Place(String name, String descriptionPlace, String activitiesPlace, double pricePlace, String PlaceID, String exactAddress, double latitude, double longitude, String phoneNumber, float rating, String webSite, String url, String schedule, String typePlace) {
         this.name = name;
+        this.descriptionPlace = descriptionPlace;
+        this.activitiesPlace = activitiesPlace;
+        this.pricePlace = pricePlace;
         this.PlaceID = PlaceID;
         this.exactAddress = exactAddress;
         this.latitude = latitude;
@@ -40,7 +46,6 @@ public class Place {
         this.url = url;
         this.schedule = schedule;
         this.typePlace = typePlace;
-        this.photo = photo;
     }
 
     public String getName() {
@@ -51,6 +56,30 @@ public class Place {
         this.name = name;
     }
 
+    public String getDescriptionPlace() {
+        return descriptionPlace;
+    }
+
+    public void setDescriptionPlace(String descriptionPlace) {
+        this.descriptionPlace = descriptionPlace;
+    }
+
+    public String getActivitiesPlace() {
+        return activitiesPlace;
+    }
+
+    public void setActivitiesPlace(String activitiesPlace) {
+        this.activitiesPlace = activitiesPlace;
+    }
+
+    public double getPricePlace() {
+        return pricePlace;
+    }
+
+    public void setPricePlace(double pricePlace) {
+        this.pricePlace = pricePlace;
+    }
+    
     public String getPlaceID() {
         return PlaceID;
     }
@@ -141,7 +170,7 @@ public class Place {
 
     @Override
     public String toString() {
-        return "Place{" + "PlaceID=" + PlaceID + ", exactAddress=" + exactAddress + ", latitude=" + latitude + ", longitude=" + longitude + ", phoneNumber=" + phoneNumber + ", rating=" + rating + ", webSite=" + webSite + ", url=" + url + ", schedule=" + schedule + ", typePlace=" + typePlace + ", photo=" + photo + '}';
+        return "Place{" + "name=" + name + ", descriptionPlace=" + descriptionPlace + ", activitiesPlace=" + activitiesPlace + ", pricePlace=" + pricePlace + ", PlaceID=" + PlaceID + ", exactAddress=" + exactAddress + ", latitude=" + latitude + ", longitude=" + longitude + ", phoneNumber=" + phoneNumber + ", rating=" + rating + ", webSite=" + webSite + ", url=" + url + ", schedule=" + schedule + ", typePlace=" + typePlace + ", photo=" + photo + '}';
     }
     
 }

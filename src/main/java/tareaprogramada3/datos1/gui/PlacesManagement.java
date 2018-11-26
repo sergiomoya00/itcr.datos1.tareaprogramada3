@@ -5,7 +5,7 @@
  */
 package tareaprogramada3.datos1.gui;
 
-import tareaprogramada3.datos1.GoogleMapsServices.GoogleAPI;
+import tareaprogramada3.datos1.GoogleMapsServices.Geocoding;
 import com.google.maps.errors.ApiException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -13,7 +13,6 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import javax.swing.table.DefaultTableModel;
 import tareaprogramada3.datos1.administration.AdministratorSession;
-import API.Geocoding;
 import com.google.maps.GeoApiContext;
 import com.google.maps.PlacesApi;
 import com.google.maps.model.Photo;
