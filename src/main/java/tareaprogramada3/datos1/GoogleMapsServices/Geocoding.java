@@ -159,7 +159,7 @@ public class Geocoding {
         }
     }
 
-    public static Rating(String place) throws ApiException, InterruptedException, IOException {
+    public String Rating(String place) throws ApiException, InterruptedException, IOException {
         float Rating;
         GeoApiContext context = new GeoApiContext.Builder()
                 .apiKey("AIzaSyDslDVmXZsDFmXRo6mTVcJXVSb6m5K-qBI")
